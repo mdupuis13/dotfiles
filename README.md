@@ -24,4 +24,3 @@ cd dotfiles && stow <program_name>
 
 ## special devices config
 [github gist](https://gist.github.com/mdupuis13/3d0a4f265e8fbbfe098baf290c8bf043)
-<script src="https://gist.github.com/mdupuis13/3d0a4f265e8fbbfe098baf290c8bf043.js"></script>

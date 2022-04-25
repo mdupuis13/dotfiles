@@ -8,8 +8,9 @@ My personal linux config files.
 ## backup config
 
 Those commands will:
-1- copy the given files into the dotfiles folder
-2- using GNU Stow, create a symlink from that folder into the parent folder (which is `$HOME` in this case)
+
+1. copy the given files into the dotfiles folder
+2. using GNU Stow, create a symlink from that folder into the parent folder (which is `$HOME` in this case)
 
 ```bash
 cd $HOME
@@ -19,8 +20,8 @@ cd dotfiles && stow <program_name>
 ```
 
 ## restore
-1- clone the git repo into `$HOME/dotfiles`
-2- run `stow <program_name>` to _restore_ a program's settings
+1. clone the git repo into `$HOME/dotfiles`
+2. run `stow <program_name>` to _restore_ a program's settings
 
 
 ## special devices config

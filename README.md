@@ -1,4 +1,5 @@
-# dotfiles-dasboss-pc
+# dotfiles
+My personal linux config files.
 
 ## dotFilez repo
 - [Using GNU Stow to manage your dotfiles](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)

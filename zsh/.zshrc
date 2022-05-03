@@ -137,7 +137,8 @@ BASE16_SHELL="$HOME/.config/base16-shell/"
 
 # Load bash files to zsh 
 # test -f $HOME/.bashrc && source $HOME/.bashrc 
-test -f $HOME/.bash_aliases && source $HOME/.bash_aliases
+[[ -f $HOME/.bash_aliases ]] || source $HOME/.bash_aliases
+[[ -f $HOME/.bash_functions ]] || source $HOME/.bash_functions
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

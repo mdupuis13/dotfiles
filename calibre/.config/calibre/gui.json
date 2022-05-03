@@ -1,0 +1,464 @@
+{
+  "Kindle Collections: Menu Style": "Show menu (default)",
+  "Plugin Updater plugin:plugin updater dialog": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAATtAAAGmAAACIAAAAh9AAAE7QAABpgAAAiAAAAIfQAAAAAAAAAADXAAAATtAAAGmAAACIAAAAh9"
+  },
+  "action-layout-toolbar": [
+    "Choose Library",
+    null,
+    "Edit Metadata",
+    null,
+    "Convert Books",
+    "View",
+    null,
+    "Store",
+    "Donate",
+    "Fetch News",
+    "Help",
+    null,
+    "Remove Books",
+    "Save To Disk",
+    "Connect Share",
+    "Tweak ePub",
+    "Preferences",
+    "Add Books"
+  ],
+  "action-layout-toolbar-device": [
+    "Add Books",
+    "Edit Metadata",
+    null,
+    "Convert Books",
+    "View",
+    "Send To Device",
+    null,
+    null,
+    "Location Manager",
+    null,
+    null,
+    "Fetch News",
+    "Save To Disk",
+    "Store",
+    "Connect Share",
+    null,
+    "Remove Books",
+    null,
+    "Help",
+    "Preferences",
+    "Kindle Collections"
+  ],
+  "advanced search dialog current tab": 2,
+  "basic_metadata_widget_splitter_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAADAAAA7QAAAW4AAAEZAf////8BAAAAAQA="
+  },
+  "book_details_splitter_horizontal_state": [
+    true,
+    514
+  ],
+  "book_list_pin_splitter_state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAACAAAH2wAAA3oA/////wEAAAABAA=="
+  },
+  "book_list_split": false,
+  "bulk-mde-casing-algorithm": "title_case",
+  "bulk_metadata_window_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAATYAAAGWgAACJYAAAi8AAAE2AAABloAAAiWAAAIvAAAAAAAAAAADXAAAATYAAAGWgAACJYAAAi8"
+  },
+  "bulk_metadata_window_tab": 1,
+  "card_a_view books view state": {
+    "column_alignment": {
+      "size": "center",
+      "timestamp": "center"
+    },
+    "column_positions": {
+      "authors": 2,
+      "collections": 5,
+      "inlibrary": 0,
+      "size": 4,
+      "timestamp": 3,
+      "title": 1
+    },
+    "column_sizes": {
+      "authors": 86,
+      "collections": 96,
+      "inlibrary": 89,
+      "size": 52,
+      "timestamp": 70,
+      "title": 56
+    },
+    "hidden_columns": [],
+    "languages_injected": true,
+    "last_modified_injected": true,
+    "sort_history": [
+      [
+        "timestamp",
+        false
+      ]
+    ]
+  },
+  "card_b_view books view state": {
+    "column_alignment": {
+      "size": "center",
+      "timestamp": "center"
+    },
+    "column_positions": {
+      "authors": 2,
+      "collections": 5,
+      "inlibrary": 0,
+      "size": 4,
+      "timestamp": 3,
+      "title": 1
+    },
+    "column_sizes": {
+      "authors": 86,
+      "collections": 96,
+      "inlibrary": 89,
+      "size": 52,
+      "timestamp": 70,
+      "title": 56
+    },
+    "hidden_columns": [],
+    "languages_injected": true,
+    "last_modified_injected": true,
+    "sort_history": [
+      [
+        "timestamp",
+        false
+      ]
+    ]
+  },
+  "catalog_csv_xml_db_fields": [
+    "title_sort",
+    "title",
+    "author_sort",
+    "authors",
+    "comments",
+    "formats",
+    "isbn",
+    "languages",
+    "pubdate",
+    "publisher",
+    "series",
+    "series_index",
+    "tags",
+    "size"
+  ],
+  "catalog_csv_xml_db_fields_sort_order": {
+    "#formats": 22,
+    "author_sort": 2,
+    "authors": 3,
+    "comments": 4,
+    "cover": 5,
+    "formats": 7,
+    "id": 20,
+    "identifiers": 9,
+    "isbn": 8,
+    "languages": 10,
+    "library_name": 11,
+    "ondevice": 12,
+    "pubdate": 13,
+    "publisher": 14,
+    "rating": 15,
+    "series": 16,
+    "series_index": 17,
+    "size": 19,
+    "tags": 18,
+    "timestamp": 6,
+    "title": 1,
+    "title_sort": 0,
+    "uuid": 21
+  },
+  "choose-icon-theme-dialog-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAJQAAAAAAAABdsAAAVWAAACVAAAABwAAAXXAAAFUgAAAAAAAAAADXAAAAJUAAAAHAAABdcAAAVS"
+  },
+  "config_widget_dialog_geometry_Sharing_Metadata download": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAANcAAAGEgAAChIAAAjsAAADXAAABhIAAAoSAAAI7AAAAAAAAAAADXAAAANcAAAGEgAAChIAAAjs"
+  },
+  "confirm-merge-dialog-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAGvAAAGEgAAC74AAAjsAAABrwAABhIAAAu+AAAI7AAAAAAAAAAADXAAAAGvAAAGEgAAC74AAAjs"
+  },
+  "confirm-merge-dialog-splitter-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAACAAAB+wAAAQAA/////wEAAAABAA=="
+  },
+  "cover_browser_splitter_vertical_state": [
+    false,
+    300
+  ],
+  "cover_grid_color": [
+    80,
+    80,
+    80
+  ],
+  "cover_grid_texture": null,
+  "custcol-prefs-table-geometry": [
+    76,
+    147,
+    135,
+    422,
+    205,
+    80
+  ],
+  "custom_colors_for_color_dialog": [
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ],
+    [
+      255,
+      255,
+      255,
+      255
+    ]
+  ],
+  "default_author_link": null,
+  "duplicates-question-dialog-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAGvAAAGEgAAC74AAAjsAAABrwAABhIAAAu+AAAI7AAAAAAAAAAADXAAAAGvAAAGEgAAC74AAAjs"
+  },
+  "exim-calibre-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAUnAAAGXwAACEYAAAi2AAAFJwAABl8AAAhGAAAItgAAAAAAAAAADXAAAAUnAAAGXwAACEYAAAi2"
+  },
+  "grid view visible": false,
+  "hidpi": "on",
+  "id-links-rules-editor-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAMBAAABSwAABb4AAAOHAAADAgAAAWEAAAW9AAADhgAAAAAAAAAADXAAAAMCAAABYQAABb0AAAOG"
+  },
+  "jobs view column layout3": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABT4AAAAFAQEBAAAAAAAAAAAAAAAAAGT/////AAAAhAAAAAAAAAAFAAADjwAAAAEAAAAAAAAAZAAAAAEAAAAAAAAAZAAAAAEAAAAAAAAAZAAAAAEAAAAAAAAAgwAAAAEAAAAAAAAD6AAAAAAA"
+  },
+  "jobs_dialog_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAANcAAAGHgAAChIAAAj4AAADXAAABh4AAAoSAAAI+AAAAAAAAAAADXAAAANcAAAGHgAAChIAAAj4"
+  },
+  "kindle_collections plugin:edit collections dialog: geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAARgAAAHhAAACLIAAAkMAAAEYAAAB4QAAAiyAAAJDAAAAAAAAAAADXAAAARgAAAHhAAACLIAAAkM"
+  },
+  "kindle_collections plugin:edit settings dialog: geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAX/AAAHSQAAB28AAAfMAAAF/wAAB0kAAAdvAAAHzAAAAAAAAAAADXAAAAX/AAAHSQAAB28AAAfM"
+  },
+  "kindle_collections plugin:import collections dialog: geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAWLAAAHSAAAB+IAAAfNAAAFiwAAB0gAAAfiAAAHzQAAAAAAAAAADXAAAAWLAAAHSAAAB+IAAAfN"
+  },
+  "kindle_collections plugin:import collections dialog: selected column": "Kindle Collection",
+  "library-annotations-browser-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAMxAAAGEgAACj0AAAjsAAADMQAABhIAAAo9AAAI7AAAAAAAAAAADXAAAAMxAAAGEgAACj0AAAjs"
+  },
+  "library-annotations-browser-splitter-state": {
+    "__class__": "bytearray",
+    "__value__": "AAAA/wAAAAEAAAACAAABwgAAAcIA/////wEAAAABAA=="
+  },
+  "library_usage_stats": {
+    "/home/mdupuis/Calibre_Library/Bibliothèque": 45,
+    "/home/mdupuis/Calibre_Library/Céline": 4,
+    "/home/mdupuis/Calibre_Library/Informatique": 14,
+    "/home/mdupuis/Calibre_Library/Photographie": 7,
+    "/home/mdupuis/Calibre_Library/Star Wars": 91,
+    "/home/mdupuis/Calibre_Library/torrentd/KindleCollection(torrentd)": 19
+  },
+  "manage_authors_dialog_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAANcAAAGEgAAChIAAAjsAAADXAAABhIAAAoSAAAI7AAAAAAAAAAADXAAAANcAAAGEgAAChIAAAjs"
+  },
+  "manage_authors_table_widths": [
+    240,
+    240,
+    240
+  ],
+  "match_books_dialog_books_table_widths": [
+    234,
+    234,
+    234
+  ],
+  "match_books_dialog_geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAAlqAAAE0QAADWQAAApEAAAJawAABNIAAA1jAAAKQwAAAAAAAAAADXAAAAlrAAAE0gAADWMAAApD"
+  },
+  "memory_view books view state": {
+    "column_alignment": {
+      "size": "center",
+      "timestamp": "center"
+    },
+    "column_positions": {
+      "authors": 2,
+      "collections": 5,
+      "inlibrary": 0,
+      "size": 4,
+      "timestamp": 3,
+      "title": 1
+    },
+    "column_sizes": {
+      "authors": 264,
+      "collections": 295,
+      "inlibrary": 89,
+      "size": 60,
+      "timestamp": 95,
+      "title": 350
+    },
+    "hidden_columns": [],
+    "languages_injected": true,
+    "last_modified_injected": true,
+    "sort_history": [
+      [
+        "timestamp",
+        false
+      ]
+    ]
+  },
+  "metasingle_window_geometry3": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAATYAAAGWgAACJYAAAi8AAAE2AAABloAAAiWAAAIvAAAAAAAAAAADXAAAATYAAAGWgAACJYAAAi8"
+  },
+  "plugin config dialog:User interface action:Kindle Collections": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAASPAAAGOgAACN8AAAjbAAAEjwAABjoAAAjfAAAI2wAAAAAAAAAADXAAAASPAAAGOgAACN8AAAjb"
+  },
+  "preferences dialog geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAANcAAAGHgAAChIAAAj4AAADXAAABh4AAAoSAAAI+AAAAAAAAAAADXAAAANcAAAGHgAAChIAAAj4"
+  },
+  "previous_sort_order_BooksView": {
+    "#swera": true,
+    "#timeline": true,
+    "authors": true,
+    "languages": true,
+    "last_modified": true,
+    "pubdate": true,
+    "publisher": true,
+    "series": true,
+    "tags": true,
+    "timestamp": true,
+    "title": true
+  },
+  "previous_sort_order_DeviceBooksView": {
+    "collections": 1,
+    "timestamp": 1,
+    "title": true
+  },
+  "quick_start_guide_added": true,
+  "quickview visible": false,
+  "recently_used_languages": [
+    "English",
+    "French"
+  ],
+  "replace_scene_breaks_history": [
+    "",
+    "<hr />",
+    "∗ ∗ ∗",
+    "• • •",
+    "♦ ♦ ♦",
+    "† †",
+    "‡ ‡ ‡",
+    "∞ ∞ ∞",
+    "¤ ¤ ¤"
+  ],
+  "search bar visible": true,
+  "show_emblems": false,
+  "single-cover-fetch-dialog-geometry": {
+    "__class__": "bytearray",
+    "__value__": "AdnQywADAAAAAANcAAAGEgAAChIAAAjsAAADXAAABhIAAAoSAAAI7AAAAAAAAAAADXAAAANcAAAGEgAAChIAAAjs"
+  },
+  "tag browser search box visible": false,
+  "tag_browser_splitter_horizontal_state": [
+    true,
+    200
+  ]
+}

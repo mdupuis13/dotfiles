@@ -60,9 +60,10 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias merge='xrdb -merge ~/.Xresources'
 
 # git
-#function git_current_branch -d "Function to show the current branch name"
-#    git branch ^/dev/null | grep \* | cut -c 3-
-#end
+# Function to show the current branch name
+git_current_branch() {
+    git branch 2&>1 | grep \* | cut -c 3-
+}
 
 alias ga='git add'
 alias gaa='git add --all'
@@ -90,8 +91,8 @@ alias gdt='git diff-tree --name-only -r'
 alias gf='git fetch'
 alias gfa='git fetch --all --prune'
 
-alias ggsup='git branch --set-upstream-to=origin/(git_current_branch)'
-alias gpsup='git push --set-upstream origin (git_current_branch)'
+alias ggsup='git branch --set-upstream-to=origin/$(git_current_branch)'
+alias gpsup='git push --set-upstream origin $(git_current_branch)'
 
 alias glg='git log --stat'
 alias glgp='git log --stat -p'

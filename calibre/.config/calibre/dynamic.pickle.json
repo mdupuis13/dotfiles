@@ -18,7 +18,11 @@
   "s_r_search_mode": 0,
   "sort_history": [
     [
-      "title",
+      "authors",
+      false
+    ],
+    [
+      "series",
       true
     ],
     [
@@ -26,31 +30,7 @@
       false
     ],
     [
-      "title",
-      true
-    ],
-    [
-      "series",
-      true
-    ],
-    [
-      "#timeline",
-      true
-    ],
-    [
-      "series",
-      true
-    ],
-    [
-      "timestamp",
-      false
-    ],
-    [
-      "series",
-      true
-    ],
-    [
-      "title",
+      "authors",
       true
     ],
     [
@@ -58,7 +38,7 @@
       false
     ],
     [
-      "title",
+      "authors",
       true
     ],
     [
@@ -74,31 +54,15 @@
       true
     ],
     [
-      "series",
+      "title",
       true
     ],
     [
-      "#timeline",
-      true
-    ],
-    [
-      "series",
-      true
-    ],
-    [
-      "timestamp",
+      "authors",
       false
     ],
     [
-      "series",
-      true
-    ],
-    [
-      "#timeline",
-      true
-    ],
-    [
-      "series",
+      "title",
       true
     ],
     [

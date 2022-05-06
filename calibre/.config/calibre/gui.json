@@ -347,10 +347,10 @@
     "__value__": "AAAA/wAAAAEAAAACAAABwgAAAcIA/////wEAAAABAA=="
   },
   "library_usage_stats": {
-    "/home/mdupuis/Calibre_Library/Bibliothèque": 45,
+    "/home/mdupuis/Calibre_Library/Bibliothèque": 49,
     "/home/mdupuis/Calibre_Library/Céline": 4,
     "/home/mdupuis/Calibre_Library/Informatique": 14,
-    "/home/mdupuis/Calibre_Library/Photographie": 7,
+    "/home/mdupuis/Calibre_Library/Photographie": 9,
     "/home/mdupuis/Calibre_Library/Star Wars": 91,
     "/home/mdupuis/Calibre_Library/torrentd/KindleCollection(torrentd)": 19
   },
@@ -418,7 +418,7 @@
   "previous_sort_order_BooksView": {
     "#swera": true,
     "#timeline": true,
-    "authors": true,
+    "authors": false,
     "languages": true,
     "last_modified": true,
     "pubdate": true,

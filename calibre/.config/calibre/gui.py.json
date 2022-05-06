@@ -47,6 +47,12 @@
   "lrf_viewer_search_history": [],
   "main_search_history": [
     "author:jordan",
+    "publisher:\"=Ebooks libres et gratuits\"",
+    "authors:\"=Émile Zola\"",
+    "Author:James",
+    "Author:James S. A.",
+    "Author:James S.A.",
+    "leviathan",
     "author:corey",
     "tags:goncourt",
     "series:dune",
@@ -64,17 +70,11 @@
     "canto",
     "title:canto",
     "title:Star Wars",
-    "eaten",
-    "labyr",
-    "labyt",
-    "incogn",
-    "incogno",
-    "kenobi",
-    "eruption"
+    "eaten"
   ],
   "main_window_geometry": {
     "__class__": "bytearray",
-    "__value__": "AdnQywADAAAAAAAJAAAE0QAABrEAAApEAAAACgAABNIAAAawAAAKQwAAAAAAAAAADXAAAAAKAAAE0gAABrAAAApD"
+    "__value__": "AdnQywADAAAAAAa8AAAE0QAADWQAAApEAAAGvQAABNIAAA1jAAAKQwAAAAAAAAAADXAAAAa9AAAE0gAADWMAAApD"
   },
   "match_tags_type": "any",
   "new_version_notification": true,

@@ -6,6 +6,10 @@
 #umask 022
 /home/mdupuis/.screenlayout/md-default.layout.sh
 
+# set default XDG folders
+export $XDG_CONFIG_HOME=~/.config/
+export $XDG_DATA_HOME=~/.local/share/
+
 # for qt5 apps ( needs qt5-style-plugins and libqt5svg5 )
 export QT_QPA_PLATFORMTHEME=gtk2
 

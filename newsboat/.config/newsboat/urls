@@ -9,7 +9,7 @@ http://randsinrepose.com/feed/
 http://martindupuis.info/feed/
 #https://om.co/feed/
 https://xkcd.com/rss.xml "~XKCD"
-http://feeds.feedburner.com/FreeBSDNewscom "~FreeBSD news"
+#http://feeds.feedburner.com/FreeBSDNewscom "~FreeBSD news"
 https://bsdly.blogspot.com/feeds/posts/default "~FreeBSD - Peter N. M. Hansteen - That grumpy BSD guy"
 http://adrianchadd.blogspot.com/feeds/posts/default?alt=rss "~FreeBSD - Adrian Chadd"
 http://bsd.martindupuis.info/feeds/rss.xml "~FreeBSD - BSD Experiment"

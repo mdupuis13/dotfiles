@@ -79,7 +79,7 @@ plugins=(
   # ...
 
   # plugins like syntax highlighting that need loaded last
-  zdharma-continuum/fast-syntax-highlighting
+  zsh-users/zsh-syntax-highlighting
 )
 
 # now load your plugins

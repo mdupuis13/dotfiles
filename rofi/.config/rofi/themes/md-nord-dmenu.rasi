@@ -29,7 +29,7 @@
 
     background-color:   transparent;
     text-color:         @nord4;
-    accent-color:       @nord8;
+    accent-color:       @nord9;
 
     margin:     0px;
     padding:    0px;

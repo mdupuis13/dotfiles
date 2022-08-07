@@ -28,7 +28,7 @@ leftwm command "LoadTheme $SCRIPTPATH/theme.toml"
 #  feh --bg-scale $SCRIPTPATH/background.jpg
 #fi
 
-monitor=HDMI2 offsetx=0 width=3440 polybar -c $SCRIPTPATH/polybar.config mainbar0 &> /dev/null &
+monitor=HDMI-0 offsetx=0 width=3440 polybar -c $SCRIPTPATH/polybar.config mainbar0 &> /dev/null &
 #monitor=HDMI1 offsetx=0 width=1920 polybar -c $SCRIPTPATH/polybar.config mainbar1 &> /dev/null &
 
 #index=0

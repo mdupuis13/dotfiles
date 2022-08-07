@@ -8,6 +8,8 @@ Xft.hintstyle: hintslight
 Xft.rgba: rgb
 Xft.lcdfilter: lcddefault
 
+! cursor settings
+Xcursor.size: 48px
 
 ! urxvt -------------------------------------------
 

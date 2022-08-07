@@ -145,7 +145,7 @@ b:9 + Release
    XF86Explorer
 
 # calculator
-"galculator"
+"qalculate"
    XF86Calculator
    
 # Multimedia keys

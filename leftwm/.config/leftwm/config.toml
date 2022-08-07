@@ -11,7 +11,7 @@ focus_new_windows = true
 [[workspaces]]
 id = 0
 y = 0
-x = 803
+x = 760
 height = 1200
 width = 1920
 layouts = ["Monocle", "MainAndVertStack", "GridHorizontal"]
@@ -23,7 +23,7 @@ y = 1200
 x = 0
 height = 1440
 width = 3440
-max_window_width = 0.75
+max_window_width = 2560
 layouts = ["CenterMainBalanced", "MainAndVertStack", "Monocle", "GridHorizontal", "EvenHorizontal"]
 
 

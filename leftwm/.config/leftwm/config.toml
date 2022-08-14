@@ -23,7 +23,7 @@ y = 1200
 x = 0
 height = 1440
 width = 3440
-max_window_width = 2560
+max_window_width = 2490
 layouts = ["CenterMainBalanced", "MainAndVertStack", "Monocle", "GridHorizontal", "EvenHorizontal"]
 
 

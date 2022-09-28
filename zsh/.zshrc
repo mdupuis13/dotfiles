@@ -135,9 +135,24 @@ fi
 
 if [ -e /home/mdupuis/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mdupuis/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 
+
+# computer specific code
+if [[ `uname -n | cut -c-2` -eq "PP" ]]; then
+
+    # set jdk home
+    export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"
+
+
+    if ! timeout 2s nc -zw1 google.com 443; then
+      powershell.exe "C:\Users\DGN5557\route-wsl2.ps1"
+    fi
+fi
+
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+if [ -d $HOME/.sdkman ]; then
+  export SDKMAN_DIR="$HOME/.sdkman"
+  [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+fi
 
 export QT_QPA_PLATFORMTHEME=qt5ct
 

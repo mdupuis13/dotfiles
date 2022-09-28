@@ -5,7 +5,9 @@
   },
   "enabled_plugins": {
     "__class__": "set",
-    "__value__": []
+    "__value__": [
+      "Catalog_CSV_XML"
+    ]
   },
   "filetype_mapping": {},
   "plugin_customization": {},

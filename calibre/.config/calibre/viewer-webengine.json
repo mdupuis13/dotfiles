@@ -5,7 +5,7 @@
   },
   "main_window_state": {
     "__class__": "bytearray",
-    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAEAAAAFcvwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAJIA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAApgD///8AAAABAAABAAAABXL8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACUAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAQoA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAGAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAAOYA////AAAGpwAABXIAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAEAAAAFcvwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIoA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAmgD///8AAAABAAABAAAABXL8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACEAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAPIA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAFAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAANIA////AAAGpwAABXIAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
   },
   "old_prefs_migrated": true,
   "saved-search-settings": {
@@ -43,6 +43,15 @@
       "singleinstance": false
     },
     "standalone_recently_opened": [
+      {
+        "authors": [
+          "Stefan Zweig"
+        ],
+        "key": "/home/mdupuis/Calibre_Library/Bibliothèque/Stefan Zweig/Marie-Antoinette (1870)/Marie-Antoinette - Stefan Zweig.epub",
+        "pathtoebook": "/home/mdupuis/Calibre_Library/Bibliothèque/Stefan Zweig/Marie-Antoinette (1870)/Marie-Antoinette - Stefan Zweig.epub",
+        "timestamp": "2022-09-25T02:25:36.116Z",
+        "title": "Marie-Antoinette"
+      },
       {
         "authors": [
           "Terry Bisson"
@@ -258,16 +267,6 @@
         "pathtoebook": "/home/mdupuis/Calibre_Library/Star Wars/Dave Wolverton/Book 01 - The Rising Force (293)/Book 01 - The Rising Force - Dave Wolverton.epub",
         "timestamp": "2021-10-16T00:25:03.461Z",
         "title": "Book 01 - The Rising Force"
-      },
-      {
-        "authors": [
-          "Brian Herbert",
-          "Kevin J. Anderson"
-        ],
-        "key": "/home/mdupuis/Calibre_Library/Bibliothèque/Brian Herbert/Hunting Harkonnens (22469)/Hunting Harkonnens - Brian Herbert.epub",
-        "pathtoebook": "/home/mdupuis/Calibre_Library/Bibliothèque/Brian Herbert/Hunting Harkonnens (22469)/Hunting Harkonnens - Brian Herbert.epub",
-        "timestamp": "2021-10-08T00:52:46.312Z",
-        "title": "Legends of Dune 01.20"
       }
     ],
     "user_color_schemes": {

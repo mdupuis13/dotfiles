@@ -10,21 +10,20 @@ focus_new_windows = true
 
 [[workspaces]]
 id = 0
-y = 0
-x = 760
-height = 1200
-width = 1920
-layouts = ["Monocle", "MainAndVertStack", "GridHorizontal"]
-
-
-[[workspaces]]
-id = 1
 y = 1200
 x = 0
 height = 1440
 width = 3440
 max_window_width = 2490
 layouts = ["CenterMainBalanced", "MainAndVertStack", "Monocle", "GridHorizontal", "EvenHorizontal"]
+
+[[workspaces]]
+id = 1
+y = 0
+x = 760
+height = 1200
+width = 1920
+layouts = ["Monocle", "MainAndVertStack", "GridHorizontal"]
 
 
 [[keybind]]
@@ -42,8 +41,8 @@ key = "Return"
 
 [[keybind]]
 command = "CloseWindow"
-modifier = ["modkey", "Shift"]
-key = "c"
+modifier = ["modkey"]
+key = "q"
 
 [[keybind]]
 command = "SoftReload"

@@ -1,3 +1,8 @@
+export HISTFILE=~/.zsh_history
+export HISTSIZE=100000
+export HISTFILESIZE=100000
+
+
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
@@ -14,16 +19,11 @@ if [ -d "/usr/sbin" ] ; then
 fi
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
+    PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 fi
 
 # docker as non-root usert requirement - MD
 export DOCKER_HOST=unix:///run/user/1001/docker.sock
-
-# set PATH so it includes snaps bin if it exists
-#if [ -d "/snap/bin" ] ; then
-#    PATH="$PATH:/snap/bin"
-#fi
 
 export GOPATH=$HOME/gopath
 export PATH=$GOPATH:$GOPATH/bin:$PATH
@@ -132,6 +132,11 @@ if [[ -n $terminfo[kbs] ]]; then
     bindkey          "$terminfo[kbs]"   backward-delete-char
     bindkey -M vicmd "$terminfo[kbs]"   backward-char
 fi
+
+autoload -U up-line-or-beginning-search
+zle -N up-line-or-beginning-search
+bindkey '^[[A' up-line-or-beginning-search
+zstyle ':zle:(up|down)-line-or-beginning-search' leave-cursor false
 
 if [ -e /home/mdupuis/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mdupuis/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer
 

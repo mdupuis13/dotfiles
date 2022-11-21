@@ -1,1 +1,1 @@
-exec dbus-launch leftwm
+exec dbus-launch qtile start

@@ -1,8 +1,7 @@
 http://www.cringely.com/feed/
 https://www.schneier.com/feed/atom/
-https://www.infoq.com/feed/
+https://lwn.net/headlines/rss "~LWN.net"
 http://www.directioninformatique.com/feed
-http://feeds.pinboard.in/rss/u:leolaporte
 http://feeds.feedburner.com/hughmcguire
 http://www.aaronsw.com/2002/feeds/pgessays.rss
 http://randsinrepose.com/feed/
@@ -43,7 +42,6 @@ http://feeds2.feedburner.com/pthree "~Aaron Toponce"
 http://codingdojo.org/index.xml
 http://codekata.com/atom.xml
 https://status.funio.com/history.rss "~Funio status"
-https://feeds.feedburner.com/DougHellmann
 http://feeds.feedburner.com/aquietmind/tJDc "~PODCAST - A quiet mind"
 #http://montrealpython.org/fr/feed/
 #https://podcasts.files.bbci.co.uk/p02nrx1f.rss

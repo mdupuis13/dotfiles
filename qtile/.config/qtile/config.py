@@ -24,7 +24,10 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-from libqtile import bar, layout, widget
+import os
+import subprocess
+
+from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
@@ -70,9 +73,11 @@ keys = [
     Key([mod], 'l', lazy.next_screen(), desc='Next monitor'),
     Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
-    Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+    Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
+
 ]
 
 groups = [Group(i) for i in "12345678"]
@@ -127,34 +132,35 @@ extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        # top=bar.Bar(
-            # [
-                # widget.CurrentLayout(),
-                # widget.GroupBox(),
+        top=bar.Bar(
+            [
+                widget.CurrentLayoutIcon(),
+                widget.GroupBox(),
                 # widget.Prompt(),
-                # widget.WindowName(),
-                # widget.Chord(
-                    # chords_colors={
-                        # "launch": ("#ff0000", "#ffffff"),
-                    # },
-                    # name_transform=lambda name: name.upper(),
-                # ),
-                # #widget.TextBox("default config", name="default"),
-                # #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                # # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # # widget.StatusNotifier(),
-                # widget.Systray(),
-                # widget.Clock(format="%Y-%m-%d %a %H:%M"),
-                # widget.QuickExit(),
-            # ],
-            # 24,
+                widget.WindowName(),
+                widget.Chord(
+                    chords_colors={
+                        "launch": ("#ff0000", "#ffffff"),
+                    },
+                    name_transform=lambda name: name.upper(),
+                ),
+                #widget.TextBox("default config", name="default"),
+                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+                widget.StatusNotifier(),
+                widget.Systray(),
+                widget.Clock(format="%Y-%m-%d %a %H:%M"),
+                widget.QuickExit(),
+            ],
+            24,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
-        # ),
+        ),
     ),
     Screen(
     ),
 ]
+
 
 # Drag floating layouts.
 mouse = [
@@ -200,3 +206,9 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
+@hook.subscribe.startup_once
+def start_once():
+    home = os.path.expanduser('~')
+    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
+    

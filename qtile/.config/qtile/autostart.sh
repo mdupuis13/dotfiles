@@ -1,0 +1,1 @@
+# polybar -c $HOME/.config/qtile/polybar/polybar.config mainbar0 &> /dev/null &

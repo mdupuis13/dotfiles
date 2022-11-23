@@ -31,6 +31,27 @@ from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
 
+# my custom colors
+colors = {
+    "background": "2e3440", #nord0
+    "foreground": "81a1c1", #nord9
+    "foreground_active": "5e81ac", #nord10
+    "foreground_inactive": "4c566a", #nord3
+    "background_alt": "81a1c1",
+    "foreground_alt": "2e3440",
+    "primary": "ebcb8b", #nord13 yellow
+    "secondary": "d08770", #nord12 orange
+    "alert": "bf616a", #nord11 red
+    "lightblue": "88c0d0", #nord18 light blue
+    "bluegray": "81a1c1", #nord9 bluegray
+    "blue": "5e81ac", #nord10 darkish blue
+    "red": "bf616a", #nord11 red
+    "orange": "d08770", #nord12 orange
+    "yellow": "ebcb8b", #nord13 yellow
+    "green": "a3be8c", #nord14 green
+    "purple": "b48ead", #nord15 purple
+}
+
 mod = "mod4"
 terminal = "/usr/bin/kitty"
 
@@ -107,14 +128,33 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=4),
+    layout.Columns(
+        border_focus=colors["foreground_active"],
+        border_normal=colors["foreground_inactive"],
+        border_focus_stack=["#d75f5f", "#8f3d3d"], 
+        border_width=1,
+        border_on_single=True,
+        insert_position=1,  #0 means right above the current window, 1 means right after
+        margin=5,
+        margin_on_single=None,
+        ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
-    layout.MonadThreeCol()
+    layout.MonadThreeCol(
+        border_focus=colors["foreground_active"],
+        border_normal=colors["foreground_inactive"],
+        border_width=1,
+        margin=5,
+        single_border_width=1,
+        single_margin=5,
+        main_centered=True,
+        max_ratio=0.75,
+        new_client_position="bottom"
+    )
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -124,18 +164,30 @@ layouts = [
 ]
 
 widget_defaults = dict(
-    font="sans",
-    fontsize=12,
+    font="DaddyTimeMono Nerd Font",
+    # font="sans",
+    fontsize=16,
     padding=3,
 )
 extension_defaults = widget_defaults.copy()
 
 screens = [
     Screen(
-        top=bar.Bar(
-            [
-                widget.CurrentLayoutIcon(),
-                widget.GroupBox(),
+        top=bar.Bar([
+                widget.TextBox('', foreground=colors["bluegray"], fontsize=26),
+                widget.CurrentLayoutIcon(foreground=colors["foreground"]),
+                widget.GroupBox(
+                    foreground=colors["foreground"], #81a1c1
+                    active=colors["foreground_active"],
+                    inactive=colors["foreground_inactive"],
+                    this_current_screen_border=colors["background_alt"],
+                    this_screen_border="4c566a",
+                    other_current_screen_border=colors["background_alt"],
+                    other_screen_border="4c566a",
+                    urgent_border="bf616a",
+                    highlight_method='block',
+                    disable_drag=True
+                ),
                 # widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
@@ -146,15 +198,100 @@ screens = [
                 ),
                 #widget.TextBox("default config", name="default"),
                 #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+                widget.DF(
+                    partition="/home",
+                    foreground=colors["green"],
+                    format="{p} {r:.0f}%/{s}{m}",
+                    visible_on_warn=False,
+                ),
+                widget.TextBox(
+                    '--', 
+                    foreground=colors["green"],
+                ),
+                widget.DF(
+                    partition="/home/mdupuis/Photographie",
+                    format="Photo {r:.0f}%/{s}{m}",
+                    foreground=colors["green"],
+                    visible_on_warn=False,
+                ),
+                widget.Sep(
+                    foreground=colors["green"],
+                    padding=10, 
+                    linewidth=3, 
+                    size_percent=85
+                ),
+                widget.CPU(
+                    format=" {load_percent:.0f}% ",
+                    foreground=colors["bluegray"],
+                    update_interval=2,
+
+                ),
+                widget.Memory(
+                    font='Font Awesome 5 Free Solid',
+                    format=" {MemPercent:.0f}% ",
+                    foreground=colors["bluegray"],
+                    update_interval=2,
+                ),
+                widget.ThermalSensor(
+                    tag_sensor='Package id 0',
+                    format=' {temp:.0f}{unit}',
+                    foreground=colors["bluegray"],
+                    threshold=65,
+                    foreground_alert=colors["alert"],
+                ),
+                widget.Sep(
+                    foreground=colors["bluegray"],
+                    padding=10, 
+                    linewidth=3, 
+                    size_percent=85
+                ),
+                widget.GenPollText(
+                    foreground=colors["green"],
+                    font="Weather Icons",
+                    fontsize=16,
+                    fmt=" {} ",
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/openweathermap-fullfeatured.sh")).decode("utf-8"),
+                    update_interval=600,
+                ),
+                widget.GenPollText(
+                    foreground=colors["green"],
+                    # font='Weather Icons',
+                    # fontsize=16,
+                    fmt=" {} ",
+                    func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/info-airqualityindex.sh")).decode("utf-8"),
+                    update_interval=600,
+                ),
+                widget.Sep(
+                    foreground=colors["green"],
+                    padding=10, 
+                    linewidth=3, 
+                    size_percent=85
+                ),
+                widget.Volume(
+                    emoji=True,
+                    foreground=colors["yellow"],
+                ),
+                widget.Volume(
+                    foreground=colors["yellow"],
+                ),
+                widget.Sep(
+                    foreground=colors["yellow"],
+                    padding=10, 
+                    linewidth=3, 
+                    size_percent=85
+                ),
+                widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
+                # widget.Clock(format="%Y-%m-%d %a %H:%M"),
+                widget.Clock(format="%A, %B %d - %H:%M:%S"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                widget.StatusNotifier(),
+                # widget.StatusNotifier(),
                 widget.Systray(),
-                widget.Clock(format="%Y-%m-%d %a %H:%M"),
-                widget.QuickExit(),
             ],
-            24,
+            26,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background=colors["background"],
+            opacity=1
         ),
     ),
     Screen(

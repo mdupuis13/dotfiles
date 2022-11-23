@@ -128,6 +128,17 @@ for i in groups:
     )
 
 layouts = [
+    layout.MonadThreeCol(
+        border_focus=colors["foreground_active"],
+        border_normal=colors["foreground_inactive"],
+        border_width=1,
+        margin=5,
+        single_border_width=1,
+        single_margin=5,
+        main_centered=True,
+        max_ratio=0.75,
+        new_client_position="bottom"
+    ),
     layout.Columns(
         border_focus=colors["foreground_active"],
         border_normal=colors["foreground_inactive"],
@@ -144,17 +155,6 @@ layouts = [
     # layout.Bsp(),
     # layout.Matrix(),
     # layout.MonadTall(),
-    layout.MonadThreeCol(
-        border_focus=colors["foreground_active"],
-        border_normal=colors["foreground_inactive"],
-        border_width=1,
-        margin=5,
-        single_border_width=1,
-        single_margin=5,
-        main_centered=True,
-        max_ratio=0.75,
-        new_client_position="bottom"
-    )
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -174,7 +174,7 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
         top=bar.Bar([
-                widget.TextBox('', foreground=colors["bluegray"], fontsize=26),
+                widget.TextBox(' ', foreground=colors["bluegray"], fontsize=26),
                 widget.CurrentLayoutIcon(foreground=colors["foreground"]),
                 widget.GroupBox(
                     foreground=colors["foreground"], #81a1c1

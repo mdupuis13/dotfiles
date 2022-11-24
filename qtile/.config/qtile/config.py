@@ -90,7 +90,6 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], "b", lazy.spawn("/usr/bin/firefox"), desc="Starts Firefox"),
     Key([mod], 'l', lazy.next_screen(), desc='Next monitor'),
     Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
@@ -98,6 +97,12 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
+
+    ############################
+    # Application keybinds
+    Key([mod], "b", lazy.spawn("/usr/bin/firefox"), desc="Starts Firefox"),
+    Key([mod], "c", lazy.spawn("/usr/bin/claws-mail"), desc="Starts email client"),
+    Key([mod], "e", lazy.spawn("/usr/bin/pcmanfm"), desc="Starts file browser"),
 
 ]
 

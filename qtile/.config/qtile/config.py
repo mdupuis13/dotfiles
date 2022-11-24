@@ -277,6 +277,7 @@ screens = [
                 widget.Volume(
                     fmt=' {}',
                     foreground=colors["yellow"],
+                    theme_path="/home/mdupuis/src/gitlab/beautyline",
                 ),
                 widget.Sep(
                     foreground=colors["yellow"],

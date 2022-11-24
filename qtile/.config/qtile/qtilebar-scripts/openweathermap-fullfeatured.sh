@@ -3,6 +3,25 @@
 get_icon() {
     case $1 in
         # Icons for nerd-fonts
+        01d) icon="";;
+        01n) icon="";;
+        02d) icon="";;
+        02n) icon="";;
+        03*) icon="";;
+        04*) icon="";;
+        09d) icon="";;
+        09n) icon="";;
+        10d) icon="";;
+        10n) icon="";;
+        11d) icon="";;
+        11n) icon="";;
+        13d) icon="";;
+        13n) icon="";;
+        50d) icon="";;
+        50n) icon="";;
+        *) icon="";
+
+        # # Icons for weather-icons
         # 01d) icon="";;
         # 01n) icon="";;
         # 02d) icon="";;
@@ -20,25 +39,6 @@ get_icon() {
         # 50d) icon="";;
         # 50n) icon="";;
         # *) icon="";
-
-        # Icons for weather-icons
-        01d) icon="";;
-        01n) icon="";;
-        02d) icon="";;
-        02n) icon="";;
-        03*) icon="";;
-        04*) icon="";;
-        09d) icon="";;
-        09n) icon="";;
-        10d) icon="";;
-        10n) icon="";;
-        11d) icon="";;
-        11n) icon="";;
-        13d) icon="";;
-        13n) icon="";;
-        50d) icon="";;
-        50n) icon="";;
-        *) icon="";
 
         # Icons for Font Awesome 5 Pro
         #01d) icon="";;
@@ -86,7 +86,8 @@ format_epoch_time() {
 KEY="968080a335b52d743ca1364a0f93aec8"
 CITY="Vaudreuil-Dorion"
 UNITS="metric"
-SYMBOL=""
+#SYMBOL="" # weather-icons
+SYMBOL="糖" # nerd font
 LANGUAGE=fr
 
 API="https://api.openweathermap.org/data/2.5"
@@ -137,5 +138,5 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
         daytime="  $(format_epoch_time "$sun_rise")"
     fi
 
-    echo -n "$(get_icon "$current_icon") $current_temp$SYMBOL $trend  $(get_icon "$forecast_icon") $forecast_temp$SYMBOL $daytime"
+    echo -n "$(get_icon "$current_icon")  $current_temp$SYMBOL $trend $(get_icon "$forecast_icon")  $forecast_temp$SYMBOL  $daytime"
 fi

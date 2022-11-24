@@ -23,19 +23,7 @@ if [ -n "$aqi" ]; then
     if [ "$(echo "$aqi" | jq -r '.status')" = "ok" ]; then
         aqi=$(echo "$aqi" | jq '.data.aqi')
 
-        # if [ "$aqi" -lt 51 ]; then
-        #     echo "%{F#a3be8c}%{T3}$prefix%{T-} $aqi %{F-}"
-        # elif [ "$aqi" -lt 101 ]; then
-        #     echo "%{F#ebcb8b}%{T3}$prefix%{T-} $aqi %{F-}"
-        # elif [ "$aqi" -lt 151 ]; then
-        #     echo "%{F#d08770}%{T3}$prefix%{T-} $aqi %{F-}"
-        # elif [ "$aqi" -lt 201 ]; then
-        #     echo "%{F#bf616a}%{T3}$prefix%{T-} $aqi %{F-}"
-        # elif [ "$aqi" -lt 301 ]; then
-        #     echo "%{F#b48ead}%{T3}$prefix%{T-} $aqi %{F-}"
-        # else
-            echo -n "$prefix $aqi"
-        # fi
+        echo -n "$prefix $aqi"
     else
         echo -n "$aqi" | jq -r '.data'
     fi

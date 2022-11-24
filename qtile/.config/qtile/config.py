@@ -179,7 +179,7 @@ extension_defaults = widget_defaults.copy()
 screens = [
     Screen(
         top=bar.Bar([
-                widget.TextBox(' ', foreground=colors["bluegray"], fontsize=26),
+                widget.TextBox(' ', foreground=colors["red"], fontsize=26),
                 widget.CurrentLayoutIcon(foreground=colors["foreground"]),
                 widget.GroupBox(
                     foreground=colors["foreground"], #81a1c1
@@ -226,7 +226,7 @@ screens = [
                     size_percent=85
                 ),
                 widget.CPU(
-                    format=" {load_percent:.0f}% ",
+                    format="  {load_percent:.0f}% ",
                     foreground=colors["bluegray"],
                     update_interval=2,
 
@@ -239,7 +239,13 @@ screens = [
                 ),
                 widget.ThermalSensor(
                     tag_sensor='Package id 0',
-                    format=' {temp:.0f}{unit}',
+                    format=' {temp:.0f}糖',
+                    foreground=colors["bluegray"],
+                    threshold=65,
+                    foreground_alert=colors["alert"],
+                ),
+                widget.NvidiaSensors(
+                    format='   {temp}糖',
                     foreground=colors["bluegray"],
                     threshold=65,
                     foreground_alert=colors["alert"],
@@ -252,17 +258,13 @@ screens = [
                 ),
                 widget.GenPollText(
                     foreground=colors["green"],
-                    font="Weather Icons",
                     fontsize=16,
-                    fmt=" {} ",
                     func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/openweathermap-fullfeatured.sh")).decode("utf-8"),
                     update_interval=600,
                 ),
                 widget.GenPollText(
                     foreground=colors["green"],
-                    # font='Weather Icons',
-                    # fontsize=16,
-                    fmt=" {} ",
+                    fmt=" {}",
                     func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/info-airqualityindex.sh")).decode("utf-8"),
                     update_interval=600,
                 ),
@@ -273,10 +275,7 @@ screens = [
                     size_percent=85
                 ),
                 widget.Volume(
-                    emoji=True,
-                    foreground=colors["yellow"],
-                ),
-                widget.Volume(
+                    fmt=' {}',
                     foreground=colors["yellow"],
                 ),
                 widget.Sep(
@@ -285,8 +284,7 @@ screens = [
                     linewidth=3, 
                     size_percent=85
                 ),
-                widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
-                # widget.Clock(format="%Y-%m-%d %a %H:%M"),
+                # widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
                 widget.Clock(format="%A, %B %d - %H:%M:%S"),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),

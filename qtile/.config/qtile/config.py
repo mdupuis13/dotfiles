@@ -53,7 +53,11 @@ colors = {
 }
 
 mod = "mod4"
-terminal = "/usr/bin/kitty"
+my_browser = "/usr/bin/firefox"
+my_email_client="/usr/bin/claws-mail"
+my_filemanager="/usr/bin/pcmanfm"
+my_terminal = "/usr/bin/kitty"
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -72,6 +76,8 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
+    # Key([mod, "control"], "=", lazy.layout.grow(), desc="Grow window"),
+    # Key([mod, "control"], "-", lazy.layout.shrink(), desc="Shrink window"),
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
     Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
@@ -80,29 +86,31 @@ keys = [
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack",
-    ),
-    Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and  wwwwwwunsplit sides of stack"),
+
+    Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], 'w', lazy.next_screen(), desc='Next monitor'),
-    Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
+    Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
+    Key([mod], 'comma', lazy.prev_screen(), desc='Next monitor'),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
+    # Key [mod]+Alt locks workstation
     Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
 
     ############################
-    # Application keybinds
-    Key([mod], "b", lazy.spawn("/usr/bin/firefox"), desc="Starts Firefox"),
-    Key([mod], "c", lazy.spawn("/usr/bin/claws-mail"), desc="Starts email client"),
-    Key([mod], "e", lazy.spawn("/usr/bin/pcmanfm"), desc="Starts file browser"),
+    # MD custom application keybinds
+    Key([mod], "b", lazy.spawn(my_browser), desc="Starts Firefox"),
+    Key([mod], "c", lazy.spawn(my_email_client), desc="Starts email client"),
+    Key([mod], "e", lazy.spawn(my_filemanager), desc="Starts file browser"),
+    Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
 
 ]
 
 groups = [Group("1", label=' '),
-          Group("2", label='磊 '),
+          Group("2", label='磊 ', layout="columns"),
           Group("3", label=' '),
           Group("4", label=' '),
           Group("5", label=' '),
@@ -144,7 +152,7 @@ layouts = [
         single_border_width=1,
         # single_margin=[5, 440, 5, 440],
         main_centered=True,
-        min_ratio=0.66,
+        #min_ratio=0.66,
         new_client_position="bottom",
     ),
     layout.Columns(
@@ -178,112 +186,123 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
+sep_size= {"linewidth":3, 
+            "padding":10, 
+            "size_percent":85,}
+
 screens = [
     Screen(
         top=bar.Bar([
                 widget.TextBox(' ', foreground=colors["red"], fontsize=26),
                 widget.CurrentLayoutIcon(foreground=colors["foreground"]),
                 widget.GroupBox(
-                    foreground=colors["foreground"], #81a1c1
                     active=colors["foreground_active"],
+                    disable_drag=True,
+                    foreground=colors["foreground"], #81a1c1
+                    highlight_method='block',
                     inactive=colors["foreground_inactive"],
-                    this_current_screen_border=colors["background_alt"],
-                    this_screen_border="4c566a",
                     other_current_screen_border=colors["background_alt"],
                     other_screen_border="4c566a",
+                    padding_x=5,
+                    this_current_screen_border=colors["background_alt"],
+                    this_screen_border="4c566a",
                     urgent_border="bf616a",
-                    highlight_method='block',
-                    disable_drag=True,
-                    padding_x=5
                 ),
-                widget.WindowName(),
+                widget.WindowName(for_current_screen=True),
                 widget.Chord(
                     chords_colors={
                         "launch": ("#ff0000", "#ffffff"),
                     },
+                    foreground=colors["foreground"], #81a1c1
                     name_transform=lambda name: name.upper(),
                 ),
                 #widget.TextBox("default config", name="default"),
                 #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
                 widget.DF(
+                    foreground=colors["purple"],
+                    format="~ {r:.0f}%/{s}{m}",
                     partition="/home",
-                    foreground=colors["green"],
-                    format="{p} {r:.0f}%/{s}{m}",
+                    update_interval=600,
                     visible_on_warn=False,
                 ),
                 widget.TextBox(
                     '--', 
-                    foreground=colors["green"],
+                    foreground=colors["purple"],
                 ),
                 widget.DF(
-                    partition="/home/mdupuis/Photographie",
+                    foreground=colors["purple"],
                     format="Photo {r:.0f}%/{s}{m}",
-                    foreground=colors["green"],
+                    partition="/home/mdupuis/Photographie",
+                    update_interval=600,
                     visible_on_warn=False,
                 ),
                 widget.Sep(
-                    foreground=colors["green"],
-                    padding=10, 
-                    linewidth=3, 
-                    size_percent=85
+                    foreground=colors["purple"],
+                    **sep_size
                 ),
                 widget.CPU(
-                    format="  {load_percent:.0f}% ",
                     foreground=colors["bluegray"],
+                    format="  {load_percent:.0f}% ",
                     update_interval=2,
-
                 ),
                 widget.Memory(
                     font='Font Awesome 5 Free Solid',
-                    format=" {MemPercent:.0f}% ",
                     foreground=colors["bluegray"],
+                    format=" {MemPercent:.0f}% ",
                     update_interval=2,
                 ),
                 widget.ThermalSensor(
-                    tag_sensor='Package id 0',
-                    format=' {temp:.0f}糖',
                     foreground=colors["bluegray"],
-                    threshold=65,
                     foreground_alert=colors["alert"],
+                    format=' {temp:.0f}糖',
+                    tag_sensor='Package id 0',
+                    threshold=65,
                 ),
                 widget.NvidiaSensors(
-                    format='   {temp}糖',
                     foreground=colors["bluegray"],
-                    threshold=65,
+                    format='   {temp}糖',
                     foreground_alert=colors["alert"],
+                    threshold=65,
                 ),
                 widget.Sep(
                     foreground=colors["bluegray"],
-                    padding=10, 
-                    linewidth=3, 
-                    size_percent=85
+                    **sep_size
                 ),
                 widget.GenPollText(
-                    foreground=colors["green"],
                     fontsize=16,
+                    foreground=colors["green"],
                     func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/openweathermap-fullfeatured.sh")).decode("utf-8"),
                     update_interval=600,
                 ),
                 widget.GenPollText(
-                    foreground=colors["green"],
                     fmt=" {}",
+                    foreground=colors["green"],
                     func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/info-airqualityindex.sh")).decode("utf-8"),
                     update_interval=600,
                 ),
                 widget.Sep(
                     foreground=colors["green"],
-                    padding=10, 
-                    linewidth=3, 
-                    size_percent=85
+                    **sep_size
                 ),
                 widget.Volume(
                     theme_path="/home/mdupuis/src/gitlab/beautyline",
                 ),
                 widget.Sep(
                     foreground=colors["green"],
-                    padding=10, 
-                    linewidth=3, 
-                    size_percent=85
+                    **sep_size
+                ),
+                widget.CheckUpdates(
+                    colour_have_updates=colors["yellow"],
+                    colour_no_updates=colors["green"],
+                    display_format=" {updates}",
+                    distro='Debian',
+                    initial_text=" N/A",
+                    no_update_string=" {updates}",
+                    update_interval=600
+                ),
+                widget.Sep(
+                    foreground=colors["yellow"],
+                    **sep_size
                 ),
                 # widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
                 widget.Clock(format="%A, %B %d - %H:%M:%S"),
@@ -350,6 +369,7 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
+
 
 @hook.subscribe.startup_once
 def start_once():

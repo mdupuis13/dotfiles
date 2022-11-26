@@ -1,1 +1,3 @@
-# polybar -c $HOME/.config/qtile/polybar/polybar.config mainbar0 &> /dev/null &
+# qtile cmd-obj -o cmd -f next_screen
+# qtile cmd-obj -o cmd -f next_layout
+# qtile cmd-obj -o cmd -f next_screen

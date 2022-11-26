@@ -79,18 +79,13 @@ keys = [
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
-    # Unsplit = 1 window displayed, like Max layout, but still with
-    # multiple stack panes
-    Key(
-        [mod, "shift"],
-        "Return",
-        lazy.layout.toggle_split(),
-        desc="Toggle between split and unsplit sides of stack",
+    # Unsplit = 1 window displayed, like Max layout, but still with multiple stack panes
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and unsplit sides of stack",
     ),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
-    Key([mod], 'l', lazy.next_screen(), desc='Next monitor'),
+    Key([mod], 'w', lazy.next_screen(), desc='Next monitor'),
     Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
@@ -106,7 +101,15 @@ keys = [
 
 ]
 
-groups = [Group(i) for i in "12345678"]
+groups = [Group("1", label=' '),
+          Group("2", label='磊 '),
+          Group("3", label=' '),
+          Group("4", label=' '),
+          Group("5", label=' '),
+          Group("6", label=' '),
+          Group("7", label=' '),
+          Group("8", label=' ')
+         ]
 
 for i in groups:
     keys.extend(
@@ -119,16 +122,16 @@ for i in groups:
                 desc="Switch to group {}".format(i.name),
             ),
             # mod1 + shift + letter of group = switch to & move focused window to group
-            Key(
-                [mod, "shift"],
-                i.name,
-                lazy.window.togroup(i.name, switch_group=False),
-                desc="Switch to & move focused window to group {}".format(i.name),
-            ),
+            # Key(
+            #     [mod, "shift"],
+            #     i.name,
+            #     lazy.window.togroup(i.name, switch_group=True),
+            #     desc="Switch to & move focused window to group {}".format(i.name),
+            # ),
             # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + letter of group = move focused window to group
-            # Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-            #     desc="move focused window to group {}".format(i.name)),
+            # mod1 + shift + letter of group = move focused window to group
+            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                desc="Move focused window to group {}".format(i.name)),
         ]
     )
 
@@ -139,10 +142,10 @@ layouts = [
         border_width=1,
         margin=5,
         single_border_width=1,
-        single_margin=5,
+        # single_margin=[5, 440, 5, 440],
         main_centered=True,
-        max_ratio=0.75,
-        new_client_position="bottom"
+        min_ratio=0.66,
+        new_client_position="bottom",
     ),
     layout.Columns(
         border_focus=colors["foreground_active"],
@@ -152,7 +155,6 @@ layouts = [
         border_on_single=True,
         insert_position=1,  #0 means right above the current window, 1 means right after
         margin=5,
-        margin_on_single=None,
         ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -191,9 +193,9 @@ screens = [
                     other_screen_border="4c566a",
                     urgent_border="bf616a",
                     highlight_method='block',
-                    disable_drag=True
+                    disable_drag=True,
+                    padding_x=5
                 ),
-                # widget.Prompt(),
                 widget.WindowName(),
                 widget.Chord(
                     chords_colors={
@@ -275,12 +277,10 @@ screens = [
                     size_percent=85
                 ),
                 widget.Volume(
-                    fmt=' {}',
-                    foreground=colors["yellow"],
                     theme_path="/home/mdupuis/src/gitlab/beautyline",
                 ),
                 widget.Sep(
-                    foreground=colors["yellow"],
+                    foreground=colors["green"],
                     padding=10, 
                     linewidth=3, 
                     size_percent=85
@@ -316,6 +316,9 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
+    border_focus=colors["foreground_active"],
+    border_normal=colors["foreground_inactive"],
+    border_width=1,
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,

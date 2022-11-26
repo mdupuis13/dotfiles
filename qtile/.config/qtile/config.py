@@ -34,14 +34,17 @@ from libqtile.lazy import lazy
 # my custom colors
 colors = {
     "background": "2e3440", #nord0
-    "foreground": "81a1c1", #nord9
-    "foreground_active": "5e81ac", #nord10
-    "foreground_inactive": "4c566a", #nord3
     "background_alt": "81a1c1",
+    "border_focus": "5e81ac", #nord10
+    "border_normal": "4c566a", #nord3
+    "foreground": "81a1c1", #nord9
+    "foreground_active": "4c566a", #nord10
+    "foreground_inactive": "81a1c1", #nord3
     "foreground_alt": "2e3440",
     "primary": "ebcb8b", #nord13 yellow
     "secondary": "d08770", #nord12 orange
     "alert": "bf616a", #nord11 red
+    # colors by name
     "lightblue": "88c0d0", #nord18 light blue
     "bluegray": "81a1c1", #nord9 bluegray
     "blue": "5e81ac", #nord10 darkish blue
@@ -145,8 +148,8 @@ for i in groups:
 
 layouts = [
     layout.MonadThreeCol(
-        border_focus=colors["foreground_active"],
-        border_normal=colors["foreground_inactive"],
+        border_focus=colors["border_focus"],
+        border_normal=colors["border_normal"],
         border_width=1,
         margin=5,
         single_border_width=1,
@@ -156,8 +159,8 @@ layouts = [
         new_client_position="bottom",
     ),
     layout.Columns(
-        border_focus=colors["foreground_active"],
-        border_normal=colors["foreground_inactive"],
+        border_focus=colors["border_focus"],
+        border_normal=colors["border_normal"],
         border_focus_stack=["#d75f5f", "#8f3d3d"], 
         border_width=1,
         border_on_single=True,
@@ -183,6 +186,7 @@ widget_defaults = dict(
     # font="sans",
     fontsize=16,
     padding=3,
+    foreground=colors["foreground"]
 )
 extension_defaults = widget_defaults.copy()
 
@@ -193,12 +197,19 @@ sep_size= {"linewidth":3,
 screens = [
     Screen(
         top=bar.Bar([
-                widget.TextBox(' ', foreground=colors["red"], fontsize=26),
-                widget.CurrentLayoutIcon(foreground=colors["foreground"]),
+                widget.TextBox(
+                    ' ', 
+                    fontsize=26,
+                    foreground=colors["red"], 
+                ),
+                widget.CurrentLayoutIcon(
+                    custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
+                    foreground=colors["foreground"],
+                ),
                 widget.GroupBox(
                     active=colors["foreground_active"],
                     disable_drag=True,
-                    foreground=colors["foreground"], #81a1c1
+                    foreground=colors["foreground_inactive"],
                     highlight_method='block',
                     inactive=colors["foreground_inactive"],
                     other_current_screen_border=colors["background_alt"],
@@ -208,10 +219,14 @@ screens = [
                     this_screen_border="4c566a",
                     urgent_border="bf616a",
                 ),
+                widget.Sep(
+                    foreground=colors["foreground"],
+                    **sep_size
+                ),
                 widget.WindowName(for_current_screen=True),
                 widget.Chord(
                     chords_colors={
-                        "launch": ("#ff0000", "#ffffff"),
+                        "launch": (colors["background_alt"], colors["foreground_alt"]),
                     },
                     foreground=colors["foreground"], #81a1c1
                     name_transform=lambda name: name.upper(),
@@ -305,7 +320,10 @@ screens = [
                     **sep_size
                 ),
                 # widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
-                widget.Clock(format="%A, %B %d - %H:%M:%S"),
+                widget.Clock(
+                    foreground="d8dee9",
+                    format="%A, %B %d - %H:%M:%S",
+                ),
                 # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
                 # widget.StatusNotifier(),
                 widget.Systray(),

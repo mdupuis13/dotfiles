@@ -33,26 +33,27 @@ from libqtile.lazy import lazy
 
 # my custom colors
 colors = {
-    "background": "2e3440", #nord0
+    "background": "2e3440", # nord0
     "background_alt": "81a1c1",
-    "border_focus": "5e81ac", #nord10
-    "border_normal": "4c566a", #nord3
-    "foreground": "81a1c1", #nord9
-    "foreground_active": "4c566a", #nord10
-    "foreground_inactive": "81a1c1", #nord3
-    "foreground_alt": "2e3440",
-    "primary": "ebcb8b", #nord13 yellow
-    "secondary": "d08770", #nord12 orange
-    "alert": "bf616a", #nord11 red
+    "background_inactive": "4c566a", # nord3
+    "border_focus": "5e81ac", # nord10
+    "border_normal": "4c566a", # nord3
+    "border_screen_groupbox": "3b4252", # nord 1
+    "foreground": "81a1c1", # nord9
+    "foreground_alt": "2e3440", # nord0
+    "foreground_inactive": "4c566a", # nord3
+    "primary": "ebcb8b", # nord13 yellow
+    "secondary": "d08770", # nord12 orange
+    "alert": "bf616a", # nord11 red
     # colors by name
-    "lightblue": "88c0d0", #nord18 light blue
-    "bluegray": "81a1c1", #nord9 bluegray
-    "blue": "5e81ac", #nord10 darkish blue
-    "red": "bf616a", #nord11 red
-    "orange": "d08770", #nord12 orange
-    "yellow": "ebcb8b", #nord13 yellow
-    "green": "a3be8c", #nord14 green
-    "purple": "b48ead", #nord15 purple
+    "lightblue": "88c0d0", # nord18 light blue
+    "bluegray": "81a1c1", # nord9 bluegray
+    "blue": "5e81ac", # nord10 darkish blue
+    "red": "bf616a", # nord11 red
+    "orange": "d08770", # nord12 orange
+    "yellow": "ebcb8b", # nord13 yellow
+    "green": "a3be8c", # nord14 green
+    "purple": "b48ead", # nord15 purple
 }
 
 mod = "mod4"
@@ -203,20 +204,20 @@ screens = [
                     foreground=colors["red"], 
                 ),
                 widget.CurrentLayoutIcon(
-                    custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
+                    # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
                     foreground=colors["foreground"],
                 ),
                 widget.GroupBox(
-                    active=colors["foreground_active"],
+                    active=colors["foreground"],
                     disable_drag=True,
-                    foreground=colors["foreground_inactive"],
+                    # foreground="88c0d0", #colors["foreground_alt"],
                     highlight_method='block',
                     inactive=colors["foreground_inactive"],
-                    other_current_screen_border=colors["background_alt"],
-                    other_screen_border="4c566a",
+                    other_current_screen_border=colors["background_inactive"],
+                    other_screen_border=colors["border_screen_groupbox"],
                     padding_x=5,
-                    this_current_screen_border=colors["background_alt"],
-                    this_screen_border="4c566a",
+                    this_current_screen_border=colors["background_inactive"],
+                    this_screen_border=colors["border_screen_groupbox"],
                     urgent_border="bf616a",
                 ),
                 widget.Sep(
@@ -353,7 +354,7 @@ follow_mouse_focus = True
 bring_front_click = False
 cursor_warp = False
 floating_layout = layout.Floating(
-    border_focus=colors["foreground_active"],
+    border_focus=colors["foreground"],
     border_normal=colors["foreground_inactive"],
     border_width=1,
     float_rules=[

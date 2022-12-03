@@ -13,7 +13,7 @@ alias .5='cd ../../../../..'
 
 # vim and emacs
 alias vim='nvim'
-alias v='vim'
+alias v='nvim'
 
 # bat
 alias cat='/usr/bin/batcat --style=plain --theme OneHalfDark'

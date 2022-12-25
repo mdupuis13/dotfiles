@@ -62,6 +62,13 @@ my_email_client="/usr/bin/claws-mail"
 my_filemanager="/usr/bin/pcmanfm"
 my_terminal = "/usr/bin/kitty"
 
+# Thanks for your code alvaro-jmp !!!
+# https://gist.github.com/alvaro-jmp/95bfdff559f85f4c5d0cb04855832894#file-config-py
+@lazy.function
+def set_all_float_windows_to_non_floating_mode(qtile):
+    for window in qtile.current_group.windows:
+        if window.floating:
+            window.cmd_disable_floating()
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -102,7 +109,10 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key [mod]+Alt locks workstation
-    Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
+    Key([mod], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
+    
+    # Set all floating windows to non-floating mode of a group (Mod + Shift + n)
+    Key([mod, "shift"], "n", set_all_float_windows_to_non_floating_mode(), desc="Set all floating windows to non-floating mode of a group"),
 
     ############################
     # MD custom application keybinds
@@ -272,13 +282,13 @@ screens = [
                     foreground_alert=colors["alert"],
                     format=' {temp:.0f}糖',
                     tag_sensor='Package id 0',
-                    threshold=65,
+                    threshold=75,
                 ),
                 widget.NvidiaSensors(
                     foreground=colors["bluegray"],
                     format='   {temp}糖',
                     foreground_alert=colors["alert"],
-                    threshold=65,
+                    threshold=85,
                 ),
                 widget.Sep(
                     foreground=colors["bluegray"],

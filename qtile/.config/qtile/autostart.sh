@@ -1,6 +1,4 @@
-# qtile cmd-obj -o cmd -f next_screen
-# qtile cmd-obj -o cmd -f next_layout
-# qtile cmd-obj -o cmd -f next_screen
+#!/usr/bin/env bash
 
 #boot compton or picom if it exists
 if [ -x "$(command -v compton)" ]; then
@@ -9,4 +7,10 @@ elif [ -x "$(command -v picom)" ]; then
   picom &> /dev/null & 
 fi
 
+#lxsession &
+# or 
+#dex, DesktopEntry Execution, is a program to generate and execute DesktopEntry files of the Application type.
 dex -va
+
+redshift-gtk &
+qbittorrent --no-splash &

@@ -30,45 +30,52 @@ import subprocess
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
+import qtile_extras.widget
+
+# for debugging purposes
+from libqtile.log_utils import logger
 
 # my custom colors
 colors = {
-    "background": "2e3440", # nord0
+    "background": "2e3440",  # nord0
     "background_alt": "81a1c1",
-    "background_inactive": "4c566a", # nord3
-    "border_focus": "5e81ac", # nord10
-    "border_normal": "4c566a", # nord3
-    "border_screen_groupbox": "3b4252", # nord 1
-    "foreground": "81a1c1", # nord9
-    "foreground_alt": "2e3440", # nord0
-    "foreground_inactive": "4c566a", # nord3
-    "primary": "ebcb8b", # nord13 yellow
-    "secondary": "d08770", # nord12 orange
-    "alert": "bf616a", # nord11 red
+    "background_inactive": "4c566a",  # nord3
+    "border_focus": "5e81ac",  # nord10
+    "border_normal": "4c566a",  # nord3
+    "border_screen_groupbox": "3b4252",  # nord 1
+    "foreground": "81a1c1",  # nord9
+    "foreground_alt": "2e3440",  # nord0
+    "foreground_inactive": "4c566a",  # nord3
+    "primary": "ebcb8b",  # nord13 yellow
+    "secondary": "d08770",  # nord12 orange
+    "alert": "bf616a",  # nord11 red
     # colors by name
-    "lightblue": "88c0d0", # nord18 light blue
-    "bluegray": "81a1c1", # nord9 bluegray
-    "blue": "5e81ac", # nord10 darkish blue
-    "red": "bf616a", # nord11 red
-    "orange": "d08770", # nord12 orange
-    "yellow": "ebcb8b", # nord13 yellow
-    "green": "a3be8c", # nord14 green
-    "purple": "b48ead", # nord15 purple
+    "lightblue": "88c0d0",  # nord18 light blue
+    "bluegray": "81a1c1",  # nord9 bluegray
+    "blue": "5e81ac",  # nord10 darkish blue
+    "red": "bf616a",  # nord11 red
+    "orange": "d08770",  # nord12 orange
+    "yellow": "ebcb8b",  # nord13 yellow
+    "green": "a3be8c",  # nord14 green
+    "purple": "b48ead"  # nord15 purple
 }
 
 mod = "mod4"
 my_browser = "/usr/bin/firefox"
-my_email_client="/usr/bin/claws-mail"
-my_filemanager="/usr/bin/pcmanfm"
+my_email_client = "/usr/bin/claws-mail"
+my_filemanager = "/usr/bin/pcmanfm"
 my_terminal = "/usr/bin/kitty"
 
 # Thanks for your code alvaro-jmp !!!
 # https://gist.github.com/alvaro-jmp/95bfdff559f85f4c5d0cb04855832894#file-config-py
+
+
 @lazy.function
 def set_all_float_windows_to_non_floating_mode(qtile):
     for window in qtile.current_group.windows:
         if window.floating:
             window.cmd_disable_floating()
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -78,26 +85,32 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
+    Key([mod], "space", lazy.layout.next(),
+        desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
+        desc="Move window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
+        desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     # Key([mod, "control"], "=", lazy.layout.grow(), desc="Grow window"),
     # Key([mod, "control"], "-", lazy.layout.shrink(), desc="Shrink window"),
-    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(),
+        desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(),
+        desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and  wwwwwwunsplit sides of stack"),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
+        desc="Toggle between split and  unsplit sides of stack"),
 
     Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
@@ -109,17 +122,19 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key [mod]+Alt locks workstation
-    Key([mod], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
-    
+    Key([mod], 'l', lazy.spawn("/usr/bin/light-locker-command -l"),
+        desc="Lock workstation"),
+
     # Set all floating windows to non-floating mode of a group (Mod + Shift + n)
-    Key([mod, "shift"], "n", set_all_float_windows_to_non_floating_mode(), desc="Set all floating windows to non-floating mode of a group"),
+    Key([mod, "shift"], "n", set_all_float_windows_to_non_floating_mode(),
+        desc="Set all floating windows to non-floating mode of a group"),
 
     ############################
     # MD custom application keybinds
     Key([mod], "b", lazy.spawn(my_browser), desc="Starts Firefox"),
     Key([mod], "c", lazy.spawn(my_email_client), desc="Starts email client"),
     Key([mod], "e", lazy.spawn(my_filemanager), desc="Starts file browser"),
-    Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
+    Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi")
 
 ]
 
@@ -131,7 +146,7 @@ groups = [Group("1", label=' '),
           Group("6", label=' '),
           Group("7", label=' '),
           Group("8", label=' ')
-         ]
+          ]
 
 for i in groups:
     keys.extend(
@@ -166,19 +181,19 @@ layouts = [
         single_border_width=1,
         # single_margin=[5, 440, 5, 440],
         main_centered=True,
-        #min_ratio=0.66,
-        new_client_position="bottom",
+        # min_ratio=0.66,
+        new_client_position="bottom"
     ),
     layout.Columns(
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
-        border_focus_stack=["#d75f5f", "#8f3d3d"], 
+        border_focus_stack=["#d75f5f", "#8f3d3d"],
         border_width=1,
         border_on_single=True,
-        insert_position=1,  #0 means right above the current window, 1 means right after
-        margin=5,
-        ),
-    layout.Max(),
+        insert_position=1,  # 0 means right above the current window, 1 means right after
+        margin=5
+    ),
+    layout.Max()
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -201,144 +216,149 @@ widget_defaults = dict(
 )
 extension_defaults = widget_defaults.copy()
 
-sep_size= {"linewidth":3, 
-            "padding":10, 
-            "size_percent":85,}
+sep_size = {"linewidth": 3,
+            "padding": 10,
+            "size_percent": 85, }
 
 screens = [
     Screen(
         top=bar.Bar([
-                widget.TextBox(
-                    ' ', 
+            widget.TextBox(
+                    ' ',
                     fontsize=26,
-                    foreground=colors["red"], 
-                ),
-                widget.CurrentLayoutIcon(
-                    # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
-                    foreground=colors["foreground"],
-                ),
-                widget.GroupBox(
-                    active=colors["foreground"],
-                    disable_drag=True,
-                    # foreground="88c0d0", #colors["foreground_alt"],
-                    highlight_method='block',
-                    inactive=colors["foreground_inactive"],
-                    other_current_screen_border=colors["background_inactive"],
-                    other_screen_border=colors["border_screen_groupbox"],
-                    padding_x=5,
-                    this_current_screen_border=colors["background_inactive"],
-                    this_screen_border=colors["border_screen_groupbox"],
-                    urgent_border="bf616a",
-                ),
-                widget.Sep(
-                    foreground=colors["foreground"],
-                    **sep_size
-                ),
-                widget.WindowName(for_current_screen=True),
-                widget.Chord(
-                    chords_colors={
-                        "launch": (colors["background_alt"], colors["foreground_alt"]),
-                    },
-                    foreground=colors["foreground"], #81a1c1
-                    name_transform=lambda name: name.upper(),
-                ),
-                #widget.TextBox("default config", name="default"),
-                #widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-                widget.DF(
-                    foreground=colors["purple"],
-                    format="~ {r:.0f}%/{s}{m}",
-                    partition="/home",
-                    update_interval=600,
-                    visible_on_warn=False,
-                ),
-                widget.TextBox(
-                    '--', 
-                    foreground=colors["purple"],
-                ),
-                widget.DF(
-                    foreground=colors["purple"],
-                    format="Photo {r:.0f}%/{s}{m}",
-                    partition="/home/mdupuis/Photographie",
-                    update_interval=600,
-                    visible_on_warn=False,
-                ),
-                widget.Sep(
-                    foreground=colors["purple"],
-                    **sep_size
-                ),
-                widget.CPU(
-                    foreground=colors["bluegray"],
-                    format="  {load_percent:.0f}% ",
-                    update_interval=2,
-                ),
-                widget.Memory(
-                    font='Font Awesome 5 Free Solid',
-                    foreground=colors["bluegray"],
-                    format=" {MemPercent:.0f}% ",
-                    update_interval=2,
-                ),
-                widget.ThermalSensor(
-                    foreground=colors["bluegray"],
-                    foreground_alert=colors["alert"],
-                    format=' {temp:.0f}糖',
-                    tag_sensor='Package id 0',
-                    threshold=75,
-                ),
-                widget.NvidiaSensors(
-                    foreground=colors["bluegray"],
-                    format='   {temp}糖',
-                    foreground_alert=colors["alert"],
-                    threshold=85,
-                ),
-                widget.Sep(
-                    foreground=colors["bluegray"],
-                    **sep_size
-                ),
-                widget.GenPollText(
-                    fontsize=16,
-                    foreground=colors["green"],
-                    func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/openweathermap-fullfeatured.sh")).decode("utf-8"),
-                    update_interval=600,
-                ),
-                widget.GenPollText(
-                    fmt=" {}",
-                    foreground=colors["green"],
-                    func=lambda: subprocess.check_output(os.path.expanduser("~/.config/qtile/qtilebar-scripts/info-airqualityindex.sh")).decode("utf-8"),
-                    update_interval=600,
-                ),
-                widget.Sep(
-                    foreground=colors["green"],
-                    **sep_size
-                ),
-                widget.Volume(
-                    theme_path="/home/mdupuis/src/gitlab/beautyline",
-                ),
-                widget.Sep(
-                    foreground=colors["green"],
-                    **sep_size
-                ),
-                widget.CheckUpdates(
-                    colour_have_updates=colors["yellow"],
-                    colour_no_updates=colors["green"],
-                    display_format=" {updates}",
-                    distro='Debian',
-                    initial_text=" N/A",
-                    no_update_string=" {updates}",
-                    update_interval=600
-                ),
-                widget.Sep(
-                    foreground=colors["yellow"],
-                    **sep_size
-                ),
-                # widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
-                widget.Clock(
-                    foreground="d8dee9",
-                    format="%A, %B %d - %H:%M:%S",
-                ),
-                # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
-                # widget.StatusNotifier(),
-                widget.Systray(),
-            ],
+                    foreground=colors["red"],
+                    ),
+            qtile_extras.widget.CurrentLayoutIcon(
+                # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
+                foreground=colors["foreground_inactive"],
+                use_mask=True
+            ),
+            widget.GroupBox(
+                active=colors["foreground"],
+                disable_drag=True,
+                # foreground="88c0d0", #colors["foreground_alt"],
+                highlight_method='block',
+                inactive=colors["foreground_inactive"],
+                other_current_screen_border=colors["background_inactive"],
+                other_screen_border=colors["border_screen_groupbox"],
+                padding_x=5,
+                this_current_screen_border=colors["background_inactive"],
+                this_screen_border=colors["border_screen_groupbox"],
+                urgent_border="bf616a",
+            ),
+            widget.Sep(
+                foreground=colors["foreground_inactive"],
+                **sep_size
+            ),
+            widget.WindowName(
+                for_current_screen=False
+            ),
+            widget.Chord(
+                chords_colors={
+                    "launch": (colors["background_alt"], colors["foreground_alt"]),
+                },
+                foreground=colors["foreground"],  # 81a1c1
+                name_transform=lambda name: name.upper(),
+            ),
+            # widget.TextBox("default config", name="default"),
+            # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
+            widget.DF(
+                foreground=colors["purple"],
+                format="~ {r:.0f}%/{s}{m}",
+                partition="/home",
+                update_interval=600,
+                visible_on_warn=False,
+            ),
+            widget.TextBox(
+                '--',
+                foreground=colors["purple"],
+            ),
+            widget.DF(
+                foreground=colors["purple"],
+                format="Photo {r:.0f}%/{s}{m}",
+                partition="/home/mdupuis/Photographie",
+                update_interval=600,
+                visible_on_warn=False,
+            ),
+            widget.Sep(
+                foreground=colors["purple"],
+                **sep_size
+            ),
+            widget.CPU(
+                foreground=colors["bluegray"],
+                format="  {load_percent:.0f}% ",
+                update_interval=2,
+            ),
+            widget.Memory(
+                font='Font Awesome 5 Free Solid',
+                foreground=colors["bluegray"],
+                format=" {MemPercent:.0f}% ",
+                update_interval=2,
+            ),
+            widget.ThermalSensor(
+                foreground=colors["bluegray"],
+                foreground_alert=colors["alert"],
+                format=' {temp:.0f}糖',
+                tag_sensor='Package id 0',
+                threshold=75,
+            ),
+            widget.NvidiaSensors(
+                foreground=colors["bluegray"],
+                format='   {temp}糖',
+                foreground_alert=colors["alert"],
+                threshold=85,
+            ),
+            widget.Sep(
+                foreground=colors["bluegray"],
+                **sep_size
+            ),
+            widget.GenPollText(
+                fontsize=16,
+                foreground=colors["green"],
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/openweathermap-fullfeatured.sh")).decode("utf-8"),
+                update_interval=600,
+            ),
+            widget.GenPollText(
+                fmt=" {}",
+                foreground=colors["green"],
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/info-airqualityindex.sh")).decode("utf-8"),
+                update_interval=600,
+            ),
+            widget.Sep(
+                foreground=colors["green"],
+                **sep_size
+            ),
+            widget.Volume(
+                theme_path="/home/mdupuis/src/gitlab/beautyline",
+            ),
+            widget.Sep(
+                foreground=colors["green"],
+                **sep_size
+            ),
+            widget.CheckUpdates(
+                colour_have_updates=colors["yellow"],
+                colour_no_updates=colors["green"],
+                display_format=" {updates}",
+                distro='Debian',
+                initial_text=" N/A",
+                no_update_string=" {updates}",
+                update_interval=600
+            ),
+            widget.Sep(
+                foreground=colors["yellow"],
+                **sep_size
+            ),
+            # widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
+            widget.Clock(
+                foreground="d8dee9",
+                format="%A, %B %d - %H:%M:%S",
+            ),
+            # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
+            # widget.StatusNotifier(),
+            widget.Systray(),
+        ],
             26,
             # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
             # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
@@ -347,14 +367,41 @@ screens = [
         ),
     ),
     Screen(
-    ),
+        bottom=bar.Bar([
+            widget.TextBox(
+                ' ',
+                fontsize=26,
+                foreground=colors["red"],
+            ),
+            qtile_extras.widget.currentlayout.CurrentLayoutIcon(
+                # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
+                foreground=colors["foreground_inactive"],
+                use_mask=True
+            ),
+            widget.Sep(
+                foreground=colors["foreground_inactive"],
+                **sep_size
+            ),
+            widget.WindowName(
+                for_current_screen=False
+            ),
+        ],
+            26,
+            # border_width=[2, 0, 2, 0],  # Draw top and bottom borders
+            # border_color=["ff00ff", "000000", "ff00ff", "000000"]  # Borders are magenta
+            background=colors["background"],
+            opacity=1
+        )
+    )
 ]
 
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(),
+         start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(),
+         start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -402,6 +449,15 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def start_once():
+    #logger.warning("start_once()")
+
     home = os.path.expanduser('~')
-    subprocess.Popen([home + '/.config/qtile/autostart.sh'])
-    
+    logger.warning("home is " + home)
+
+    autostart_full_path = home + '/.config/qtile/autostart.sh'
+    logger.warning("autostart_full_path is " + autostart_full_path)
+
+    real_autostart = os.path.realpath(autostart_full_path, strict=True)
+    logger.warning("real_autostart is " + real_autostart)
+
+    subprocess.Popen(real_autostart)

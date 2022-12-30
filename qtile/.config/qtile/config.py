@@ -333,8 +333,15 @@ screens = [
             widget.Volume(
                 theme_path="/home/mdupuis/src/gitlab/beautyline",
             ),
+            widget.GenPollText(
+                fmt="{}",
+                foreground=colors["purple"],
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/alsa-get-volume-level.sh")).decode("utf-8"),
+                update_interval=1,
+            ),
             widget.Sep(
-                foreground=colors["green"],
+                foreground=colors["purple"],
                 **sep_size
             ),
             widget.CheckUpdates(

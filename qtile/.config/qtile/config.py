@@ -122,7 +122,7 @@ keys = [
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     # Key [mod]+Alt locks workstation
-    Key([mod], 'l', lazy.spawn("/usr/bin/light-locker-command -l"),
+    Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"),
         desc="Lock workstation"),
 
     # Set all floating windows to non-floating mode of a group (Mod + Shift + n)
@@ -338,13 +338,13 @@ screens = [
                 **sep_size
             ),
             widget.CheckUpdates(
-                colour_have_updates=colors["yellow"],
+                colour_have_updates=colors["orange"],
                 colour_no_updates=colors["green"],
-                display_format=" {updates}",
+                display_format="  {updates}",
                 distro='Debian',
-                initial_text=" N/A",
-                no_update_string=" {updates}",
-                update_interval=600
+                initial_text="  N/A",
+                no_update_string="  0",
+                update_interval=60
             ),
             widget.Sep(
                 foreground=colors["yellow"],

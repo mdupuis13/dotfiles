@@ -354,7 +354,7 @@ screens = [
                 distro='Debian',
                 initial_text="  N/A",
                 no_update_string="  0",
-                update_interval=60
+                update_interval=600
             ),
             widget.Sep(
                 foreground=colors["yellow"],

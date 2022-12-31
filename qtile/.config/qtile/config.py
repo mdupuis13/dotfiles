@@ -57,7 +57,10 @@ colors = {
     "orange": "d08770",  # nord12 orange
     "yellow": "ebcb8b",  # nord13 yellow
     "green": "a3be8c",  # nord14 green
-    "purple": "b48ead"  # nord15 purple
+    "purple": "b48ead",  # nord15 purple
+    "lightgray": "d8dee9", #nord4
+    "lightergray": "e5e9f0", #nord5
+    "lightestgray": "eceff4", #nord6
 }
 
 mod = "mod4"
@@ -358,9 +361,16 @@ screens = [
                 **sep_size
             ),
             # widget.QuickExit(fmt=" ⏻ ", countdown_format="[ {}s ]", countdown_start=15),
-            widget.Clock(
-                foreground="d8dee9",
-                format="%A, %B %d - %H:%M:%S",
+            # widget.Clock(
+            #     foreground=colors["lightgray"],
+            #     format="%A, %B %d - %H:%M:%S",
+            # ),
+            widget.GenPollText(
+                fmt="{}",
+                foreground=colors["lightgray"],
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/getdate_fr.py")).decode("utf-8"),
+                update_interval=1,
             ),
             # NB Systray is incompatible with Wayland, consider using StatusNotifier instead
             # widget.StatusNotifier(),

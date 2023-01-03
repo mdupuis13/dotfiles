@@ -13,13 +13,13 @@ fi
 
 
 # apt config
-~/bin/backup/bkp-config.sh
+$HOME/bin/backup/bkp-config.sh
 
 # email
-~/bin/backup/bkp-emails.sh
+$HOME/bin/backup/bkp-emails.sh
 
 # calibre
-~/bin/backup/bkp-calibre.sh
+$HOME/bin/backup/bkp-calibre.sh
 
 # copy to network
 #~/bin/backup/copy-2-network.sh

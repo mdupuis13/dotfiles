@@ -149,9 +149,12 @@ b:9 + Release
    XF86Calculator
    
 # Multimedia keys
-#XF86AudioPrev
-#XF86AudioNext
-#XF86AudioPlay
+"mpc prev"
+  XF86AudioPrev
+"mpc next"
+  XF86AudioNext
+"mpc toggle"
+  XF86AudioPlay
 #XF86AudioStop
 
 # Increase volume

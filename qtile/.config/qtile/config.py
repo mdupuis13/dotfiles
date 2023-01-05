@@ -37,30 +37,30 @@ from libqtile.log_utils import logger
 
 # my custom colors
 colors = {
-    "background": "2e3440",  # nord0
-    "background_alt": "81a1c1",
-    "background_inactive": "4c566a",  # nord3
-    "border_focus": "5e81ac",  # nord10
-    "border_normal": "4c566a",  # nord3
-    "border_screen_groupbox": "3b4252",  # nord 1
-    "foreground": "81a1c1",  # nord9
-    "foreground_alt": "2e3440",  # nord0
-    "foreground_inactive": "4c566a",  # nord3
-    "primary": "ebcb8b",  # nord13 yellow
-    "secondary": "d08770",  # nord12 orange
-    "alert": "bf616a",  # nord11 red
+    "background": "#2e3440",  # nord0
+    "background_alt": "#81a1c1",
+    "background_inactive": "#4c566a",  # nord3
+    "border_focus": "#5e81ac",  # nord10
+    "border_normal": "#4c566a",  # nord3
+    "border_screen_groupbox": "#3b4252",  # nord 1
+    "foreground": "#81a1c1",  # nord9
+    "foreground_alt": "#2e3440",  # nord0
+    "foreground_inactive": "#4c566a",  # nord3
+    "primary": "#ebcb8b",  # nord13 yellow
+    "secondary": "#d08770",  # nord12 orange
+    "alert": "#bf616a",  # nord11 red
     # colors by name
-    "lightblue": "88c0d0",  # nord18 light blue
-    "bluegray": "81a1c1",  # nord9 bluegray
-    "blue": "5e81ac",  # nord10 darkish blue
-    "red": "bf616a",  # nord11 red
-    "orange": "d08770",  # nord12 orange
-    "yellow": "ebcb8b",  # nord13 yellow
-    "green": "a3be8c",  # nord14 green
-    "purple": "b48ead",  # nord15 purple
-    "lightgray": "d8dee9", #nord4
-    "lightergray": "e5e9f0", #nord5
-    "lightestgray": "eceff4", #nord6
+    "lightblue": "#88c0d0",  # nord18 light blue
+    "bluegray": "#81a1c1",  # nord9 bluegray
+    "blue": "#5e81ac",  # nord10 darkish blue
+    "red": "#bf616a",  # nord11 red
+    "orange": "#d08770",  # nord12 orange
+    "yellow": "#ebcb8b",  # nord13 yellow
+    "green": "#a3be8c",  # nord14 green
+    "purple": "#b48ead",  # nord15 purple
+    "lightgray": "#d8dee9", #nord4
+    "lightergray": "#e5e9f0", #nord5
+    "lightestgray": "#eceff4", #nord6
 }
 
 mod = "mod4"
@@ -176,6 +176,15 @@ for i in groups:
     )
 
 layouts = [
+    layout.Columns(
+        border_focus=colors["border_focus"],
+        border_normal=colors["border_normal"],
+        border_focus_stack=["#d75f5f", "#8f3d3d"],
+        border_width=1,
+        border_on_single=True,
+        insert_position=1,  # 0 means right above the current window, 1 means right after
+        margin=5
+    ),
     layout.MonadThreeCol(
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
@@ -186,15 +195,6 @@ layouts = [
         main_centered=True,
         # min_ratio=0.66,
         new_client_position="bottom"
-    ),
-    layout.Columns(
-        border_focus=colors["border_focus"],
-        border_normal=colors["border_normal"],
-        border_focus_stack=["#d75f5f", "#8f3d3d"],
-        border_width=1,
-        border_on_single=True,
-        insert_position=1,  # 0 means right above the current window, 1 means right after
-        margin=5
     ),
     layout.Max()
     # Try more layouts by unleashing below layouts.
@@ -366,7 +366,7 @@ screens = [
             #     format="%A, %B %d - %H:%M:%S",
             # ),
             widget.GenPollText(
-                fmt="{}",
+                fmt="{} ",
                 foreground=colors["lightgray"],
                 func=lambda: subprocess.check_output(os.path.expanduser(
                     "~/.config/qtile/qtilebar-scripts/getdate_fr.py")).decode("utf-8"),
@@ -391,7 +391,6 @@ screens = [
                 foreground=colors["red"],
             ),
             qtile_extras.widget.currentlayout.CurrentLayoutIcon(
-                # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
                 foreground=colors["foreground_inactive"],
                 use_mask=True
             ),
@@ -401,6 +400,32 @@ screens = [
             ),
             widget.WindowName(
                 for_current_screen=False
+            ),
+            widget.Sep(
+                foreground=colors["foreground"],
+                **sep_size
+            ),
+            widget.Mpd2(
+                foreground=colors["foreground"],
+                #color_progress=colors["foreground_inactive"],
+                fmt="mpd {}",
+                idle_format="{play_status}",                
+                no_connection="not connected",
+                scroll=True,
+                scroll_clear=True,
+                scroll_delay=1,
+                scroll_repeat=True,
+                scroll_step=10,
+                status_format="{play_status} {album}/{title}",
+                width=500
+            ),
+            widget.Sep(
+                foreground=colors["foreground"],
+                **sep_size
+            ),
+            widget.Clock(
+                foreground=colors["lightgray"],
+                format="  %H:%M  ",
             ),
         ],
             26,

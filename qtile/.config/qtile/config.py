@@ -408,8 +408,7 @@ screens = [
             widget.Mpd2(
                 foreground=colors["foreground"],
                 #color_progress=colors["foreground_inactive"],
-                fmt="mpd {}",
-                idle_format="{play_status}",                
+                idle_format=" ﱙ",
                 no_connection="not connected",
                 scroll=True,
                 scroll_clear=True,
@@ -417,7 +416,7 @@ screens = [
                 scroll_repeat=True,
                 scroll_step=10,
                 status_format="{play_status} {album}/{title}",
-                width=500
+                width=300
             ),
             widget.Sep(
                 foreground=colors["foreground"],

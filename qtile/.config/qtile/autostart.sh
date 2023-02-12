@@ -16,7 +16,7 @@ fi
 nitrogen --restore
 
 # use redshift to shift colors at night
-redshift-gtk &
+# redshift-gtk &
 
 # desktop locking program "daemon"
 /usr/bin/light-locker &

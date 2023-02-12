@@ -58,9 +58,9 @@ colors = {
     "yellow": "#ebcb8b",  # nord13 yellow
     "green": "#a3be8c",  # nord14 green
     "purple": "#b48ead",  # nord15 purple
-    "lightgray": "#d8dee9", #nord4
-    "lightergray": "#e5e9f0", #nord5
-    "lightestgray": "#eceff4", #nord6
+    "lightgray": "#d8dee9",  # nord4
+    "lightergray": "#e5e9f0",  # nord5
+    "lightestgray": "#eceff4",  # nord6
 }
 
 mod = "mod4"
@@ -148,7 +148,7 @@ groups = [Group("1", label=' '),
           Group("5", label=' '),
           Group("6", label=' '),
           Group("7", label=' '),
-          Group("8", label=' ')
+          Group("8", label=' ', layout="max")
           ]
 
 for i in groups:
@@ -180,17 +180,17 @@ layouts = [
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
         border_focus_stack=["#d75f5f", "#8f3d3d"],
-        border_width=1,
-        border_on_single=True,
+        border_width=2,
+        border_on_single=False,
         insert_position=1,  # 0 means right above the current window, 1 means right after
-        margin=5
+        margin=0
     ),
     layout.MonadThreeCol(
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
-        border_width=1,
-        margin=5,
-        single_border_width=1,
+        border_width=2,
+        margin=0,
+        single_border_width=0,
         # single_margin=[5, 440, 5, 440],
         main_centered=True,
         # min_ratio=0.66,
@@ -265,24 +265,28 @@ screens = [
             ),
             # widget.TextBox("default config", name="default"),
             # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
-            widget.DF(
+            widget.WidgetBox(
                 foreground=colors["purple"],
-                format="~ {r:.0f}%/{s}{m}",
-                partition="/home",
-                update_interval=600,
-                visible_on_warn=False,
-            ),
-            widget.TextBox(
-                '--',
-                foreground=colors["purple"],
-            ),
-            widget.DF(
-                foreground=colors["purple"],
-                format="Photo {r:.0f}%/{s}{m}",
-                partition="/home/mdupuis/Photographie",
-                update_interval=600,
-                visible_on_warn=False,
-            ),
+                text_closed="[df]",
+                widgets=[
+                    widget.DF(
+                        foreground=colors["purple"],
+                        format="~ {r:.0f}%/{s}{m}",
+                        partition="/home",
+                        update_interval=600,
+                        visible_on_warn=False,
+                    ),
+                    widget.TextBox(
+                        '--',
+                        foreground=colors["purple"],
+                    ),
+                    widget.DF(
+                        foreground=colors["purple"],
+                        format="Photo {r:.0f}%/{s}{m}",
+                        partition="/home/mdupuis/Photographie",
+                        update_interval=600,
+                        visible_on_warn=False,
+                    )]),
             widget.Sep(
                 foreground=colors["purple"],
                 **sep_size
@@ -401,25 +405,36 @@ screens = [
             widget.WindowName(
                 for_current_screen=False
             ),
+            # widget.Sep(
+            #     foreground=colors["foreground"],
+            #     **sep_size
+            # ),
+            # widget.Mpd2(
+            #     foreground=colors["foreground"],
+            #     #color_progress=colors["foreground_inactive"],
+            #     idle_format=" ﱙ",
+            #     no_connection="not connected",
+            #     scroll=True,
+            #     scroll_clear=True,
+            #     scroll_delay=1,
+            #     scroll_repeat=True,
+            #     scroll_step=10,
+            #     status_format="{play_status} {album}/{title}",
+            #     width=300
+            # ),
             widget.Sep(
                 foreground=colors["foreground"],
                 **sep_size
             ),
-            widget.Mpd2(
-                foreground=colors["foreground"],
-                #color_progress=colors["foreground_inactive"],
-                idle_format=" ﱙ",
-                no_connection="not connected",
-                scroll=True,
-                scroll_clear=True,
-                scroll_delay=1,
-                scroll_repeat=True,
-                scroll_step=10,
-                status_format="{play_status} {album}/{title}",
-                width=300
+            widget.GenPollText(
+                fmt="{}",
+                foreground=colors["purple"],
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/alsa-get-volume-level.sh")).decode("utf-8"),
+                update_interval=1,
             ),
             widget.Sep(
-                foreground=colors["foreground"],
+                foreground=colors["purple"],
                 **sep_size
             ),
             widget.Clock(
@@ -490,7 +505,7 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def start_once():
-    #logger.warning("start_once()")
+    # logger.warning("start_once()")
 
     home = os.path.expanduser('~')
     logger.warning("home is " + home)

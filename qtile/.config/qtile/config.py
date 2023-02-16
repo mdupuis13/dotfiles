@@ -263,11 +263,11 @@ screens = [
                 foreground=colors["foreground"],  # 81a1c1
                 name_transform=lambda name: name.upper(),
             ),
-            # widget.TextBox("default config", name="default"),
-            # widget.TextBox("Press &lt;M-r&gt; to spawn", foreground="#d75f5f"),
             widget.WidgetBox(
-                foreground=colors["purple"],
-                text_closed="[df]",
+                close_button_location="right",
+                foreground=colors["purple"],        
+                text_closed="﫭 ",
+                text_open="  ",
                 widgets=[
                     widget.DF(
                         foreground=colors["purple"],

@@ -21,6 +21,10 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$HOME/.local/bin:$PATH"
 fi
+# set PATH so it includes IntelliJ bin path
+if [ -d "$HOME/bin/idea-IC-223.8836.41/bin" ] ; then
+    PATH="$HOME/bin/idea-IC-223.8836.41/bin:$PATH"
+fi
 
 # docker as non-root usert requirement - MD
 export DOCKER_HOST=unix:///run/user/1001/docker.sock

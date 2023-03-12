@@ -114,6 +114,8 @@ keys = [
     # Unsplit = 1 window displayed, like Max layout, but still with multiple stack panes
     Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
         desc="Toggle between split and  unsplit sides of stack"),
+    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(),
+        desc="Toggle between real fullscreen and in-viewport fullscreen"),
 
     Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
@@ -481,7 +483,7 @@ floating_layout = layout.Floating(
         Match(title="pinentry"),  # GPG key password entry
     ]
 )
-auto_fullscreen = True
+auto_fullscreen = False
 focus_on_window_activation = "smart"
 reconfigure_screens = True
 

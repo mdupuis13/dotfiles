@@ -1,5 +1,8 @@
+bin/bin/idea-IC-223.8836.41
 calibre/.config/calibre/fonts/scanner_cache.json
 calibre/.config/calibre/dynamic.pickle.json
 calibre/.config/calibre/gui.json
 calibre/.config/calibre/gui.py.json
+qBittorrent/.config/qBittorrent/qBittorrent-data.conf
+qBittorrent/.config/qBittorrent/qBittorrent.conf
 qtile/.config/qtile/__pycache__

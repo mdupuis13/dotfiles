@@ -100,8 +100,8 @@ keys = [
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
-    # Key([mod, "control"], "=", lazy.layout.grow(), desc="Grow window"),
-    # Key([mod, "control"], "-", lazy.layout.shrink(), desc="Shrink window"),
+    Key([mod, "control", "mod1"], "h", lazy.layout.grow(), desc="Grow window"),
+    Key([mod, "control", "mod1"], "l", lazy.layout.shrink(), desc="Shrink window"),
     Key([mod, "control"], "h", lazy.layout.grow_left(),
         desc="Grow window to the left"),
     Key([mod, "control"], "l", lazy.layout.grow_right(),
@@ -198,12 +198,18 @@ layouts = [
         # min_ratio=0.66,
         new_client_position="bottom"
     ),
-    layout.Max()
+    layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    # layout.MonadTall(),
+    layout.MonadTall(
+        border_focus=colors["border_focus"],
+        border_normal=colors["border_normal"],
+        border_width=2,
+        margin=0,
+        single_border_width=0,
+    )
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),
@@ -267,7 +273,7 @@ screens = [
             ),
             widget.WidgetBox(
                 close_button_location="right",
-                foreground=colors["purple"],        
+                foreground=colors["purple"],
                 text_closed="﫭 ",
                 text_open="  ",
                 widgets=[

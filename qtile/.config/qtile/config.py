@@ -178,15 +178,15 @@ for i in groups:
     )
 
 layouts = [
-    layout.Columns(
-        border_focus=colors["border_focus"],
-        border_normal=colors["border_normal"],
-        border_focus_stack=["#d75f5f", "#8f3d3d"],
-        border_width=2,
-        border_on_single=False,
-        insert_position=1,  # 0 means right above the current window, 1 means right after
-        margin=0
-    ),
+    # layout.Columns(
+    #     border_focus=colors["border_focus"],
+    #     border_normal=colors["border_normal"],
+    #     border_focus_stack=["#d75f5f", "#8f3d3d"],
+    #     border_width=2,
+    #     border_on_single=False,
+    #     insert_position=1,  # 0 means right above the current window, 1 means right after
+    #     margin=0
+    # ),
     layout.MonadThreeCol(
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
@@ -198,18 +198,16 @@ layouts = [
         # min_ratio=0.66,
         new_client_position="bottom"
     ),
+    layout.MonadTall(
+        border_focus=colors["border_focus"],
+        border_normal=colors["border_normal"],
+        border_width=2,
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
     # layout.Matrix(),
-    layout.MonadTall(
-        border_focus=colors["border_focus"],
-        border_normal=colors["border_normal"],
-        border_width=2,
-        margin=0,
-        single_border_width=0,
-    )
     # layout.MonadWide(),
     # layout.RatioTile(),
     # layout.Tile(),

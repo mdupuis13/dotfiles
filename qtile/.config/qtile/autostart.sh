@@ -6,11 +6,11 @@
 dex -va
 
 #boot compton or picom if it exists
-if [ -x "$(command -v compton)" ]; then
-  compton &> /dev/null & 
-elif [ -x "$(command -v picom)" ]; then
-  picom &> /dev/null & 
-fi
+#if [ -x "$(command -v compton)" ]; then
+#  compton &> /dev/null & 
+#elif [ -x "$(command -v picom)" ]; then
+  picom -b --experimental-backends --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350 &> /dev/null & 
+#fi
 
 #set background
 nitrogen --restore

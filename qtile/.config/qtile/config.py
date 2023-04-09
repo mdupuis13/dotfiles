@@ -35,8 +35,7 @@ import qtile_extras.widget
 # for debugging purposes
 from libqtile.log_utils import logger
 
-# my custom colors
-colors = {
+_nord_theme = {
     "background": "#2e3440",  # nord0
     "background_alt": "#81a1c1",
     "background_inactive": "#4c566a",  # nord3
@@ -47,10 +46,8 @@ colors = {
     "foreground_alt": "#2e3440",  # nord0
     "foreground_inactive": "#4c566a",  # nord3
     "primary": "#ebcb8b",  # nord13 yellow
-    "secondary": "#d08770",  # nord12 orange
     "alert": "#bf616a",  # nord11 red
     # colors by name
-    "lightblue": "#88c0d0",  # nord18 light blue
     "bluegray": "#81a1c1",  # nord9 bluegray
     "blue": "#5e81ac",  # nord10 darkish blue
     "red": "#bf616a",  # nord11 red
@@ -62,6 +59,34 @@ colors = {
     "lightergray": "#e5e9f0",  # nord5
     "lightestgray": "#eceff4",  # nord6
 }
+
+_onedark_theme = {
+    "background": "#21252B",  # nord0
+    "background_alt": "#ABB2BF",
+    "background_inactive": "#1E2227",  # nord3
+    "border_focus": "#61AFEF",  # nord10
+    "border_normal": "#21252B",  # nord3
+    "border_screen_groupbox": "#ABB2BF",  # nord 1
+    "foreground": "#D4D8DF",  # nord9
+    "foreground_alt": "#21252B",  # nord0
+    "foreground_inactive": "#323842",  # nord3
+    "primary": "#E5C07B",  # nord13 yellow
+    "alert": "#E06C75",  # nord11 red
+    # colors by name
+    "aqua": "#56B6C2",
+    "blue": "#61AFEF",  # nord10 darkish blue
+    "red": "#E06C75",  # nord11 red
+    "orange": "#FAB387",  # nord12 orange
+    "yellow": "#E5C07B",  # nord13 yellow
+    "green": "#98C379",  # nord14 green
+    "purple": "#C678DD",  # nord15 purple
+    "lightgray": "#ABB2BF",  # nord4
+    "lightergray": "#D4D8DF",  # nord5
+    "lightestgray": "#F6F7F9",  # nord6
+}
+
+# my custom colors
+colors = _onedark_theme
 
 mod = "mod4"
 my_browser = "/usr/bin/firefox"
@@ -195,7 +220,7 @@ layouts = [
         single_border_width=0,
         # single_margin=[5, 440, 5, 440],
         main_centered=True,
-        # min_ratio=0.66,
+        min_ratio=0.45,
         new_client_position="bottom"
     ),
     layout.MonadTall(
@@ -239,21 +264,21 @@ screens = [
                     ),
             qtile_extras.widget.CurrentLayoutIcon(
                 # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
-                foreground=colors["foreground_inactive"],
+                foreground=colors["foreground"],
                 use_mask=True
             ),
             widget.GroupBox(
-                active=colors["foreground"],
                 disable_drag=True,
-                # foreground="88c0d0", #colors["foreground_alt"],
-                highlight_method='block',
+                # highlight_method [block, text, line]
+                highlight_method='line',
+                active=colors["foreground"],
                 inactive=colors["foreground_inactive"],
-                other_current_screen_border=colors["background_inactive"],
-                other_screen_border=colors["border_screen_groupbox"],
+                other_current_screen_border=colors["border_focus"],
+                other_screen_border=colors["foreground_alt"],
                 padding_x=5,
-                this_current_screen_border=colors["background_inactive"],
-                this_screen_border=colors["border_screen_groupbox"],
-                urgent_border="bf616a",
+                this_current_screen_border=colors["border_focus"],
+                this_screen_border=colors["background_inactive"],
+                urgent_border=colors["alert"],
             ),
             widget.Sep(
                 foreground=colors["foreground_inactive"],
@@ -266,7 +291,7 @@ screens = [
                 chords_colors={
                     "launch": (colors["background_alt"], colors["foreground_alt"]),
                 },
-                foreground=colors["foreground"],  # 81a1c1
+                foreground=colors["foreground"],
                 name_transform=lambda name: name.upper(),
             ),
             widget.WidgetBox(
@@ -298,31 +323,31 @@ screens = [
                 **sep_size
             ),
             widget.CPU(
-                foreground=colors["bluegray"],
+                foreground=colors["blue"],
                 format="  {load_percent:.0f}% ",
                 update_interval=2,
             ),
             widget.Memory(
                 font='Font Awesome 5 Free Solid',
-                foreground=colors["bluegray"],
+                foreground=colors["blue"],
                 format=" {MemPercent:.0f}% ",
                 update_interval=2,
             ),
             widget.ThermalSensor(
-                foreground=colors["bluegray"],
+                foreground=colors["blue"],
                 foreground_alert=colors["alert"],
                 format=' {temp:.0f}糖',
                 tag_sensor='Package id 0',
                 threshold=75,
             ),
             widget.NvidiaSensors(
-                foreground=colors["bluegray"],
+                foreground=colors["blue"],
                 format='   {temp}糖',
                 foreground_alert=colors["alert"],
                 threshold=85,
             ),
             widget.Sep(
-                foreground=colors["bluegray"],
+                foreground=colors["blue"],
                 **sep_size
             ),
             widget.GenPollText(
@@ -377,7 +402,7 @@ screens = [
             # ),
             widget.GenPollText(
                 fmt="{} ",
-                foreground=colors["lightgray"],
+                foreground=colors["lightestgray"],
                 func=lambda: subprocess.check_output(os.path.expanduser(
                     "~/.config/qtile/qtilebar-scripts/getdate_fr.py")).decode("utf-8"),
                 update_interval=1,
@@ -444,7 +469,7 @@ screens = [
                 **sep_size
             ),
             widget.Clock(
-                foreground=colors["lightgray"],
+                foreground=colors["lightestgray"],
                 format="  %H:%M  ",
             ),
         ],
@@ -479,6 +504,7 @@ floating_layout = layout.Floating(
     float_rules=[
         # Run the utility of `xprop` to see the wm class and name of an X client.
         *layout.Floating.default_float_rules,
+        Match(wm_class="qalculate-gtk"),  # galculator
         Match(wm_class="confirmreset"),  # gitk
         Match(wm_class="makebranch"),  # gitk
         Match(wm_class="maketag"),  # gitk

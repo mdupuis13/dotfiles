@@ -276,8 +276,8 @@ screens = [
                 other_current_screen_border=colors["border_focus"],
                 other_screen_border=colors["foreground_alt"],
                 padding_x=5,
-                this_current_screen_border=colors["border_focus"],
-                this_screen_border=colors["background_inactive"],
+                this_current_screen_border=colors["aqua"],
+                this_screen_border=colors["background_alt"],
                 urgent_border=colors["alert"],
             ),
             widget.Sep(
@@ -360,6 +360,7 @@ screens = [
             widget.GenPollText(
                 fmt=" {}",
                 foreground=colors["green"],
+                markup=True,
                 func=lambda: subprocess.check_output(os.path.expanduser(
                     "~/.config/qtile/qtilebar-scripts/info-airqualityindex.sh")).decode("utf-8"),
                 update_interval=600,

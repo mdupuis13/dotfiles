@@ -23,7 +23,21 @@ if [ -n "$aqi" ]; then
     if [ "$(echo "$aqi" | jq -r '.status')" = "ok" ]; then
         aqi=$(echo "$aqi" | jq '.data.aqi')
 
-        echo -n "$prefix $aqi"
+        foreground="#a3be8c"
+        if [ "$aqi" -le 50 ]; then
+            foreground="#a3be8c"
+        elif [ "$aqi" -le 100 ]; then
+            foreground="#e5c07b"
+        elif [ "$aqi" -le 150 ]; then
+            foreground="#fab387"
+        elif [ "$aqi" -le 200 ]; then
+            foreground="#e06c75"
+        elif [ "$aqi" -le 300 ]; then
+            foreground="#c678dd"
+        else foreground="#ef3d59"
+        fi
+
+        echo -n "<span foreground=\"$foreground\">$prefix $aqi</span>"
     else
         echo -n "$aqi" | jq -r '.data'
     fi

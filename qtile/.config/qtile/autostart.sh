@@ -9,7 +9,7 @@ dex -va
 #if [ -x "$(command -v compton)" ]; then
 #  compton &> /dev/null & 
 #elif [ -x "$(command -v picom)" ]; then
-  picom -b --experimental-backends --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350 &> /dev/null & 
+  picom -b --experimental-backends --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350 & 2>&1 /dev/null
 #fi
 
 #set background

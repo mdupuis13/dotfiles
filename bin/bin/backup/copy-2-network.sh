@@ -4,7 +4,7 @@ rm -rf /mnt/dasnas/homes/backup/dasboss-pc/mdupuis-home-full*.tar*
 
 
 echo Copie des fichiers sur le réseau
-rsync --info=progress2 --update --modify-window=2 --human-readable /home/mdupuis/backup/*.tar* /mnt/dasnas/homes/backup/dasboss-pc/
+rsync --info=progress2 --update --inplace --partial --modify-window=2 --human-readable -v /home/mdupuis/backup/*.tar* /mnt/dasnas/homes/backup/dasboss-pc/
 
 echo Supression des copies locales
 #rm -f /home/mdupuis/backup/*.tar*

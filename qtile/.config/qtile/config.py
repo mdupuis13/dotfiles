@@ -392,6 +392,14 @@ screens = [
                 no_update_string="  0",
                 update_interval=600
             ),
+            widget.GenPollText(
+                fmt=" {}",
+                #foreground=colors["green"],
+                markup=True,
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/flatpak-updates.sh")).decode("utf-8"),
+                update_interval=600,
+            ),
             widget.Sep(
                 foreground=colors["yellow"],
                 **sep_size

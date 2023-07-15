@@ -146,7 +146,7 @@ if [ -e /home/mdupuis/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mdupuis/
 
 
 # computer specific code
-if [[ `uname -n | cut -c-2` -eq "PP" ]]; then
+if [[ `uname -n | cut -c-2` == "PP" ]]; then
 
     # set jdk home
     export JAVA_HOME="/usr/lib/jvm/java-11-openjdk-amd64/"

@@ -89,7 +89,8 @@ _onedark_theme = {
 colors = _onedark_theme
 
 mod = "mod4"
-my_browser = "/usr/bin/firefox"
+#my_browser = "/usr/bin/firefox"
+my_browser = "flatpak run org.mozilla.firefox"
 my_email_client = "/usr/bin/claws-mail"
 my_filemanager = "/usr/bin/pcmanfm"
 my_terminal = "/usr/bin/kitty"

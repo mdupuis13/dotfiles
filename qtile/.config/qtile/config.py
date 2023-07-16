@@ -92,7 +92,7 @@ mod = "mod4"
 #my_browser = "/usr/bin/firefox"
 my_browser = "flatpak run org.mozilla.firefox"
 my_email_client = "/usr/bin/claws-mail"
-my_filemanager = "/usr/bin/pcmanfm"
+my_filemanager = "/usr/bin/thunar"
 my_terminal = "/usr/bin/kitty"
 
 # Thanks for your code alvaro-jmp !!!

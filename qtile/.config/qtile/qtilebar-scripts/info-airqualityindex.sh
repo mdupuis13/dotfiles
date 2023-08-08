@@ -4,7 +4,7 @@ TOKEN="ab5dc4bd4669b1bd7b8ed48a82865c4f73a04913"
 CITY="canada/montreal/sainte-anne-de-bellevue"
 
 API="https://api.waqi.info/feed"
-prefix=""
+prefix="󰇧"
 
 if [ -n "$CITY" ]; then
     aqi=$(curl -sf "$API/$CITY/?token=$TOKEN")
@@ -37,7 +37,7 @@ if [ -n "$aqi" ]; then
         else foreground="#ef3d59"
         fi
 
-        echo -n "<span foreground=\"$foreground\">$prefix $aqi</span>"
+        echo -n "<span foreground=\"$foreground\"><span size=\"16pt\" rise=\"-2pt\">$prefix</span> $aqi</span>"
     else
         echo -n "$aqi" | jq -r '.data'
     fi

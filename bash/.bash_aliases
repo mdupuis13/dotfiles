@@ -24,7 +24,8 @@ alias ls='exa --color=always --icons --time-style long-iso'
 alias l='exa -l --color=always --header --icons --group-directories-first --time-style long-iso' # my preferred listing
 alias la='exa -al --color=always --header --icons --group-directories-first --time-style long-iso'  # all files and dirs
 alias ll='ls -aFlh'
-alias lt='exa -aTD --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
+alias lt='exa -aT --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
+alias ltd='exa -aTD --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
 alias l.='exa -a  --time-style long-iso| egrep "^\."'
 
 # Colorize grep output (good for log files)

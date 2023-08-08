@@ -87,7 +87,7 @@ KEY="968080a335b52d743ca1364a0f93aec8"
 CITY="Vaudreuil-Dorion"
 UNITS="metric"
 #SYMBOL="" # weather-icons
-SYMBOL="糖" # nerd font
+SYMBOL="℃" # nerd font
 LANGUAGE=fr
 
 API="https://api.openweathermap.org/data/2.5"
@@ -133,10 +133,10 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     now=$(date +%s)
 
     if [ "$sun_set" -gt "$now" ]; then
-        daytime="  $(format_epoch_time "$sun_set")"
+        daytime="<span size=\"26pt\" rise=\"-6pt\"></span>$(format_epoch_time "$sun_set")"
     else
-        daytime="  $(format_epoch_time "$sun_rise")"
+        daytime="<span size=\"26pt\" rise=\"-2pt\"></span>$(format_epoch_time "$sun_rise")"
     fi
 
-    echo -n "$(get_icon "$current_icon")  $current_temp$SYMBOL $trend $(get_icon "$forecast_icon")  $forecast_temp$SYMBOL  $daytime"
+    echo -n "<span size=\"26pt\" rise=\"-6pt\">$(get_icon "$current_icon")</span> $current_temp$SYMBOL <span size=\"26pt\" rise=\"-6pt\">$trend$(get_icon "$forecast_icon")</span> $forecast_temp$SYMBOL  $daytime"
 fi

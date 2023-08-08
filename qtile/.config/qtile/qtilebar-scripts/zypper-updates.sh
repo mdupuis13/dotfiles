@@ -1,8 +1,9 @@
 #!/bin/sh
 
-prefix=""
+prefix=""
 
-nbUpdates=`flatpak remote-ls --updates | wc -l`
+nbUpdates=`zypper -t -q list-updates | wc -l`
+#nbUpdates=`eval $(expr $nbUpdates - 3)`
 
         foreground="#a3be8c"
         if [ "$nbUpdates" -le 5 ]; then
@@ -18,4 +19,4 @@ nbUpdates=`flatpak remote-ls --updates | wc -l`
         else foreground="#ef3d59"
         fi
         
-echo -n "<span foreground=\"$foreground\"><span size=\"26pt\" rise=\"-6pt\">$prefix</span> $nbUpdates</span>"
+echo -n "<span foreground=\"$foreground\"><span size=\"26pt\" rise=\"-6pt\">$prefix</span> $nbUpdates </span>"

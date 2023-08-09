@@ -65,6 +65,7 @@ fi
 gb() {
    echo -n '[' && git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' && echo  -n ']'
 }
+
 git_branch() {
    gb | sed -r 's/[\[\]]//g'
 }

@@ -54,61 +54,6 @@
 
 # See 'man xbindkeys' for more information.
 
-# Show main menu
-#"jgmenu_run"
-#    Mod4 + space
-
-# Run Program
-#"gmrun"
-#    Alt + F2
-
-# Show dmenu
-#"~/.config/dmenu/dmenu-bind.sh"
-#    Alt + F3
-
-# Terminal
-#"x-terminal-emulator"
-#    Mod4 + t
-
-# Web Browser
-#"x-www-browser"
-#    Mod4 + w
-
-# File Manager
-#"bl-file-manager"
-#    Mod4 + f
-
-# Editor
-#"bl-text-editor"
-#    Mod4 + e
-
-# Media Player
-#"bl-media-player"
-#    Mod4 + m
-
-# Email
-#"claws-mail"
-#    Mod4 + c
-    
-# Volume
-#"pavucontrol"
-#    Mod4 + v
-
-# htop task manager
-#"x-terminal-emulator -T 'htop task manager' -e htop"
-#    Mod4 + h
-
-# Lock Screen
-#"bl-lock"
-#    Mod4 + l
-
-# Logout
-#"bl-exit"
-#    Mod4 + x
-
-# Kill a Window
-#"xkill"
-#    Mod4 + Escape
 
 # Print Screen (xfce)
 #"xfce4-screenshooter"
@@ -126,47 +71,36 @@
 # double-click on M570 mouse 9 (front left button) release
 "/usr/bin/xte 'mouseclick 1' 'mouseclick 1' &amp;"
 b:9 + Release
+
 # Show xbindkeys settings
 # (install tk to use this)
 #"xbindkeys_show"
 #    Control + Shift + q
-
-# web browser
-"firefox"
-   XF86HomePage
-
-# email
-"claws-mail"
-   XF86Mail
-
-   
-# file manager
-"pcmanfm"
-   XF86Explorer
-
-# calculator
-"qalculate"
-   XF86Calculator
    
 # Multimedia keys
 "mpc prev"
   XF86AudioPrev
+
 "mpc next"
   XF86AudioNext
+
 "mpc toggle"
   XF86AudioPlay
 #XF86AudioStop
 
 # Increase volume
-"amixer set Master 5%+ unmute"
+#"amixer set Master 5%+ unmute"
+"$HOME/bin/volume.sh raise"
    XF86AudioRaiseVolume
 
 # Decrease volume
-"amixer set Master 5%- unmute"
+#"amixer set Master 5%- unmute"
+"$HOME/bin/volume.sh lower"
    XF86AudioLowerVolume
 
 # Decrease volume
-"amixer set Master toggle"
+#"amixer set Master toggle"
+"$HOME/bin/volume.sh mute"
    XF86AudioMute
 ##################################
 # End of xbindkeys configuration #

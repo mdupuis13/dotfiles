@@ -3,9 +3,12 @@
 # change screen layout
 /home/mdupuis/.screenlayout/default.sh
 
+# map multimedia keys
+/usr/bin/xbindkeys
+
 # or 
 #dex, DesktopEntry Execution, is a program to generate and execute DesktopEntry files of the Application type.
-#dex -va
+dex -va
 
 #boot compton or picom if it exists
 #if [ -x "$(command -v compton)" ]; then

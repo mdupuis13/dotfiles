@@ -30,7 +30,7 @@ import subprocess
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-#import qtile_extras.widget
+import qtile_extras.widget
 
 # for debugging purposes
 from libqtile.log_utils import logger
@@ -89,8 +89,8 @@ _onedark_theme = {
 colors = _onedark_theme
 
 mod = "mod4"
-my_browser = "/usr/bin/firefox"
-#my_browser = "flatpak run org.mozilla.firefox"
+#my_browser = "/usr/bin/firefox"
+my_browser = "flatpak run org.mozilla.firefox"
 my_email_client = "/usr/bin/claws-mail"
 my_filemanager = "/usr/bin/thunar"
 my_terminal = "/usr/bin/kitty"
@@ -142,7 +142,6 @@ keys = [
         desc="Toggle between split and  unsplit sides of stack"),
     Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(),
         desc="Toggle between real fullscreen and in-viewport fullscreen"),
-    Key([mod, "shift"], "space", lazy.layout.flip()),
 
     Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
@@ -170,14 +169,14 @@ keys = [
 
 ]
 
-groups = [Group("1", label='󰬺'),
-          Group("2", label='󰬻', layout="monadtall"),
-          Group("3", label='󰬼'),
-          Group("4", label='󰬽'),
-          Group("5", label='󰬾'),
-          Group("6", label='󰬿'),
-          Group("7", label='󰭀'),
-          Group("8", label='󰭁', layout="max")
+groups = [Group("1", label=' '),
+          Group("2", label='磊 ', layout="columns"),
+          Group("3", label=' '),
+          Group("4", label=' '),
+          Group("5", label=' '),
+          Group("6", label=' '),
+          Group("7", label=' '),
+          Group("8", label=' ', layout="max")
           ]
 
 for i in groups:
@@ -229,7 +228,6 @@ layouts = [
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
         border_width=2,
-        ratio=0.65,
     ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
@@ -245,9 +243,8 @@ layouts = [
 ]
 
 widget_defaults = dict(
-#    font="DaddyTimeMono Nerd Font",
-    font="JuliaMono Nerd Font Mono",
-#    font="sans",
+    font="DaddyTimeMono Nerd Font",
+    # font="sans",
     fontsize=16,
     padding=3,
     foreground=colors["foreground"]
@@ -262,21 +259,18 @@ screens = [
     Screen(
         top=bar.Bar([
             widget.TextBox(
-                    ' ',
-                    fontsize=46,
-                    foreground=colors["green"],
+                    ' ',
+                    fontsize=26,
+                    foreground=colors["red"],
                     ),
-            widget.CurrentLayoutIcon(
-            ),
 #            qtile_extras.widget.CurrentLayoutIcon(
 #                # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
 #                foreground=colors["foreground"],
 #                use_mask=True
-#            ),
+            ),
             widget.GroupBox(
                 disable_drag=True,
                 # highlight_method [block, text, line]
-                fontsize=20,
                 highlight_method='line',
                 active=colors["foreground"],
                 inactive=colors["foreground_inactive"],
@@ -304,8 +298,7 @@ screens = [
             widget.WidgetBox(
                 close_button_location="right",
                 foreground=colors["purple"],
-                fontsize=26,
-                text_closed=" ",
+                text_closed="﫭 ",
                 text_open="  ",
                 widgets=[
                     widget.DF(
@@ -318,46 +311,41 @@ screens = [
                     widget.TextBox(
                         '--',
                         foreground=colors["purple"],
-                    )
-#                    widget.DF(
-#                        foreground=colors["purple"],
-#                        format="Photo {r:.0f}%/{s}{m}",
-#                        partition="/home/mdupuis/Photographie",
-#                        update_interval=600,
-#                        visible_on_warn=False,
-#                    )
-                ]),
+                    ),
+                    widget.DF(
+                        foreground=colors["purple"],
+                        format="Photo {r:.0f}%/{s}{m}",
+                        partition="/home/mdupuis/Photographie",
+                        update_interval=600,
+                        visible_on_warn=False,
+                    )]),
             widget.Sep(
                 foreground=colors["purple"],
                 **sep_size
             ),
             widget.CPU(
                 foreground=colors["blue"],
-                format="<span size=\"26pt\" rise=\"-6pt\"></span> {load_percent:.0f}% @ {freq_current}GHz",
-                markup=True,
+                format="  {load_percent:.0f}% ",
                 update_interval=2,
-            ),
-            widget.ThermalSensor(
-                foreground=colors["blue"],
-                foreground_alert=colors["alert"],
-                format="{temp:.1f}℃",
-                tag_sensor='CPUTIN',
-                threshold=75,
             ),
             widget.Memory(
-                #font="Font Awesome 6 Free Solid",
+                font='Font Awesome 5 Free Solid',
                 foreground=colors["blue"],
-                format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemUsed:.2f}G => {MemPercent:.0f}%",
-                markup=True,
-		measure_mem='G',
+                format=" {MemPercent:.0f}% ",
                 update_interval=2,
             ),
             widget.ThermalSensor(
                 foreground=colors["blue"],
                 foreground_alert=colors["alert"],
-                format="  󰡁 {temp:.1f}℃",
-                tag_sensor='edge',
+                format=' {temp:.0f}糖',
+                tag_sensor='Package id 0',
                 threshold=75,
+            ),
+            widget.NvidiaSensors(
+                foreground=colors["blue"],
+                format='   {temp}糖',
+                foreground_alert=colors["alert"],
+                threshold=85,
             ),
             widget.Sep(
                 foreground=colors["blue"],
@@ -366,7 +354,6 @@ screens = [
             widget.GenPollText(
                 fontsize=16,
                 foreground=colors["green"],
-                markup=True,
                 func=lambda: subprocess.check_output(os.path.expanduser(
                     "~/.config/qtile/qtilebar-scripts/openweathermap-fullfeatured.sh")).decode("utf-8"),
                 update_interval=600,
@@ -385,7 +372,6 @@ screens = [
             ),
             widget.Volume(
                 theme_path="/home/mdupuis/src/gitlab/beautyline",
-                mute_command="/home/mdupuis/bin/volume.sh mute",
             ),
             widget.GenPollText(
                 fmt="{}",
@@ -398,25 +384,17 @@ screens = [
                 foreground=colors["purple"],
                 **sep_size
             ),
-#            widget.CheckUpdates(
-#                colour_have_updates=colors["orange"],
-#                colour_no_updates=colors["green"],
-#                display_format="  {updates}",
-#                distro='Debian',
-#                initial_text="  N/A",
-#                no_update_string="  0",
-#                update_interval=600
-#            ),
-            widget.GenPollText(
-                fmt="{}",
-                #foreground=colors["green"],
-                markup=True,
-                func=lambda: subprocess.check_output(os.path.expanduser(
-                    "~/.config/qtile/qtilebar-scripts/zypper-updates.sh")).decode("utf-8"),
-                update_interval=600,
+            widget.CheckUpdates(
+                colour_have_updates=colors["orange"],
+                colour_no_updates=colors["green"],
+                display_format="  {updates}",
+                distro='Debian',
+                initial_text="  N/A",
+                no_update_string="  0",
+                update_interval=600
             ),
             widget.GenPollText(
-                fmt="{}",
+                fmt=" {}",
                 #foreground=colors["green"],
                 markup=True,
                 func=lambda: subprocess.check_output(os.path.expanduser(
@@ -453,12 +431,10 @@ screens = [
     Screen(
         bottom=bar.Bar([
             widget.TextBox(
-                    ' ',
-                    fontsize=46,
-                    foreground=colors["green"],
-                    ),
-            widget.CurrentLayoutIcon(
-             ),
+                ' ',
+                fontsize=26,
+                foreground=colors["red"],
+            ),
 #            qtile_extras.widget.currentlayout.CurrentLayoutIcon(
 #                foreground=colors["foreground_inactive"],
 #                use_mask=True
@@ -571,7 +547,7 @@ wmname = "LG3D"
 
 @hook.subscribe.startup_once
 def start_once():
-    logger.warning("start_once()")
+    # logger.warning("start_once()")
 
     home = os.path.expanduser('~')
     logger.warning("home is " + home)

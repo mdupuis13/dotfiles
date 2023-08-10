@@ -18,7 +18,7 @@ dex -va
 #fi
 
 #set background
-#nitrogen --restore
+nitrogen --restore
 
 # use redshift to shift colors at night
 # redshift-gtk &

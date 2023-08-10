@@ -310,22 +310,40 @@ screens = [
                 widgets=[
                     widget.DF(
                         foreground=colors["purple"],
-                        format="~ {r:.0f}%/{s}{m}",
+                        format="<span size=\"26pt\" rise=\"-6pt\"></span> {r:.0f}%({s}{m})",
                         partition="/home",
                         update_interval=600,
                         visible_on_warn=False,
                     ),
-                    widget.TextBox(
-                        '--',
+                    widget.HDDBusyGraph(
+                        border_color=colors["purple"],
+                        border_width=1,
+                        device="nvme1n1p1",
+                        fill_color=colors["purple"],
                         foreground=colors["purple"],
-                    )
-#                    widget.DF(
-#                        foreground=colors["purple"],
-#                        format="Photo {r:.0f}%/{s}{m}",
-#                        partition="/home/mdupuis/Photographie",
-#                        update_interval=600,
-#                        visible_on_warn=False,
-#                    )
+                        graph_color=colors["blue"],
+                        line_width=2,
+                    ),
+                    widget.TextBox(
+                        '',
+                        foreground=colors["purple"],
+                    ),
+                    widget.DF(
+                        foreground=colors["purple"],
+                        format="Photo {r:.0f}%({s}{m})",
+                        partition="/home/mdupuis/Photographie",
+                        update_interval=600,
+                        visible_on_warn=False,
+                    ),
+                    widget.HDDBusyGraph(
+                        border_color=colors["purple"],
+                        border_width=1,
+                        device="sda2",
+                        fill_color=colors["purple"],
+                        foreground=colors["purple"],
+                        graph_color=colors["blue"],
+                        line_width=2,
+                    ),
                 ]),
             widget.Sep(
                 foreground=colors["purple"],
@@ -333,7 +351,7 @@ screens = [
             ),
             widget.CPU(
                 foreground=colors["blue"],
-                format="<span size=\"26pt\" rise=\"-6pt\"></span> {load_percent:.0f}% @ {freq_current}GHz",
+                format="<span size=\"26pt\" rise=\"-6pt\"></span> {load_percent:.0f}% @ {freq_current}GHz",
                 markup=True,
                 update_interval=2,
             ),
@@ -349,7 +367,7 @@ screens = [
                 foreground=colors["blue"],
                 format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemUsed:.2f}G => {MemPercent:.0f}%",
                 markup=True,
-		measure_mem='G',
+                measure_mem='G',
                 update_interval=2,
             ),
             widget.ThermalSensor(

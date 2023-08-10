@@ -5,4 +5,6 @@ calibre/.config/calibre/gui.json
 calibre/.config/calibre/gui.py.json
 qBittorrent/.config/qBittorrent/qBittorrent-data.conf
 qBittorrent/.config/qBittorrent/qBittorrent.conf
+qBittorrent/.config/qBittorrent/lockfile
+qBittorrent/.config/qBittorrent/rss/storage.lock
 qtile/.config/qtile/__pycache__

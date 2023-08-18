@@ -35,13 +35,13 @@ shopt -s checkwinsize
 # match all files and zero or more directories and subdirectories.
 #shopt -s globstar
 
+# some usefull bash_functions.
+test -s ~/.bash_functions && . ~/.bash_functions || true
+
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
 test -s ~/.bash_aliases && . ~/.bash_aliases || true
-
-# 
-test -s ~/.bash_functions && . ~/.bash_functions || true
 
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
@@ -64,14 +64,15 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# git prompt combine state
 export GIT_PS1_SHOWDIRTYSTATE=true
 export GIT_PS1_SHOWUNTRACKEDFILES=true
 
 if [ "$color_prompt" = yes ]; then
-   PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] \w \[\033[0;32m\]$(git_branch)\[\033[0m\]\n\$ '
+   PS1='\[\033[0;32m\]\[\033[0m\033[0;32m\]\u\[\033[0;36m\] \w \[\033[0;32m\]$(__git_ps1)\[\033[0m\]\n\$ '
    PS2='\$ '
 else
-   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(git_branch) \[\033[0m\]\n\$ '
+   PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w$(__git_ps1) \[\033[0m\]\n\$ '
    PS2='\$ '
 fi
 

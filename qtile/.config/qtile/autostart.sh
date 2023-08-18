@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 
 # change screen layout
+sleep 1
+autorandr --change
 #/home/mdupuis/.screenlayout/default.sh
 
 # map multimedia keys
@@ -18,7 +20,7 @@ dex -va
 #fi
 
 #set background
-nitrogen --restore
+#nitrogen --restore
 
 # use redshift to shift colors at night
 # redshift-gtk &
@@ -26,4 +28,4 @@ nitrogen --restore
 # desktop locking program "daemon"
 #/usr/bin/light-locker &
 
-#qbittorrent --no-splash &
+qbittorrent --no-splash &

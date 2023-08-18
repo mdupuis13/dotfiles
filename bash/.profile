@@ -20,6 +20,14 @@ if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
 
+# set PATH so it includes snaps bin if it exists
+if [ -d "/snap/bin" ] ; then
+    PATH="$PATH:/snap/bin"
+fi
+
+#export GOPATH=$HOME/gopath
+#export PATH=$GOPATH:$GOPATH/bin:$PATH
+
 # set flatpak locations into XDG_DATA_DIRS
 if [ -d "/var/lib/flatpak/exports/share" ] ; then
     XDG_DATA_DIRS="/var/lib/flatpak/exports/share:$XDG_DATA_DIRS"

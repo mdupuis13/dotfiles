@@ -4,8 +4,6 @@
 # see /usr/share/doc/bash/examples/startup-files for examples.
 # the files are located in the bash-doc package.
 #
-# Modified version provided by bunsen-configs.
-#
 # NOTE this file is not sourced by lightdm when logging in to X sessions.
 # Use .xsessionrc for graphical sessions.
 
@@ -20,26 +18,6 @@ if [ -n "$BASH_VERSION" ]; then
 	. "$HOME/.bashrc"
     fi
 fi
-
-# include sbin in PATH
-if [ -d "/sbin" ] ; then
-    PATH="/sbin:$PATH"
-fi
-if [ -d "/usr/sbin" ] ; then
-    PATH="/usr/sbin:$PATH"
-fi
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes snaps bin if it exists
-if [ -d "/snap/bin" ] ; then
-    PATH="$PATH:/snap/bin"
-fi
-
-export GOPATH=$HOME/gopath
-export PATH=$GOPATH:$GOPATH/bin:$PATH
 
 # set tty colours.
 if [ "$TERM" = "linux" ]; then
@@ -61,6 +39,3 @@ if [ "$TERM" = "linux" ]; then
     printf "\e]PFffffff" # color15
 #   clear # removes artefacts but also removes /etc/{issue,motd}
 fi
-. "$HOME/.cargo/env"
-
-if [ -e /home/mdupuis/.nix-profile/etc/profile.d/nix.sh ]; then . /home/mdupuis/.nix-profile/etc/profile.d/nix.sh; fi # added by Nix installer

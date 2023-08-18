@@ -8,6 +8,19 @@ function sine_wave() {
 ########################
 # git helper functions #
 ########################
+# git prompt combine state
+function gb() {
+   echo -n '[' && git branch 2>/dev/null | grep '^*' | colrm 1 2 | tr -d '\n' && echo  -n ']'
+}
+
+function git_branch() {
+   gb | sed -r 's/[\[\]]//g'
+}
+
+# Function to show the current branch name
+function git_current_branch() {
+    git branch 2&>1 | grep \* | cut -c 3-
+}
 
 function find_git_branch() {
     # $1 == starting folder

@@ -2,7 +2,7 @@
 alias cls='/usr/bin/clear; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo'
 
 # root privileges
-alias doas="doas --"
+#alias doas="doas --"
 
 # navigation
 alias ..='cd ..'
@@ -16,8 +16,9 @@ alias .5='cd ../../../../..'
 #alias vi='nvim'
 alias v='vim'
 
+
 # bat
-#alias cat='/usr/bin/batcat --style=plain --theme OneHalfDark'
+alias cat='/usr/bin/batcat --style=plain --theme OneHalfDark'
 
 # Changing "ls"
 alias ls='exa --color=always --icons --time-style long-iso'
@@ -26,6 +27,7 @@ alias la='exa -al --color=always --header --icons --group-directories-first --ti
 alias ll='ls -aFlh'
 alias lt='exa -aT --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
 alias ltd='exa -aTD --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
+alias ltd3='exa -aTD --level=3 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
 alias l.='exa -a  --time-style long-iso| egrep "^\."'
 
 # Colorize grep output (good for log files)
@@ -58,11 +60,6 @@ alias pscpu10='ps auxf | sort -nr -k 3 | head -10'
 alias merge='xrdb -merge ~/.Xresources'
 
 # git
-# Function to show the current branch name
-git_current_branch() {
-    git branch 2&>1 | grep \* | cut -c 3-
-}
-
 alias ga='git add'
 alias gaa='git add --all'
 

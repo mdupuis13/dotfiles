@@ -21,7 +21,7 @@ alias v='vim'
 
 
 # bat
-alias cat='/usr/bin/batcat --style=plain --theme OneHalfDark'
+alias cat='/usr/bin/bat --style=plain --theme OneHalfDark'
 
 # Changing "ls"
 alias ls='exa --color=always --icons --time-style long-iso'

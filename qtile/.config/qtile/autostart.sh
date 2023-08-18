@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # change screen layout
-/home/mdupuis/.screenlayout/default.sh
+#/home/mdupuis/.screenlayout/default.sh
 
 # map multimedia keys
 /usr/bin/xbindkeys

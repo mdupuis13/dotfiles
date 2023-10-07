@@ -508,6 +508,9 @@ screens = [
                 foreground=colors["foreground"],
                 **sep_size
             ),
+            widget.Volume(
+                theme_path="/home/mdupuis/src/gitlab/beautyline",
+            ),
             widget.GenPollText(
                 fmt="{}",
                 foreground=colors["purple"],

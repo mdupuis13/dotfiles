@@ -15,23 +15,21 @@ alias .4='cd ../../../..'
 alias .5='cd ../../../../..'
 
 # vim and emacs
-#alias vim='nvim'
-#alias vi='nvim'
 alias v='vim'
+alias vim='nvim'
 
 
 # bat
 alias cat='/usr/bin/bat --style=plain --theme OneHalfDark'
 
 # Changing "ls"
-alias ls='exa --color=always --icons --time-style long-iso'
-alias l='exa -l --color=always --header --icons --group-directories-first --time-style long-iso' # my preferred listing
-alias la='exa -al --color=always --header --icons --group-directories-first --time-style long-iso'  # all files and dirs
-alias ll='ls -aFlh'
-alias lt='exa -aT --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
-alias ltd='exa -aTD --level=2 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
-alias ltd3='exa -aTD --level=3 --color=always --icons --group-directories-first --time-style long-iso' # tree listing
-alias l.='exa -a  --time-style long-iso| egrep "^\."'
+alias ls='lsd --color always --icon always'
+alias l='lsd -l --color always --header --icon always --group-directories-first --date +%Y-%m-%d\ %H:%M' # my preferred listing
+alias la='lsd -al --color always --header --icon always --group-directories-first --date +%Y-%m-%d\ %H:%M'  # all files and dirs
+alias ll='lsd -aFl'
+alias lt='lsd -a --tree --depth 2 --color always --icon always --group-directories-first --date +%Y-%m-%d\ %H:%M' # tree listing
+alias ltd3='lsd -a --tree --depth 3 --color always --icon always --group-directories-first --date +%Y-%m-%d\ %H:%M' # tree listing
+alias l.='lsd -a --date +%Y-%m-%d\ %H:%M | egrep "^\."'
 
 # Colorize grep output (good for log files)
 alias grep='grep --color=auto'

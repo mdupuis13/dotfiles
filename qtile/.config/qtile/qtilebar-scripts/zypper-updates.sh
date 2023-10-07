@@ -2,8 +2,9 @@
 
 prefix=""
 
-nbUpdates=`zypper -t -q list-updates | wc -l`
-#nbUpdates=`eval $(expr $nbUpdates - 3)`
+nbUpdates=`zypper -q list-updates -t package -t patch | wc -l`
+nbUpdates=$(($nbUpdates-5))
+#echo "nbUpdates is $nbUpdates"
 
         foreground="#a3be8c"
         if [ "$nbUpdates" -le 5 ]; then

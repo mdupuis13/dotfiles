@@ -30,7 +30,7 @@ import subprocess
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-#import qtile_extras.widget
+#from qtile_extras.widget import CurrentLayoutIcon
 
 # for debugging purposes
 from libqtile.log_utils import logger
@@ -153,9 +153,8 @@ keys = [
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    # Key [mod]+Alt locks workstation
-    Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"),
-        desc="Lock workstation"),
+    # Key [mod]+Alt+l locks workstation    
+    Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
 
     # Set all floating windows to non-floating mode of a group (Mod + Shift + n)
     Key([mod, "shift"], "n", set_all_float_windows_to_non_floating_mode(),
@@ -281,9 +280,9 @@ screens = [
                 active=colors["foreground"],
                 inactive=colors["foreground_inactive"],
                 other_current_screen_border=colors["border_focus"],
-                other_screen_border=colors["foreground_alt"],
+                other_screen_border=colors["background_alt"],
                 padding_x=5,
-                this_current_screen_border=colors["aqua"],
+                this_current_screen_border=colors["border_focus"],
                 this_screen_border=colors["background_alt"],
                 urgent_border=colors["alert"],
             ),

@@ -109,6 +109,57 @@
     "where": "current",
     "wrap": true
   },
+  "geometry-of-main_window_geometry": {
+    "frame_geometry": {
+      "height": 1414,
+      "width": 3440,
+      "x": 0,
+      "y": 1226
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 1414,
+      "width": 3440,
+      "x": 0,
+      "y": 1226
+    },
+    "maximized": false,
+    "normal_geometry": {
+      "height": 1414,
+      "width": 3440,
+      "x": 0,
+      "y": 1226
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAAAAAAEygAADW8AAApPAAAAAAAABMoAAA1vAAAKTwAAAAAAAAAADXAAAAAAAAAEygAADW8AAApP"
+    },
+    "screen": {
+      "depth": 24,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 3440,
+        "x": 0,
+        "y": 1200
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "Ancor Communications Inc",
+      "model": "ROG PG348Q",
+      "name": "HDMI-A-0",
+      "serial": "K1LMQS104926",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 3440
+      },
+      "virtual_geometry": {
+        "height": 2640,
+        "width": 3440,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
   "import-foreign-geometry": {
     "__class__": "bytearray",
     "__value__": "AdnQywADAAAAAAWjAAACJAAAB7kAAAL4AAAFpAAAAjoAAAe4AAAC9wAAAAAAAAAADXAAAAWkAAACOgAAB7gAAAL3"
@@ -119,7 +170,7 @@
   },
   "main_window_state": {
     "__class__": "bytearray",
-    "__value__": "AAAA/wAAAAD9AAAABAAAAAAAAAEAAAAFHfwCAAAABfsAAAAkAGYAaQBsAGUAcwAtAGIAcgBvAHcAcwBlAHIALQBkAG8AYwBrAQAAAD4AAAUdAAAAWgD////7AAAAHgB0AG8AYwAtAHYAaQBlAHcAZQByAC0AZABvAGMAawAAAAAA/////wAAAFoA////+wAAACAAdABlAHgAdAAtAHMAZQBhAHIAYwBoAC0AZABvAGMAawAAAAAA/////wAAAIAA////+wAAACAAYwBoAGUAYwBrAHAAbwBpAG4AdABzAC0AZABvAGMAawAAAAAA/////wAAAIwA////+wAAACYAcwBhAHYAZQBkAC0AcwBlAGEAcgBjAGgAZQBzAC0AZABvAGMAawAAAAAA/////wAAAhYA////AAAAAQAABHoAAAUd/AIAAAAC+wAAABgAcAByAGUAdgBpAGUAdwAtAGQAbwBjAGsBAAAAPgAABR0AAABTAP////sAAAAaAGwAaQB2AGUALQBjAHMAcwAtAGQAbwBjAGsAAAAAAP////8AAABaAP///wAAAAIAAAAAAAAAAPwBAAAAAfsAAAAeAGMAaABlAGMAawAtAGIAbwBvAGsALQBkAG8AYwBrAAAAAAD/////AAAAkAD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAHABpAG4AcwBwAGUAYwB0AG8AcgAtAGQAbwBjAGsAAAAAAP////8AAAA7AP///wAAASEAAAUdAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAUAGcAbABvAGIAYQBsAC0AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAC0AYgBhAHIBAAABJv////8AAAAAAAAAAAAAABYAcABsAHUAZwBpAG4AcwAtAGIAYQByAAAAAAD/////AAAAAAAAAAA="
+    "__value__": "AAAA/wAAAAD9AAAABAAAAAAAAAEAAAAFMfwCAAAABfsAAAAkAGYAaQBsAGUAcwAtAGIAcgBvAHcAcwBlAHIALQBkAG8AYwBrAQAAAD4AAAUxAAAAWgD////7AAAAHgB0AG8AYwAtAHYAaQBlAHcAZQByAC0AZABvAGMAawAAAAAA/////wAAAFoA////+wAAACAAdABlAHgAdAAtAHMAZQBhAHIAYwBoAC0AZABvAGMAawAAAAAA/////wAAAIAA////+wAAACAAYwBoAGUAYwBrAHAAbwBpAG4AdABzAC0AZABvAGMAawAAAAAA/////wAAAIwA////+wAAACYAcwBhAHYAZQBkAC0AcwBlAGEAcgBjAGgAZQBzAC0AZABvAGMAawAAAAAA/////wAAAhYA////AAAAAQAABHoAAAUx/AIAAAAC+wAAABgAcAByAGUAdgBpAGUAdwAtAGQAbwBjAGsBAAAAPgAABTEAAABTAP////sAAAAaAGwAaQB2AGUALQBjAHMAcwAtAGQAbwBjAGsAAAAAAP////8AAABaAP///wAAAAIAAAAAAAAAAPwBAAAAAfsAAAAeAGMAaABlAGMAawAtAGIAbwBvAGsALQBkAG8AYwBrAAAAAAD/////AAAAkAD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAHABpAG4AcwBwAGUAYwB0AG8AcgAtAGQAbwBjAGsAAAAAAP////8AAAA7AP///wAAB+oAAAUxAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAUAGcAbABvAGIAYQBsAC0AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAC0AYgBhAHIBAAABJv////8AAAAAAAAAAAAAABYAcABsAHUAZwBpAG4AcwAtAGIAYQByAAAAAAD/////AAAAAAAAAAA="
   },
   "recent-books": [
     "/home/mdupuis/Calibre_Library/Bibliothèque/Stefan Zweig/Marie-Antoinette (1870)/Marie-Antoinette - Stefan Zweig.epub",

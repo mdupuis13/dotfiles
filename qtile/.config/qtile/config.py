@@ -228,6 +228,7 @@ layouts = [
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
         border_width=2,
+        single_border_width=0,
         ratio=0.65,
     ),
     layout.Max(),

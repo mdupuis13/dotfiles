@@ -22,5 +22,5 @@ $HOME/bin/backup/bkp-emails.sh
 $HOME/bin/backup/bkp-calibre.sh
 
 # copy to network
-#~/bin/backup/copy-2-network.sh
+$HOME/bin/backup/copy-2-network.sh
 

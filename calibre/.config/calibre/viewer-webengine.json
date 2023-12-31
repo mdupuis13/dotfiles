@@ -1,11 +1,62 @@
 {
+  "geometry-of-main_window_geometry": {
+    "frame_geometry": {
+      "height": 1414,
+      "width": 860,
+      "x": 2578,
+      "y": 1224
+    },
+    "full_screened": false,
+    "geometry": {
+      "height": 1410,
+      "width": 856,
+      "x": 2580,
+      "y": 1226
+    },
+    "maximized": false,
+    "normal_geometry": {
+      "height": 1410,
+      "width": 856,
+      "x": 2580,
+      "y": 1226
+    },
+    "qt": {
+      "__class__": "bytearray",
+      "__value__": "AdnQywADAAAAAAoSAAAEyAAADW0AAApNAAAKFAAABMoAAA1rAAAKSwAAAAAAAAAADXAAAAoUAAAEygAADWsAAApL"
+    },
+    "screen": {
+      "depth": 24,
+      "device_pixel_ratio": 1.0,
+      "geometry_in_logical_pixels": {
+        "height": 1440,
+        "width": 3440,
+        "x": 0,
+        "y": 1200
+      },
+      "index_in_screens_list": 0,
+      "manufacturer": "Ancor Communications Inc",
+      "model": "ROG PG348Q",
+      "name": "HDMI-A-0",
+      "serial": "K1LMQS104926",
+      "size_in_logical_pixels": {
+        "height": 1440,
+        "width": 3440
+      },
+      "virtual_geometry": {
+        "height": 2640,
+        "width": 3440,
+        "x": 0,
+        "y": 0
+      }
+    }
+  },
   "main_window_geometry": {
     "__class__": "bytearray",
     "__value__": "AdnQywADAAAAAAAJAAAE0QAABrEAAApEAAAACgAABNIAAAawAAAKQwAAAAAAAAAADXAAAAAKAAAE0gAABrAAAApD"
   },
   "main_window_state": {
     "__class__": "bytearray",
-    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAEAAAAFcvwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIoA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAmgD///8AAAABAAABAAAABXL8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACEAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAPIA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAFAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAANIA////AAAGpwAABXIAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
+    "__value__": "AAAA/wAAAAH9AAAAAgAAAAAAAAEAAAAFcvwCAAAAAvsAAAAQAHQAbwBjAC0AZABvAGMAawAAAAAA/////wAAAIoA////+wAAABYAcwBlAGEAcgBjAGgALQBkAG8AYwBrAAAAAAD/////AAAAmgD///8AAAABAAABAAAABXL8AgAAAAT7AAAAFgBsAG8AbwBrAHUAcAAtAGQAbwBjAGsAAAAAAP////8AAACEAP////sAAAAcAGIAbwBvAGsAbQBhAHIAawBzAC0AZABvAGMAawAAAAAA/////wAAAPIA////+wAAABwAaQBuAHMAcABlAGMAdABvAHIALQBkAG8AYwBrAAAAAAD/////AAAAFAD////7AAAAHgBoAGkAZwBoAGwAaQBnAGgAdABzAC0AZABvAGMAawAAAAAA/////wAAANIA////AAADWAAABYIAAAAEAAAABAAAAAgAAAAI/AAAAAEAAAAAAAAAAQAAAB4AYQBjAHQAaQBvAG4AcwBfAHQAbwBvAGwAYgBhAHICAAAAAP////8AAAAAAAAAAA=="
   },
   "old_prefs_migrated": true,
   "saved-search-settings": {
@@ -43,6 +94,23 @@
       "singleinstance": false
     },
     "standalone_recently_opened": [
+      {
+        "key": "/home/mdupuis/src/github/pelican-theme-elegant/documentation/README.md",
+        "pathtoebook": "/home/mdupuis/src/github/pelican-theme-elegant/documentation/README.md",
+        "timestamp": "2023-11-12T18:10:22.502Z",
+        "title": "README"
+      },
+      {
+        "authors": [
+          "Robert Jordan",
+          "Teresa Patterson",
+          "Todd Cameron Hamilton"
+        ],
+        "key": "/home/mdupuis/Downloads/torrents/Robert Jordan - Wheel of Time [Complete Series 00-14 + Extras][EPUB+MOBI+PDF]/Robert Jordan - Wheel of Time [Complete Series 00-14 + Extras][EPUB+MOBI+PDF]/EPUB/A Companion - The World of Robert Jordan's the Wheel of Time.epub",
+        "pathtoebook": "/home/mdupuis/Downloads/torrents/Robert Jordan - Wheel of Time [Complete Series 00-14 + Extras][EPUB+MOBI+PDF]/Robert Jordan - Wheel of Time [Complete Series 00-14 + Extras][EPUB+MOBI+PDF]/EPUB/A Companion - The World of Robert Jordan's the Wheel of Time.epub",
+        "timestamp": "2023-10-09T13:22:25.662Z",
+        "title": "The World of Robert Jordan's the Wheel of Time"
+      },
       {
         "authors": [
           "Stefan Zweig"
@@ -249,24 +317,6 @@
         "pathtoebook": "/home/mdupuis/Calibre_Library/Star Wars/John Jackson Miller/Book 1 - The Collected Stories (474)/Book 1 - The Collected Stories - John Jackson Miller.epub",
         "timestamp": "2021-10-16T01:40:17.507Z",
         "title": "Book 1 - The Collected Stories"
-      },
-      {
-        "authors": [
-          "John Jackson Miller"
-        ],
-        "key": "/home/mdupuis/Calibre_Library/Star Wars/John Jackson Miller/Star Wars_ Lost Tribe of the Sith_ Savior (657)/Star Wars_ Lost Tribe of the Sith_ Savior - John Jackson Miller.mobi",
-        "pathtoebook": "/home/mdupuis/Calibre_Library/Star Wars/John Jackson Miller/Star Wars_ Lost Tribe of the Sith_ Savior (657)/Star Wars_ Lost Tribe of the Sith_ Savior - John Jackson Miller.mobi",
-        "timestamp": "2021-10-16T01:20:12.150Z",
-        "title": "Star Wars: Savior"
-      },
-      {
-        "authors": [
-          "Dave Wolverton"
-        ],
-        "key": "/home/mdupuis/Calibre_Library/Star Wars/Dave Wolverton/Book 01 - The Rising Force (293)/Book 01 - The Rising Force - Dave Wolverton.epub",
-        "pathtoebook": "/home/mdupuis/Calibre_Library/Star Wars/Dave Wolverton/Book 01 - The Rising Force (293)/Book 01 - The Rising Force - Dave Wolverton.epub",
-        "timestamp": "2021-10-16T00:25:03.461Z",
-        "title": "Book 01 - The Rising Force"
       }
     ],
     "user_color_schemes": {

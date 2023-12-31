@@ -30,7 +30,7 @@ import subprocess
 from libqtile import bar, hook, layout, widget
 from libqtile.config import Click, Drag, Group, Key, Match, Screen
 from libqtile.lazy import lazy
-#from qtile_extras.widget import CurrentLayoutIcon
+from qtile_extras.widget import CurrentLayoutIcon as ExtraLayoutIcon
 
 # for debugging purposes
 from libqtile.log_utils import logger
@@ -266,13 +266,13 @@ screens = [
                     fontsize=46,
                     foreground=colors["green"],
                     ),
-            widget.CurrentLayoutIcon(
-            ),
-#            qtile_extras.widget.CurrentLayoutIcon(
-#                # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
-#                foreground=colors["foreground"],
-#                use_mask=True
+#            widget.CurrentLayoutIcon(
 #            ),
+            ExtraLayoutIcon(
+                # custom_icon_paths="/home/mdupuis/src/gitlab/beautyline",
+                foreground=colors["foreground"],
+                use_mask=True
+            ),
             widget.GroupBox(
                 disable_drag=True,
                 # highlight_method [block, text, line]
@@ -475,12 +475,12 @@ screens = [
                     fontsize=46,
                     foreground=colors["green"],
                     ),
-            widget.CurrentLayoutIcon(
-             ),
-#            qtile_extras.widget.currentlayout.CurrentLayoutIcon(
-#                foreground=colors["foreground_inactive"],
-#                use_mask=True
-#            ),
+#            widget.CurrentLayoutIcon(
+#             ),
+            ExtraLayoutIcon(
+                foreground=colors["foreground"],
+                use_mask=True
+            ),
             widget.Sep(
                 foreground=colors["foreground_inactive"],
                 **sep_size

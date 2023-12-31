@@ -112,27 +112,27 @@
   "geometry-of-main_window_geometry": {
     "frame_geometry": {
       "height": 1414,
-      "width": 3440,
-      "x": 0,
-      "y": 1226
+      "width": 860,
+      "x": 2578,
+      "y": 1224
     },
     "full_screened": false,
     "geometry": {
-      "height": 1414,
-      "width": 3440,
-      "x": 0,
+      "height": 1410,
+      "width": 856,
+      "x": 2580,
       "y": 1226
     },
     "maximized": false,
     "normal_geometry": {
-      "height": 1414,
-      "width": 3440,
-      "x": 0,
+      "height": 1410,
+      "width": 856,
+      "x": 2580,
       "y": 1226
     },
     "qt": {
       "__class__": "bytearray",
-      "__value__": "AdnQywADAAAAAAAAAAAEygAADW8AAApPAAAAAAAABMoAAA1vAAAKTwAAAAAAAAAADXAAAAAAAAAEygAADW8AAApP"
+      "__value__": "AdnQywADAAAAAAoSAAAEyAAADW0AAApNAAAKFAAABMoAAA1rAAAKSwAAAAAAAAAADXAAAAoUAAAEygAADWsAAApL"
     },
     "screen": {
       "depth": 24,
@@ -170,9 +170,10 @@
   },
   "main_window_state": {
     "__class__": "bytearray",
-    "__value__": "AAAA/wAAAAD9AAAABAAAAAAAAAEAAAAFMfwCAAAABfsAAAAkAGYAaQBsAGUAcwAtAGIAcgBvAHcAcwBlAHIALQBkAG8AYwBrAQAAAD4AAAUxAAAAWgD////7AAAAHgB0AG8AYwAtAHYAaQBlAHcAZQByAC0AZABvAGMAawAAAAAA/////wAAAFoA////+wAAACAAdABlAHgAdAAtAHMAZQBhAHIAYwBoAC0AZABvAGMAawAAAAAA/////wAAAIAA////+wAAACAAYwBoAGUAYwBrAHAAbwBpAG4AdABzAC0AZABvAGMAawAAAAAA/////wAAAIwA////+wAAACYAcwBhAHYAZQBkAC0AcwBlAGEAcgBjAGgAZQBzAC0AZABvAGMAawAAAAAA/////wAAAhYA////AAAAAQAABHoAAAUx/AIAAAAC+wAAABgAcAByAGUAdgBpAGUAdwAtAGQAbwBjAGsBAAAAPgAABTEAAABTAP////sAAAAaAGwAaQB2AGUALQBjAHMAcwAtAGQAbwBjAGsAAAAAAP////8AAABaAP///wAAAAIAAAAAAAAAAPwBAAAAAfsAAAAeAGMAaABlAGMAawAtAGIAbwBvAGsALQBkAG8AYwBrAAAAAAD/////AAAAkAD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAHABpAG4AcwBwAGUAYwB0AG8AcgAtAGQAbwBjAGsAAAAAAP////8AAAA7AP///wAAB+oAAAUxAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAUAGcAbABvAGIAYQBsAC0AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAC0AYgBhAHIBAAABJv////8AAAAAAAAAAAAAABYAcABsAHUAZwBpAG4AcwAtAGIAYQByAAAAAAD/////AAAAAAAAAAA="
+    "__value__": "AAAA/wAAAAD9AAAABAAAAAAAAABGAAAFLfwCAAAABfsAAAAkAGYAaQBsAGUAcwAtAGIAcgBvAHcAcwBlAHIALQBkAG8AYwBrAQAAAD4AAAUtAAAAWgD////7AAAAHgB0AG8AYwAtAHYAaQBlAHcAZQByAC0AZABvAGMAawAAAAAA/////wAAAFoA////+wAAACAAdABlAHgAdAAtAHMAZQBhAHIAYwBoAC0AZABvAGMAawAAAAAA/////wAAAIAA////+wAAACAAYwBoAGUAYwBrAHAAbwBpAG4AdABzAC0AZABvAGMAawAAAAAA/////wAAAIwA////+wAAACYAcwBhAHYAZQBkAC0AcwBlAGEAcgBjAGgAZQBzAC0AZABvAGMAawAAAAAA/////wAAAhYA////AAAAAQAAAocAAAUt/AIAAAAC+wAAABgAcAByAGUAdgBpAGUAdwAtAGQAbwBjAGsBAAAAPgAABS0AAABTAP////sAAAAaAGwAaQB2AGUALQBjAHMAcwAtAGQAbwBjAGsAAAAAAP////8AAABaAP///wAAAAIAAAAAAAAAAPwBAAAAAfsAAAAeAGMAaABlAGMAawAtAGIAbwBvAGsALQBkAG8AYwBrAAAAAAD/////AAAAkAD///8AAAADAAAAAAAAAAD8AQAAAAH7AAAAHABpAG4AcwBwAGUAYwB0AG8AcgAtAGQAbwBjAGsAAAAAAP////8AAAA7AP///wAAAH8AAAUtAAAABAAAAAQAAAAIAAAACPwAAAABAAAAAgAAAAMAAAAUAGcAbABvAGIAYQBsAC0AYgBhAHIBAAAAAP////8AAAAAAAAAAAAAABIAdABvAG8AbABzAC0AYgBhAHIBAAABJv////8AAAAAAAAAAAAAABYAcABsAHUAZwBpAG4AcwAtAGIAYQByAAAAAAD/////AAAAAAAAAAA="
   },
   "recent-books": [
+    "/home/mdupuis/Downloads/torrents/Robert Jordan - Wheel of Time [Complete Series 00-14 + Extras][EPUB+MOBI+PDF]/Robert Jordan - Wheel of Time [Complete Series 00-14 + Extras][EPUB+MOBI+PDF]/EPUB/A Companion - The World of Robert Jordan's the Wheel of Time.epub",
     "/home/mdupuis/Calibre_Library/Bibliothèque/Stefan Zweig/Marie-Antoinette (1870)/Marie-Antoinette - Stefan Zweig.epub",
     "/home/mdupuis/Documents/Photo/toread/linux-photography.epub"
   ],

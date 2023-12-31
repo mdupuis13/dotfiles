@@ -31,7 +31,7 @@ gnome-keyring-daemon --replace --components=pkcs11,secrets,ssh &
 # redshift-gtk &
 
 # desktop locking program "daemon"
-/usr/bin/light-locker &
+# /usr/bin/light-locker &
 
 
 qbittorrent --no-splash &

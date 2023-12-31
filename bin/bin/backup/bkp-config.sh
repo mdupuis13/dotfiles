@@ -3,4 +3,5 @@
 
 echo "Création de l'archive des sources de apt"
 
-tar -c --file="$HOME/backup/apt_sources_list.tar" -C/etc/apt sources.list sources.list.d
+# for debian
+# tar -c --file="$HOME/backup/apt_sources_list.tar" -C/etc/apt sources.list sources.list.d

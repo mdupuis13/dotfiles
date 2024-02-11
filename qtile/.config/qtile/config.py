@@ -97,8 +97,6 @@ my_terminal = "/usr/bin/kitty"
 
 # Thanks for your code alvaro-jmp !!!
 # https://gist.github.com/alvaro-jmp/95bfdff559f85f4c5d0cb04855832894#file-config-py
-
-
 @lazy.function
 def set_all_float_windows_to_non_floating_mode(qtile):
     for window in qtile.current_group.windows:
@@ -114,51 +112,44 @@ keys = [
     Key([mod], "l", lazy.layout.right(), desc="Move focus to right"),
     Key([mod], "j", lazy.layout.down(), desc="Move focus down"),
     Key([mod], "k", lazy.layout.up(), desc="Move focus up"),
-    Key([mod], "space", lazy.layout.next(),
-        desc="Move window focus to other window"),
+    Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(),
-        desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(),
-        desc="Move window to the right"),
+    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
+    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control", "mod1"], "h", lazy.layout.grow(), desc="Grow window"),
     Key([mod, "control", "mod1"], "l", lazy.layout.shrink(), desc="Shrink window"),
-    Key([mod, "control"], "h", lazy.layout.grow_left(),
-        desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(),
-        desc="Grow window to the right"),
+    Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
+    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
     # Toggle between split and unsplit sides of stack.
     # Split = all windows displayed
     # Unsplit = 1 window displayed, like Max layout, but still with multiple stack panes
-    Key([mod, "shift"], "Return", lazy.layout.toggle_split(),
-        desc="Toggle between split and  unsplit sides of stack"),
-    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(),
-        desc="Toggle between real fullscreen and in-viewport fullscreen"),
+    Key([mod, "shift"], "Return", lazy.layout.toggle_split(), desc="Toggle between split and  unsplit sides of stack"),
+    Key([mod, "shift"], "f", lazy.window.toggle_fullscreen(), desc="Toggle between real fullscreen and in-viewport fullscreen"),
     Key([mod, "shift"], "space", lazy.layout.flip()),
 
     Key([mod], "Return", lazy.spawn(my_terminal), desc="Launch terminal"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], 'period', lazy.next_screen(), desc='Next monitor'),
-    Key([mod], 'comma', lazy.prev_screen(), desc='Next monitor'),
+    Key([mod], 'comma', lazy.prev_screen(), desc='Previous monitor'),
     Key([mod], "q", lazy.window.kill(), desc="Kill focused window"),
     # Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
-    Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
+    Key([mod], "t", lazy.window.toggle_floating(), desc="Toggle floating on the focused window"),
+    Key([mod, "control"], "x", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
-    # Key [mod]+Alt+l locks workstation    
-    Key([mod, "mod1"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
+    # Key [mod]+Control+l locks workstation    
+    Key([mod, "control"], 'l', lazy.spawn("/usr/bin/light-locker-command -l"), desc="Lock workstation"),
 
     # Set all floating windows to non-floating mode of a group (Mod + Shift + n)
-    Key([mod, "shift"], "n", set_all_float_windows_to_non_floating_mode(),
-        desc="Set all floating windows to non-floating mode of a group"),
+    Key([mod, "shift"], "n", set_all_float_windows_to_non_floating_mode(), desc="Set all floating windows to non-floating mode of a group"),
 
     ############################
     # MD custom application keybinds
@@ -169,40 +160,55 @@ keys = [
 
 ]
 
+# Add key bindings to switch VTs in Wayland.
+# We can't check qtile.core.name in default config as it is loaded before qtile is started
+# We therefore defer the check until the key binding is run by using .when(func=...)
+for vt in range(1, 8):
+    keys.append(
+        Key(
+            ["control", "mod1"],
+            f"f{vt}",
+            lazy.core.change_vt(vt).when(func=lambda: qtile.core.name == "wayland"),
+            desc=f"Switch to VT{vt}",
+        )
+    )
+
+
 groups = [Group("1", label='󰬺'),
-          Group("2", label='󰬻', layout="monadtall"),
+          Group("2", label='󰬻', layout="max"),
           Group("3", label='󰬼'),
           Group("4", label='󰬽'),
           Group("5", label='󰬾'),
           Group("6", label='󰬿'),
           Group("7", label='󰭀'),
-          Group("8", label='󰭁', layout="max")
+          Group("8", label='󰭁')
           ]
 
 for i in groups:
     keys.extend(
         [
-            # mod1 + letter of group = switch to group
+            # mod1 + group number = switch to group
             Key(
                 [mod],
                 i.name,
                 lazy.group[i.name].toscreen(),
                 desc="Switch to group {}".format(i.name),
             ),
-            # mod1 + shift + letter of group = switch to & move focused window to group
-            # Key(
-            #     [mod, "shift"],
-            #     i.name,
-            #     lazy.window.togroup(i.name, switch_group=True),
-            #     desc="Switch to & move focused window to group {}".format(i.name),
-            # ),
+            # mod1 + shift + group number = switch to & move focused window to group
+            #Key(
+            #    [mod, "shift"],
+            #    i.name,
+            #    lazy.window.togroup(i.name, switch_group=True),
+            #    desc="Switch to & move focused window to group {}".format(i.name),
+            #),
             # Or, use below if you prefer not to switch to that group.
-            # mod1 + shift + letter of group = move focused window to group
+            # # mod1 + shift + group number = move focused window to group
             Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-                desc="Move focused window to group {}".format(i.name)),
+                 desc="move focused window to group {}".format(i.name)),
         ]
     )
 
+    
 layouts = [
     # layout.Columns(
     #     border_focus=colors["border_focus"],
@@ -213,25 +219,28 @@ layouts = [
     #     insert_position=1,  # 0 means right above the current window, 1 means right after
     #     margin=0
     # ),
-    layout.MonadThreeCol(
-        border_focus=colors["border_focus"],
-        border_normal=colors["border_normal"],
-        border_width=2,
-        margin=0,
-        single_border_width=0,
-        # single_margin=[5, 440, 5, 440],
-        main_centered=True,
-        min_ratio=0.45,
-        new_client_position="bottom"
-    ),
     layout.MonadTall(
         border_focus=colors["border_focus"],
         border_normal=colors["border_normal"],
         border_width=2,
         single_border_width=0,
-        ratio=0.65,
+        max_ratio=0.85,
+        ratio=0.70,
+ 
     ),
     layout.Max(),
+    #layout.MonadThreeCol(
+    #    border_focus=colors["border_focus"],
+    #    border_normal=colors["border_normal"],
+    #    border_width=2,
+    #    margin=0,
+    #    single_border_width=0,
+    #    # single_margin=[5, 440, 5, 440],
+    #    main_centered=True,
+    #    min_ratio=0.45,
+    #    ratio=0.65,
+    #    new_client_position="after_current"
+    #),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
     # layout.Bsp(),
@@ -310,6 +319,22 @@ screens = [
                 widgets=[
                     widget.DF(
                         foreground=colors["purple"],
+                        format="<span size=\"26pt\" rise=\"-6pt\">󰿟</span> {r:.0f}%({s}{m})",
+                        partition="/",
+                        update_interval=600,
+                        visible_on_warn=False,
+                    ),
+                    widget.HDDBusyGraph(
+                        border_color=colors["purple"],
+                        border_width=1,
+                        device="b1lrcs65",
+                        fill_color=colors["purple"],
+                        foreground=colors["purple"],
+                        graph_color=colors["blue"],
+                        line_width=2,
+                    ),
+                    widget.DF(
+                        foreground=colors["purple"],
                         format="<span size=\"26pt\" rise=\"-6pt\"></span> {r:.0f}%({s}{m})",
                         partition="/home",
                         update_interval=600,
@@ -318,7 +343,7 @@ screens = [
                     widget.HDDBusyGraph(
                         border_color=colors["purple"],
                         border_width=1,
-                        device="nvme1n1p1",
+                        device="nvme1n1",
                         fill_color=colors["purple"],
                         foreground=colors["purple"],
                         graph_color=colors["blue"],
@@ -330,7 +355,7 @@ screens = [
                     ),
                     widget.DF(
                         foreground=colors["purple"],
-                        format="Photo {r:.0f}%({s}{m})",
+                        format="<span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({s}{m})",
                         partition="/home/mdupuis/Photographie",
                         update_interval=600,
                         visible_on_warn=False,
@@ -338,7 +363,7 @@ screens = [
                     widget.HDDBusyGraph(
                         border_color=colors["purple"],
                         border_width=1,
-                        device="sda2",
+                        device="sda",
                         fill_color=colors["purple"],
                         foreground=colors["purple"],
                         graph_color=colors["blue"],
@@ -537,13 +562,10 @@ screens = [
     )
 ]
 
-
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(),
-         start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(),
-         start=lazy.window.get_size()),
+    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
+    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -588,7 +610,6 @@ wl_input_rules = None
 # We choose LG3D to maximize irony: it is a 3D non-reparenting WM written in
 # java that happens to be on java's whitelist.
 wmname = "LG3D"
-
 
 @hook.subscribe.startup_once
 def start_once():

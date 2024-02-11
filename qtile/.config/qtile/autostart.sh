@@ -2,18 +2,24 @@
 
 # change screen layout
 #sleep 1
-autorandr desktop
-#/home/mdupuis/.screenlayout/default.sh
+echo Changing screen layout...
+/home/mdupuis/.screenlayout/default.sh
 
-# map multimedia keys
+echo Setting backgrounds
+#sleep 0.5
+nitrogen --restore
+
+echo map multimedia keys
 /usr/bin/xbindkeys &
 
+echo lxsession start
 lxsession &
 # or 
 #dex, DesktopEntry Execution, is a program to generate and execute DesktopEntry files of the Application type.
-dex -va &
+echo dex autostart
+dex --autostart &
 
-# start gnome-keyring 
+echo start gnome-keyring 
 # It should start from PAM (/etc/pam.d) or even /etc/xdg/autostart (via dex), but apparently it does not
 gnome-keyring-daemon --replace --components=pkcs11,secrets,ssh &
 
@@ -21,18 +27,15 @@ gnome-keyring-daemon --replace --components=pkcs11,secrets,ssh &
 #if [ -x "$(command -v compton)" ]; then
 #  compton &> /dev/null & 
 #elif [ -x "$(command -v picom)" ]; then
+picom -b
 #  picom -b --experimental-backends --animations --animation-window-mass 0.5 --animation-for-open-window zoom --animation-stiffness 350 & 2>&1 /dev/null
 #fi
-
-#set background
-#nitrogen --restore
 
 # use redshift to shift colors at night
 # redshift-gtk &
 
 # desktop locking program "daemon"
-# /usr/bin/light-locker &
-
+/usr/bin/light-locker &
 
 qbittorrent --no-splash &
 solaar --window=hide &

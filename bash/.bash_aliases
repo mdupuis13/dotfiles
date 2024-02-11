@@ -2,7 +2,8 @@
 # This file needs .bash_functions to work
 
 # spark aliases
-alias cls='/usr/bin/clear; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo'
+#alias cls='/usr/bin/clear; echo; seq 1 $(tput cols) | sort -R | spark | lolcat; echo'
+alias cls='/usr/bin/clear; echo; seq 1 $(tput cols) | sort -R | spark; echo'
 
 # root privileges
 #alias doas="doas --"

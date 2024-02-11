@@ -13,7 +13,7 @@ fi
 
 
 # apt config
-$HOME/bin/backup/bkp-config.sh
+# $HOME/bin/backup/bkp-config.sh
 
 # email
 $HOME/bin/backup/bkp-emails.sh

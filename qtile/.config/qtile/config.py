@@ -228,6 +228,7 @@ layouts = [
         ratio=0.70,
  
     ),
+    layout.Matrix(),
     layout.Max(),
     #layout.MonadThreeCol(
     #    border_focus=colors["border_focus"],
@@ -327,15 +328,16 @@ screens = [
                     widget.HDDBusyGraph(
                         border_color=colors["purple"],
                         border_width=1,
-                        device="b1lrcs65",
+                        device="nvme0n1",
                         fill_color=colors["purple"],
                         foreground=colors["purple"],
+                        frequency=2,
                         graph_color=colors["blue"],
                         line_width=2,
                     ),
                     widget.DF(
                         foreground=colors["purple"],
-                        format="<span size=\"26pt\" rise=\"-6pt\"></span> {r:.0f}%({s}{m})",
+                        format=" <span size=\"26pt\" rise=\"-6pt\"></span> {r:.0f}%({s}{m})",
                         partition="/home",
                         update_interval=600,
                         visible_on_warn=False,
@@ -346,16 +348,17 @@ screens = [
                         device="nvme1n1",
                         fill_color=colors["purple"],
                         foreground=colors["purple"],
+                        frequency=2,
                         graph_color=colors["blue"],
                         line_width=2,
                     ),
-                    widget.TextBox(
-                        '',
-                        foreground=colors["purple"],
-                    ),
+                    # widget.TextBox(
+                    #     '',
+                    #     foreground=colors["purple"],
+                    # ),
                     widget.DF(
                         foreground=colors["purple"],
-                        format="<span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({s}{m})",
+                        format=" <span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({s}{m})",
                         partition="/home/mdupuis/Photographie",
                         update_interval=600,
                         visible_on_warn=False,
@@ -366,6 +369,7 @@ screens = [
                         device="sda",
                         fill_color=colors["purple"],
                         foreground=colors["purple"],
+                        frequency=2,
                         graph_color=colors["blue"],
                         line_width=2,
                     ),

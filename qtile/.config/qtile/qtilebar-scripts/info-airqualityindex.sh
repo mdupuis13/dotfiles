@@ -37,7 +37,7 @@ if [ -n "$aqi" ]; then
         else foreground="#ef3d59"
         fi
 
-        echo -n "<span foreground=\"$foreground\"><span size=\"16pt\" rise=\"-2pt\">$prefix</span> $aqi</span>"
+        echo -n "<span foreground=\"$foreground\"><span size=\"20pt\" rise=\"-4pt\">$prefix</span> $aqi</span>"
     else
         echo -n "$aqi" | jq -r '.data'
     fi

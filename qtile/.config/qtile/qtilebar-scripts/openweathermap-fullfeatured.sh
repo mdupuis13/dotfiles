@@ -133,9 +133,9 @@ if [ -n "$current" ] && [ -n "$forecast" ]; then
     now=$(date +%s)
 
     if [ "$sun_set" -gt "$now" ]; then
-        daytime="<span size=\"26pt\" rise=\"-6pt\"></span>$(format_epoch_time "$sun_set")"
+        daytime="<span size=\"30pt\" rise=\"-8pt\"></span>$(format_epoch_time "$sun_set")"
     else
-        daytime="<span size=\"26pt\" rise=\"-2pt\"></span>$(format_epoch_time "$sun_rise")"
+        daytime="<span size=\"30pt\" rise=\"-8pt\"></span>$(format_epoch_time "$sun_rise")"
     fi
 
     echo -n "<span size=\"26pt\" rise=\"-6pt\">$(get_icon "$current_icon")</span> $current_temp$SYMBOL <span size=\"26pt\" rise=\"-6pt\">$trend$(get_icon "$forecast_icon")</span> $forecast_temp$SYMBOL  $daytime"

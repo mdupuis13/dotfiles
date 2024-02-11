@@ -352,10 +352,6 @@ screens = [
                         graph_color=colors["blue"],
                         line_width=2,
                     ),
-                    # widget.TextBox(
-                    #     '',
-                    #     foreground=colors["purple"],
-                    # ),
                     widget.DF(
                         foreground=colors["purple"],
                         format=" <span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({s}{m})",
@@ -402,7 +398,7 @@ screens = [
             widget.ThermalSensor(
                 foreground=colors["blue"],
                 foreground_alert=colors["alert"],
-                format="  󰡁 {temp:.1f}℃",
+                format="  <span size=\"26pt\" rise=\"-6pt\">󰢮</span> {temp:.1f}℃",
                 tag_sensor='edge',
                 threshold=75,
             ),

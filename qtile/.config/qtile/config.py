@@ -228,7 +228,7 @@ layouts = [
         ratio=0.70,
  
     ),
-    layout.Matrix(),
+    # layout.Matrix(),
     layout.Max(),
     #layout.MonadThreeCol(
     #    border_focus=colors["border_focus"],
@@ -248,7 +248,12 @@ layouts = [
     # layout.Matrix(),
     # layout.MonadWide(),
     # layout.RatioTile(),
-    # layout.Tile(),
+    layout.Tile(
+         shift_windows=True,
+         border_width = 0,
+         margin = 0,
+         ratio = 0.335,
+         ),
     # layout.TreeTab(),
     # layout.VerticalTile(),
     # layout.Zoomy(),
@@ -384,7 +389,7 @@ screens = [
                 foreground=colors["blue"],
                 foreground_alert=colors["alert"],
                 format="{temp:.1f}℃",
-                tag_sensor='CPUTIN',
+                tag_sensor='TSI0_TEMP',
                 threshold=75,
             ),
             widget.Memory(

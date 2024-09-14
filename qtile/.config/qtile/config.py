@@ -181,7 +181,7 @@ groups = [Group("1", label='󰬺'),
           Group("5", label='󰬾'),
           Group("6", label='󰬿'),
           Group("7", label='󰭀'),
-          Group("8", label='󰭁')
+          Group("8", label='󰭁', layout="tile")
           ]
 
 for i in groups:
@@ -249,10 +249,10 @@ layouts = [
     # layout.MonadWide(),
     # layout.RatioTile(),
     layout.Tile(
-         shift_windows=True,
+        #  shift_windows=True,
          border_width = 0,
          margin = 0,
-         ratio = 0.335,
+         ratio = 0.75,
          ),
     # layout.TreeTab(),
     # layout.VerticalTile(),
@@ -395,7 +395,7 @@ screens = [
             widget.Memory(
                 #font="Font Awesome 6 Free Solid",
                 foreground=colors["blue"],
-                format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemUsed:.2f}G => {MemPercent:.0f}%",
+                format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemPercent:.0f}%",
                 markup=True,
                 measure_mem='G',
                 update_interval=2,

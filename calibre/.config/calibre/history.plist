@@ -22,6 +22,7 @@
 	</array>
 	<key>lineedit_history_viewer-search-panel-expression</key>
 	<array>
+		<string>stream</string>
 		<string>chapter</string>
 		<string>chapter 15</string>
 	</array>

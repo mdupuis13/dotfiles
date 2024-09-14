@@ -1,8 +1,11 @@
-bin/bin/idea-IC-223.8836.41
+bin/bin/appimages
 calibre/.config/calibre/fonts/scanner_cache.json
 calibre/.config/calibre/dynamic.pickle.json
 calibre/.config/calibre/gui.json
 calibre/.config/calibre/gui.py.json
+calibre/.config/calibre/tweak_book_gui.json
+calibre/.config/calibre/viewer-webengine.json
+calibre/.config/calibre/viewer/annots
 qBittorrent/.config/qBittorrent/qBittorrent-data.conf
 qBittorrent/.config/qBittorrent/qBittorrent.conf
 qBittorrent/.config/qBittorrent/lockfile

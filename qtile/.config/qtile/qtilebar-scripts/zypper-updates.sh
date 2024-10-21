@@ -2,20 +2,21 @@
 
 prefix=""
 
-nbUpdates=`zypper -q list-updates -t package -t patch | wc -l`
-nbUpdates=$(($nbUpdates-5))
+#nbUpdates=`zypper -q list-updates -t package -t patch | wc -l`
+nbUpdates=`pkcon get-updates | grep "Enhancement" | wc -l`
+#nbUpdates=$(($nbUpdates-5))
 #echo "nbUpdates is $nbUpdates"
 
         foreground="#a3be8c"
-        if [ "$nbUpdates" -le 5 ]; then
+        if [ "$nbUpdates" -le 250 ]; then
             foreground="#a3be8c"
-        elif [ "$nbUpdates" -le 10 ]; then
+        elif [ "$nbUpdates" -le 400 ]; then
             foreground="#e5c07b"
-        elif [ "$nbUpdates" -le 15 ]; then
+        elif [ "$nbUpdates" -le 500 ]; then
             foreground="#fab387"
-        elif [ "$nbUpdates" -le 20 ]; then
+        elif [ "$nbUpdates" -le 600 ]; then
             foreground="#e06c75"
-        elif [ "$nbUpdates" -le 30 ]; then
+        elif [ "$nbUpdates" -le 750 ]; then
             foreground="#c678dd"
         else foreground="#ef3d59"
         fi

@@ -91,7 +91,7 @@ colors = _onedark_theme
 mod = "mod4"
 my_browser = "/usr/bin/firefox"
 #my_browser = "flatpak run org.mozilla.firefox"
-my_email_client = "/usr/bin/claws-mail"
+my_email_client = "/usr/bin/thunderbird"
 my_filemanager = "/usr/bin/thunar"
 my_terminal = "/usr/bin/kitty"
 
@@ -175,13 +175,13 @@ for vt in range(1, 8):
 
 
 groups = [Group("1", label='󰬺'),
-          Group("2", label='󰬻', layout="max"),
+          Group("2", label='󰬻', layout="tile"),
           Group("3", label='󰬼'),
           Group("4", label='󰬽'),
           Group("5", label='󰬾'),
           Group("6", label='󰬿'),
           Group("7", label='󰭀'),
-          Group("8", label='󰭁', layout="tile")
+          Group("8", label='󰭁', layout="max")
           ]
 
 for i in groups:

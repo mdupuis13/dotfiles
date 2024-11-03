@@ -91,7 +91,8 @@ colors = _onedark_theme
 mod = "mod4"
 my_browser = "/usr/bin/firefox"
 # my_browser = "flatpak run org.mozilla.firefox"
-my_email_client = "/usr/bin/thunderbird"
+my_email_client = "/usr/bin/claws-mail"
+#my_email_client = "/usr/bin/thunderbird"
 my_filemanager = "/usr/bin/thunar"
 my_terminal = "/usr/bin/kitty"
 
@@ -433,7 +434,7 @@ screens = [
             widget.WidgetBox(
                 close_button_location="left",
                 foreground=colors["blue"],
-                fontsize=36,
+                fontsize=40,
                 text_closed=" 󰢮",
                 text_open=" 󰢮",
                 widgets=[

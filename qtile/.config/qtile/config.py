@@ -421,7 +421,7 @@ screens = [
                 foreground_alert=colors["alert"],
                 format="{temp:.1f}℃",
                 tag_sensor='TSI0_TEMP',
-                threshold=75,
+                threshold=80,
             ),
             widget.Memory(
                 # font="Font Awesome 6 Free Solid",
@@ -460,7 +460,7 @@ screens = [
                 foreground_alert=colors["alert"],
                 format="{temp:.1f}℃",
                 tag_sensor='edge',
-                threshold=75,
+                threshold=70,
             ),
             widget.Sep(
                 foreground=colors["blue"],

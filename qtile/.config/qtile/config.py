@@ -195,7 +195,7 @@ groups = [Group("1", label='󰬺'),
           Group("4", label='󰬽'),
           Group("5", label='󰬾'),
           Group("6", label='󰬿'),
-          Group("7", label='󰭀'),
+          Group("7", label='󰭀', layout="tile"),
           Group("8", label='󰭁', layout="max")
           ]
 
@@ -241,7 +241,6 @@ layouts = [
         single_border_width=0,
         max_ratio=0.85,
         ratio=0.70,
-
     ),
     # layout.Matrix(),
     layout.Max(),

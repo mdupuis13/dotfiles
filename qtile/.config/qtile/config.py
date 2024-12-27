@@ -373,6 +373,23 @@ screens = [
                     ),
                     widget.DF(
                         foreground=colors["purple"],
+                        format="<span size=\"26pt\" rise=\"-6pt\"> 󰊗</span> {r:.0f}%({s}{m})",
+                        partition="/home/mdupuis/Games",
+                        update_interval=600,
+                        visible_on_warn=False,
+                    ),
+                    widget.HDDBusyGraph(
+                        border_color=colors["purple"],
+                        border_width=0,
+                        device="sdb",
+                        # fill_color=colors["purple"],
+                        foreground=colors["purple"],
+                        frequency=2,
+                        graph_color=colors["blue"],
+                        line_width=2,
+                    ),
+                    widget.DF(
+                        foreground=colors["purple"],
                         format=" <span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({s}{m})",
                         partition="/home/mdupuis/Photographie",
                         update_interval=600,

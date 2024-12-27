@@ -4,6 +4,7 @@
 #sleep 1
 echo Changing screen layout...
 /home/mdupuis/.screenlayout/default-dp2.sh
+#/home/mdupuis/.screenlayout/dp1et2.sh
 
 echo Setting backgrounds
 #sleep 0.5

@@ -28,7 +28,7 @@ import os
 import subprocess
 
 from libqtile import bar, hook, layout, widget
-from libqtile.config import Click, Drag, Group, Key, Match, Screen
+from libqtile.config import Click, Drag, Group, Key, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
 from qtile_extras.widget import CurrentLayoutIcon as ExtraLayoutIcon
 
@@ -106,6 +106,35 @@ def set_all_float_windows_to_non_floating_mode(qtile):
         if window.floating:
             window.cmd_disable_floating()
 
+# Add key bindings to switch VTs in Wayland.
+# We can't check qtile.core.name in default config as it is loaded before qtile is started
+# We therefore defer the check until the key binding is run by using .when(func=...)
+for vt in range(1, 8):
+    keys.append(
+        Key(
+            ["control", "mod1"],
+            f"f{vt}",
+            lazy.core.change_vt(vt).when(
+                func=lambda: qtile.core.name == "wayland"),
+            desc=f"Switch to VT{vt}",
+        )
+    )
+
+
+groups = [Group("1", label='󰬺'),
+          Group("2", label='󰬻', layout="tile"),
+          Group("3", label='󰬼'),
+          Group("4", label='󰬽'),
+          Group("5", label='󰬾'),
+          Group("6", label='󰬿'),
+          Group("7", label='󰭀', layout="tile"),
+          Group("8", label='󰭁', layout="max"),
+
+          ScratchPad("scratchpad", [
+            DropDown("volume-ctl", "pavucontrol", x=0.33, y=0.20, width=0.35, height=0.5, on_focus_lost_hide=False),
+          ]),
+]
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -170,58 +199,35 @@ keys = [
     Key([mod], "b", lazy.spawn(my_browser), desc="Starts Firefox"),
     Key([mod], "c", lazy.spawn(my_email_client), desc="Starts email client"),
     Key([mod], "e", lazy.spawn(my_filemanager), desc="Starts file browser"),
-    Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi")
+    Key([mod], "p", lazy.spawn("/usr/bin/rofi -show drun"), desc="Spawns rofi"),
 
+    Key([mod, "shift"], "v", lazy.group['scratchpad'].dropdown_toggle('volume-ctl'))
 ]
 
-# Add key bindings to switch VTs in Wayland.
-# We can't check qtile.core.name in default config as it is loaded before qtile is started
-# We therefore defer the check until the key binding is run by using .when(func=...)
-for vt in range(1, 8):
-    keys.append(
-        Key(
-            ["control", "mod1"],
-            f"f{vt}",
-            lazy.core.change_vt(vt).when(
-                func=lambda: qtile.core.name == "wayland"),
-            desc=f"Switch to VT{vt}",
-        )
-    )
-
-
-groups = [Group("1", label='󰬺'),
-          Group("2", label='󰬻', layout="tile"),
-          Group("3", label='󰬼'),
-          Group("4", label='󰬽'),
-          Group("5", label='󰬾'),
-          Group("6", label='󰬿'),
-          Group("7", label='󰭀', layout="tile"),
-          Group("8", label='󰭁', layout="max")
-          ]
-
 for i in groups:
-    keys.extend(
-        [
-            # mod1 + group number = switch to group
-            Key(
-                [mod],
-                i.name,
-                lazy.group[i.name].toscreen(),
-                desc="Switch to group {}".format(i.name),
-            ),
-            # mod1 + shift + group number = switch to & move focused window to group
-            # Key(
-            #    [mod, "shift"],
-            #    i.name,
-            #    lazy.window.togroup(i.name, switch_group=True),
-            #    desc="Switch to & move focused window to group {}".format(i.name),
-            # ),
-            # Or, use below if you prefer not to switch to that group.
-            # # mod1 + shift + group number = move focused window to group
-            Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
-                desc="move focused window to group {}".format(i.name)),
-        ]
-    )
+    if i.name != "scratchpad":
+        keys.extend(
+            [
+                # mod1 + group number = switch to group
+                Key(
+                    [mod],
+                    i.name,
+                    lazy.group[i.name].toscreen(),
+                    desc="Switch to group {}".format(i.name),
+                ),
+                # mod1 + shift + group number = switch to & move focused window to group
+                # Key(
+                #    [mod, "shift"],
+                #    i.name,
+                #    lazy.window.togroup(i.name, switch_group=True),
+                #    desc="Switch to & move focused window to group {}".format(i.name),
+                # ),
+                # Or, use below if you prefer not to switch to that group.
+                # # mod1 + shift + group number = move focused window to group
+                Key([mod, "shift"], i.name, lazy.window.togroup(i.name),
+                    desc="move focused window to group {}".format(i.name)),
+            ]
+        )
 
 
 layouts = [

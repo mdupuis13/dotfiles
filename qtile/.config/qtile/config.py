@@ -106,21 +106,6 @@ def set_all_float_windows_to_non_floating_mode(qtile):
         if window.floating:
             window.cmd_disable_floating()
 
-# Add key bindings to switch VTs in Wayland.
-# We can't check qtile.core.name in default config as it is loaded before qtile is started
-# We therefore defer the check until the key binding is run by using .when(func=...)
-for vt in range(1, 8):
-    keys.append(
-        Key(
-            ["control", "mod1"],
-            f"f{vt}",
-            lazy.core.change_vt(vt).when(
-                func=lambda: qtile.core.name == "wayland"),
-            desc=f"Switch to VT{vt}",
-        )
-    )
-
-
 groups = [Group("1", label='󰬺'),
           Group("2", label='󰬻', layout="tile"),
           Group("3", label='󰬼'),
@@ -134,6 +119,7 @@ groups = [Group("1", label='󰬺'),
             DropDown("volume-ctl", "pavucontrol", x=0.33, y=0.20, width=0.35, height=0.5, on_focus_lost_hide=False),
           ]),
 ]
+
 
 
 keys = [
@@ -203,6 +189,22 @@ keys = [
 
     Key([mod, "shift"], "v", lazy.group['scratchpad'].dropdown_toggle('volume-ctl'))
 ]
+
+# Add key bindings to switch VTs in Wayland.
+# We can't check qtile.core.name in default config as it is loaded before qtile is started
+# We therefore defer the check until the key binding is run by using .when(func=...)
+for vt in range(1, 8):
+    keys.append(
+        Key(
+            ["control", "mod1"],
+            f"f{vt}",
+            lazy.core.change_vt(vt).when(
+                func=lambda: qtile.core.name == "wayland"),
+            desc=f"Switch to VT{vt}",
+        )
+    )
+
+
 
 for i in groups:
     if i.name != "scratchpad":
@@ -416,78 +418,78 @@ screens = [
                 foreground=colors["purple"],
                 **sep_size
             ),
-            widget.WidgetBox(
-                close_button_location="right",
-                foreground=colors["blue"],
-                fontsize=36,
-                text_closed="",
-                text_open="",
-                widgets=[
-                    widget.GenPollText(
-                        fontsize=16,
-                        foreground=colors["green"],
-                        markup=True,
-                        func=lambda: subprocess.check_output(os.path.expanduser(
-                            "~/.config/qtile/qtilebar-scripts/get-fan-speed.sh")).decode("utf-8"),
-                        update_interval=2,
-                    ),
-                ]),
-            widget.CPU(
-                foreground=colors["blue"],
-                format="{load_percent:.0f}% @ {freq_current}GHz",
-                markup=True,
-                update_interval=2,
-            ),
-            widget.ThermalSensor(
-                foreground=colors["blue"],
-                foreground_alert=colors["alert"],
-                format="{temp:.1f}℃",
-                tag_sensor='TSI0_TEMP',
-                threshold=80,
-            ),
-            widget.Memory(
-                # font="Font Awesome 6 Free Solid",
-                foreground=colors["blue"],
-                format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemPercent:.0f}%",
-                markup=True,
-                measure_mem='G',
-                update_interval=2,
-            ),
-            widget.WidgetBox(
-                close_button_location="left",
-                foreground=colors["blue"],
-                fontsize=40,
-                text_closed=" 󰢮",
-                text_open=" 󰢮",
-                widgets=[
-                    widget.GenPollText(
-                        fontsize=16,
-                        foreground=colors["green"],
-                        markup=True,
-                        func=lambda: subprocess.check_output(os.path.expanduser(
-                            "~/.config/qtile/qtilebar-scripts/get-gpu-fan-speed.sh")).decode("utf-8"),
-                        update_interval=2,
-                    ),
-                ]),
-            widget.GenPollText(
-                fontsize=16,
-                foreground=colors["green"],
-                markup=True,
-                func=lambda: subprocess.check_output(os.path.expanduser(
-                    "~/.config/qtile/qtilebar-scripts/get-gpu-usage.sh")).decode("utf-8"),
-                update_interval=2,
-            ),
-            widget.ThermalSensor(
-                foreground=colors["blue"],
-                foreground_alert=colors["alert"],
-                format="{temp:.1f}℃",
-                tag_sensor='edge',
-                threshold=70,
-            ),
-            widget.Sep(
-                foreground=colors["blue"],
-                **sep_size
-            ),
+            # widget.WidgetBox(
+            #     close_button_location="right",
+            #     foreground=colors["blue"],
+            #     fontsize=36,
+            #     text_closed="",
+            #     text_open="",
+            #     widgets=[
+            #         widget.GenPollText(
+            #             fontsize=16,
+            #             foreground=colors["green"],
+            #             markup=True,
+            #             func=lambda: subprocess.check_output(os.path.expanduser(
+            #                 "~/.config/qtile/qtilebar-scripts/get-fan-speed.sh")).decode("utf-8"),
+            #             update_interval=2,
+            #         ),
+            #     ]),
+            # widget.CPU(
+            #     foreground=colors["blue"],
+            #     format="{load_percent:.0f}% @ {freq_current}GHz",
+            #     markup=True,
+            #     update_interval=2,
+            # ),
+            # widget.ThermalSensor(
+            #     foreground=colors["blue"],
+            #     foreground_alert=colors["alert"],
+            #     format="{temp:.1f}℃",
+            #     tag_sensor='TSI0_TEMP',
+            #     threshold=80,
+            # ),
+            # widget.Memory(
+            #     # font="Font Awesome 6 Free Solid",
+            #     foreground=colors["blue"],
+            #     format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemPercent:.0f}%",
+            #     markup=True,
+            #     measure_mem='G',
+            #     update_interval=2,
+            # ),
+            # widget.WidgetBox(
+            #     close_button_location="left",
+            #     foreground=colors["blue"],
+            #     fontsize=40,
+            #     text_closed=" 󰢮",
+            #     text_open=" 󰢮",
+            #     widgets=[
+            #         widget.GenPollText(
+            #             fontsize=16,
+            #             foreground=colors["green"],
+            #             markup=True,
+            #             func=lambda: subprocess.check_output(os.path.expanduser(
+            #                 "~/.config/qtile/qtilebar-scripts/get-gpu-fan-speed.sh")).decode("utf-8"),
+            #             update_interval=2,
+            #         ),
+            #     ]),
+            # widget.GenPollText(
+            #     fontsize=16,
+            #     foreground=colors["green"],
+            #     markup=True,
+            #     func=lambda: subprocess.check_output(os.path.expanduser(
+            #         "~/.config/qtile/qtilebar-scripts/get-gpu-usage.sh")).decode("utf-8"),
+            #     update_interval=2,
+            # ),
+            # widget.ThermalSensor(
+            #     foreground=colors["blue"],
+            #     foreground_alert=colors["alert"],
+            #     format="{temp:.1f}℃",
+            #     tag_sensor='edge',
+            #     threshold=70,
+            # ),
+            # widget.Sep(
+            #     foreground=colors["blue"],
+            #     **sep_size
+            # ),
             widget.GenPollText(
                 fontsize=16,
                 foreground=colors["green"],
@@ -595,25 +597,76 @@ screens = [
             widget.WindowName(
                 for_current_screen=False
             ),
-            # widget.Sep(
-            #     foreground=colors["foreground"],
-            #     **sep_size
-            # ),
-            # widget.Mpd2(
-            #     foreground=colors["foreground"],
-            #     #color_progress=colors["foreground_inactive"],
-            #     idle_format=" ﱙ",
-            #     no_connection="not connected",
-            #     scroll=True,
-            #     scroll_clear=True,
-            #     scroll_delay=1,
-            #     scroll_repeat=True,
-            #     scroll_step=10,
-            #     status_format="{play_status} {album}/{title}",
-            #     width=300
-            # ),
+            widget.WidgetBox(
+                close_button_location="right",
+                foreground=colors["blue"],
+                fontsize=36,
+                text_closed="",
+                text_open="",
+                widgets=[
+                    widget.GenPollText(
+                        fontsize=16,
+                        foreground=colors["green"],
+                        markup=True,
+                        func=lambda: subprocess.check_output(os.path.expanduser(
+                            "~/.config/qtile/qtilebar-scripts/get-fan-speed.sh")).decode("utf-8"),
+                        update_interval=2,
+                    ),
+                ]),
+            widget.CPU(
+                foreground=colors["blue"],
+                format="{load_percent:.0f}% @ {freq_current}GHz",
+                markup=True,
+                update_interval=2,
+            ),
+            widget.ThermalSensor(
+                foreground=colors["blue"],
+                foreground_alert=colors["alert"],
+                format="{temp:.1f}℃",
+                tag_sensor='TSI0_TEMP',
+                threshold=80,
+            ),
+            widget.Memory(
+                # font="Font Awesome 6 Free Solid",
+                foreground=colors["blue"],
+                format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemPercent:.0f}%",
+                markup=True,
+                measure_mem='G',
+                update_interval=2,
+            ),
+            widget.WidgetBox(
+                close_button_location="right",
+                foreground=colors["blue"],
+                fontsize=40,
+                text_closed=" 󰢮",
+                text_open="󰢮",
+                widgets=[
+                    widget.GenPollText(
+                        fontsize=16,
+                        foreground=colors["green"],
+                        markup=True,
+                        func=lambda: subprocess.check_output(os.path.expanduser(
+                            "~/.config/qtile/qtilebar-scripts/get-gpu-fan-speed.sh")).decode("utf-8"),
+                        update_interval=2,
+                    ),
+                ]),
+            widget.GenPollText(
+                fontsize=16,
+                foreground=colors["green"],
+                markup=True,
+                func=lambda: subprocess.check_output(os.path.expanduser(
+                    "~/.config/qtile/qtilebar-scripts/get-gpu-usage.sh")).decode("utf-8"),
+                update_interval=2,
+            ),
+            widget.ThermalSensor(
+                foreground=colors["blue"],
+                foreground_alert=colors["alert"],
+                format="{temp:.1f}℃",
+                tag_sensor='edge',
+                threshold=70,
+            ),
             widget.Sep(
-                foreground=colors["foreground"],
+                foreground=colors["blue"],
                 **sep_size
             ),
             widget.Volume(

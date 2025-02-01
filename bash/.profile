@@ -39,6 +39,10 @@ if [ -d "$HOME/.local/share/flatpak/exports/share" ] ; then
     XDG_DATA_DIRS="$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 fi
 
+if [ -d "$HOME/.config" ] ; then
+    XDG_CONFIG_HOME="$HOME/.config:$XDG_CONFIG_HOME"
+fi
+
 # Some applications read the EDITOR variable to determine your favourite text
 # editor. So uncomment the line below and enter the editor of your choice :-)
 export EDITOR=/usr/bin/vim

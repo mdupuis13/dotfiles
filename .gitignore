@@ -11,3 +11,4 @@ qBittorrent/.config/qBittorrent/qBittorrent.conf
 qBittorrent/.config/qBittorrent/lockfile
 qBittorrent/.config/qBittorrent/rss/storage.lock
 qtile/.config/qtile/__pycache__
+qBittorrent/.config/qBittorrent/qBittorrent_new.conf.lock

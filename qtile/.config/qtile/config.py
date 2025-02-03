@@ -347,7 +347,7 @@ screens = [
                 widgets=[
                     widget.DF(
                         foreground=colors["purple"],
-                        format="<span size=\"26pt\" rise=\"-6pt\">󰿟</span> {r:.0f}%({s}{m})",
+                        format="<span size=\"26pt\" rise=\"-6pt\">󰿟</span> {r:.0f}%({f}{m})",
                         partition="/",
                         update_interval=600,
                         visible_on_warn=False,
@@ -364,7 +364,7 @@ screens = [
                     ),
                     widget.DF(
                         foreground=colors["purple"],
-                        format=" <span size=\"26pt\" rise=\"-6pt\"></span> {r:.0f}%({s}{m})",
+                        format=" <span size=\"26pt\" rise=\"-6pt\"></span> {r:.0f}%({f}{m})",
                         partition="/home",
                         update_interval=600,
                         visible_on_warn=False,
@@ -381,7 +381,7 @@ screens = [
                     ),
                     widget.DF(
                         foreground=colors["purple"],
-                        format="<span size=\"26pt\" rise=\"-6pt\"> 󰊗</span> {r:.0f}%({s}{m})",
+                        format="<span size=\"26pt\" rise=\"-6pt\"> 󰊗</span> {r:.0f}%({f}{m})",
                         partition="/home/mdupuis/Games",
                         update_interval=600,
                         visible_on_warn=False,
@@ -398,7 +398,7 @@ screens = [
                     ),
                     widget.DF(
                         foreground=colors["purple"],
-                        format=" <span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({s}{m})",
+                        format=" <span size=\"26pt\" rise=\"-6pt\">󰈯</span> {r:.0f}%({f}{m})",
                         partition="/home/mdupuis/Photographie",
                         update_interval=600,
                         visible_on_warn=False,
@@ -418,78 +418,6 @@ screens = [
                 foreground=colors["purple"],
                 **sep_size
             ),
-            # widget.WidgetBox(
-            #     close_button_location="right",
-            #     foreground=colors["blue"],
-            #     fontsize=36,
-            #     text_closed="",
-            #     text_open="",
-            #     widgets=[
-            #         widget.GenPollText(
-            #             fontsize=16,
-            #             foreground=colors["green"],
-            #             markup=True,
-            #             func=lambda: subprocess.check_output(os.path.expanduser(
-            #                 "~/.config/qtile/qtilebar-scripts/get-fan-speed.sh")).decode("utf-8"),
-            #             update_interval=2,
-            #         ),
-            #     ]),
-            # widget.CPU(
-            #     foreground=colors["blue"],
-            #     format="{load_percent:.0f}% @ {freq_current}GHz",
-            #     markup=True,
-            #     update_interval=2,
-            # ),
-            # widget.ThermalSensor(
-            #     foreground=colors["blue"],
-            #     foreground_alert=colors["alert"],
-            #     format="{temp:.1f}℃",
-            #     tag_sensor='TSI0_TEMP',
-            #     threshold=80,
-            # ),
-            # widget.Memory(
-            #     # font="Font Awesome 6 Free Solid",
-            #     foreground=colors["blue"],
-            #     format=" <span size=\"26pt\" rise=\"-6pt\">󰎁</span> {MemPercent:.0f}%",
-            #     markup=True,
-            #     measure_mem='G',
-            #     update_interval=2,
-            # ),
-            # widget.WidgetBox(
-            #     close_button_location="left",
-            #     foreground=colors["blue"],
-            #     fontsize=40,
-            #     text_closed=" 󰢮",
-            #     text_open=" 󰢮",
-            #     widgets=[
-            #         widget.GenPollText(
-            #             fontsize=16,
-            #             foreground=colors["green"],
-            #             markup=True,
-            #             func=lambda: subprocess.check_output(os.path.expanduser(
-            #                 "~/.config/qtile/qtilebar-scripts/get-gpu-fan-speed.sh")).decode("utf-8"),
-            #             update_interval=2,
-            #         ),
-            #     ]),
-            # widget.GenPollText(
-            #     fontsize=16,
-            #     foreground=colors["green"],
-            #     markup=True,
-            #     func=lambda: subprocess.check_output(os.path.expanduser(
-            #         "~/.config/qtile/qtilebar-scripts/get-gpu-usage.sh")).decode("utf-8"),
-            #     update_interval=2,
-            # ),
-            # widget.ThermalSensor(
-            #     foreground=colors["blue"],
-            #     foreground_alert=colors["alert"],
-            #     format="{temp:.1f}℃",
-            #     tag_sensor='edge',
-            #     threshold=70,
-            # ),
-            # widget.Sep(
-            #     foreground=colors["blue"],
-            #     **sep_size
-            # ),
             widget.GenPollText(
                 fontsize=16,
                 foreground=colors["green"],
